@@ -1,0 +1,52 @@
+{
+	"plantas":[
+		{
+			"nomePopular":"Banana",
+			"nomeCientifico":"Bananais algumacoisa",
+			"imagem":"banana",
+			"informacoes":"A banana server para comer e etc,etc..."
+		},
+		{
+			"nomePopular":"Abacate",
+			"nomeCientifico":"Abacate blealgumacoisa",
+			"imagem":"abacate",
+			"informacoes":"O abacate server para comer e etc,etc..."
+		},
+		{
+			"nomePopular":"Abacaxi",
+			"nomeCientifico":"Abacaxi alahuakaba",
+			"imagem":"Abacaxi",
+			"informacoes":"O Abacaxi server para comer e fazer suco"
+		},
+		{
+			"nomePopular":"Laranja",
+			"nomeCientifico":"Laranja lima",
+			"imagem":"Laranja",
+			"informacoes":"A Laranja server para fazer suco"
+		},
+		{
+			"nomePopular":"Kiwi",
+			"nomeCientifico":"Kiwi verde",
+			"imagem":"Kiwi",
+			"informacoes":"O Kiwi server para ...."
+		},
+		{
+			"nomePopular":"Pinheiro",
+			"nomeCientifico":"Pinheiro cientifico",
+			"imagem":"Pinheiro",
+			"informacoes":"O Pinheiro server para ...."
+		},
+		{
+			"nomePopular":"Bambu",
+			"nomeCientifico":"Bambu ble",
+			"imagem":"Bambu",
+			"informacoes":"O Bambu server para testar"
+		},
+		{
+			"nomePopular":"Flor",
+			"nomeCientifico":"Flor bla",
+			"imagem":"Flor",
+			"informacoes":"A Flor server para ..."
+		}
+	]
+}
