@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>5.5.2f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -109,6 +111,8 @@
     <Compile Include="Assets\TouchJoysticks\Scripts\SingleJoystickTouchController.cs" />
     <Compile Include="Assets\_Scripts\AterarModoDeExibicao.cs" />
     <Compile Include="Assets\_Scripts\CarregarFase.cs" />
+    <Compile Include="Assets\_Scripts\ControllerPontuacao.cs" />
+    <Compile Include="Assets\_Scripts\ControllerUI.cs" />
     <Compile Include="Assets\_Scripts\DetalhePlantaManeger.cs" />
     <Compile Include="Assets\_Scripts\FPSDisplay.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />

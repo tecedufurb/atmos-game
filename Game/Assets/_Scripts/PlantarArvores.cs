@@ -126,7 +126,9 @@ public class PlantarArvores : MonoBehaviour {
 
     private void instanciaPlanta(RaycastHit hitToInstantiate, string nomePlantaParaInstanciar) { //instancia as plantas, passar somente os RayscastHits com o terreno
         var plantaPrefab = Resources.Load("Prefabs/" + nomePlantaParaInstanciar) as GameObject;//carrega prefab
-        plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion()) as GameObject;//instancia planta
+        plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
+        plantaPrefab.tag = "PlantaDoMundo";
+        
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
