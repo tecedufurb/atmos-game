@@ -19,7 +19,7 @@ public class PlantarArvores : MonoBehaviour {
     #endregion
 
     RaycastHit[] hitsInfoAux; //armazena o hit inicial
-    public List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
+    private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
 
     private void FixedUpdate() {
         if (Input.GetButtonDown("Fire1")) {

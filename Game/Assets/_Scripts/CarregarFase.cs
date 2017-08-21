@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class CarregarFase : MonoBehaviour {
 
-    public GameObject loadingScreenPanel;
+    
     public Slider slider;//barra de carregar
     public string fase; //fase que sera carregada
     public GameObject loadingScreenCanvas;
@@ -19,7 +19,6 @@ public class CarregarFase : MonoBehaviour {
     IEnumerator LoadingScreen()
     {
         loadingScreenCanvas.active = true;
-        loadingScreenPanel.SetActive(true);
         async = SceneManager.LoadSceneAsync(fase);
         async.allowSceneActivation = false;
 

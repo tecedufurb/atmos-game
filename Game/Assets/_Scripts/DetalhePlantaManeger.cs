@@ -13,16 +13,12 @@ public class DetalhePlantaManeger : MonoBehaviour {
     void OnEnable() {
         if (gameObject.name == "DetalhePlantaPanel")
         {
-         //   Debug.Log("desativar joy");
+            //Debug.Log("desativar joy");
             joystickASerControlado.active = false;
-        //    Debug.Log("estado: " + joystickASerControlado.active);
+            //Debug.Log("estado: " + joystickASerControlado.active);
             objetoASerControladoNoClick.active = true;
             botaoDetalhePlanta = false;
-            preencherValoresNoPainel();
         }
-    }
-
-    public void preencherValoresNoPainel(){
     }
 
     public void onClickClose() //quando clica no botoa X vermelho
@@ -46,7 +42,4 @@ public class DetalhePlantaManeger : MonoBehaviour {
             gameObject.GetComponent<Image>().color = new Color32(50, 97, 143, 255);
         }
     }
-
-
-
 }
