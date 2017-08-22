@@ -26,12 +26,14 @@ public class PlantarArvores : MonoBehaviour {
             Ray pointCameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             hitsInfoAux = returnHitsOfRay(pointCameraRay); //Pega os HitsInfo do do 1º click
             nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());
-            if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
-                //Debug.Log("PODE PLANTA");
-                nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
-                validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
-            } else {
-                //Debug.Log("NAO PLANTA");
+            if (nomesPlantasParaInstanciar != null) { // se nomes não está vazio
+                if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
+                                                      //Debug.Log("PODE PLANTA");
+                    nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
+                    validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
+                } else {
+                    //Debug.Log("NAO PLANTA");
+                }
             }
         }
     }
@@ -48,10 +50,12 @@ public class PlantarArvores : MonoBehaviour {
             }
         }
         if (nomesPlantasSelecionadas.Count > 5) {
-            throw new System.Exception("MAIS QUE 5 PLANTAS SELECIONADAS!"); //chamo um painel mostrando erro?
+            return null;
+            Debug.Log("Mais que 5 plantas selecionadas");
         }
         if (nomesPlantasSelecionadas.Count < 1) {
-            throw new System.Exception("MENOS QUE 1 PLANTA SELECIONADA!"); //chamo um painel mostrando erro?
+            return null;
+            Debug.Log("Menos que 1 planta selecionada");
         }
         return nomesPlantasSelecionadas; //retorna o nome das plantas selecionadas ou null
     }
