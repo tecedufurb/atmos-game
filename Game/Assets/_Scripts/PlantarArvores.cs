@@ -22,23 +22,19 @@ public class PlantarArvores : MonoBehaviour {
     private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
 
     private void FixedUpdate() {
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1") && pegaPlantasDoPainel() != null) {
             Ray pointCameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             hitsInfoAux = returnHitsOfRay(pointCameraRay); //Pega os HitsInfo do do 1º click
             nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());
             if (nomesPlantasParaInstanciar != null) { // se nomes não está vazio
                 if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
-                                                      //Debug.Log("PODE PLANTA");
                     nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
                     validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
-                } else {
-                    //Debug.Log("NAO PLANTA");
                 }
             }
         }
     }
 
-    #region feito e funcionando
     private List<string> pegaPlantasDoPainel() { //pega o nome das plantas que estão selecionadas no canvas
         InformacoesBotao informacao; //armazena as informaçoes
         GameObject[] botoesCanvas = GameManager.botoesCanvas; //botoes do canvas
@@ -104,7 +100,7 @@ public class PlantarArvores : MonoBehaviour {
             return null;
         }
     }
-    private bool isFirstClickValid(RaycastHit[] hitsInfo) {    //Verifica se o raio também nao colidiu com UI
+    private bool isFirstClickValid(RaycastHit[] hitsInfo) { //Verifica se o raio também nao colidiu com UI
         if (!IsPointerOverUIObject()) {//se nao colidiu com o botoes UI
             foreach (string tag in naoDeveColidir) {
                 foreach (RaycastHit hitInfo in hitsInfo) {
@@ -119,20 +115,17 @@ public class PlantarArvores : MonoBehaviour {
         }
         return false;
     }
-    private bool IsPointerOverUIObject() { //meto que verifica se colidiu com UI
+    private bool IsPointerOverUIObject() { //metodo que verifica se colidiu com UI
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
     }
-    #endregion
-
     private void instanciaPlanta(RaycastHit hitToInstantiate, string nomePlantaParaInstanciar) { //instancia as plantas, passar somente os RayscastHits com o terreno
         var plantaPrefab = Resources.Load("Prefabs/" + nomePlantaParaInstanciar) as GameObject;//carrega prefab
         plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
-        plantaPrefab.tag = "PlantaDoMundo";
-        
+        plantaPrefab.tag = "PlantaDoMundo";    
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
@@ -159,7 +152,6 @@ public class PlantarArvores : MonoBehaviour {
     }
     private Ray createNewRay(Ray origem) {
         Ray newRay = new Ray(new Vector3(Random.Range(origem.origin.x - raioPlantas, origem.origin.x + raioPlantas), origem.origin.y, Random.Range(origem.origin.z - raioPlantas, origem.origin.z + raioPlantas)), origem.direction);//gera raio com base na area definida em raioPlantas
-        Debug.Log("create new ray X: " + newRay.origin.x + " Y: " + newRay.origin.y + " Z: " + newRay.origin.z);
         return newRay;
     }
 
@@ -167,7 +159,7 @@ public class PlantarArvores : MonoBehaviour {
         Ray rayAuxiliar;
         RaycastHit hitToInstatiate;
         int numeroDeRaysValidos = 1; //ja comeca com 1 planta instanciada
-        int numeroTentativas = 15;//ira tentar ate 20 vezes
+        int numeroTentativas = 15;//ira tentar ate 15 vezes
         int countNomePlantaParaInstanciar=3;
         hitToInstatiate =returnHitTerrain(hitsInfo);//adiciona 1º planta
         instanciaPlanta(hitToInstatiate,nomesPlantasParaInstanciar[nomesPlantasParaInstanciar.Count-1]);//pega 1 valor da lista e instancia
