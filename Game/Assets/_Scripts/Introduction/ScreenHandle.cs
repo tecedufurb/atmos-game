@@ -8,13 +8,16 @@ public class ScreenHandle : MonoBehaviour {
     public string[] message = new string[3];
 
     private int index;
+    private bool clicked = false;
 
     [SerializeField] private Text messageText;
     [SerializeField] private Button nextMessageButton;
     [SerializeField] private Button previousMessageButton;
+    [SerializeField] private Button InformationButton;
     [SerializeField] private GameObject choosePlantsButton;
     [SerializeField] private GameObject introductionPanel;
     [SerializeField] private GameObject choosePlantsPanel;
+    [SerializeField] private GameObject informationPanel;
 
     void Start() {
         index = 0;
@@ -35,6 +38,7 @@ public class ScreenHandle : MonoBehaviour {
     }
 
     public void nextMessege() {
+        StopAllCoroutines();
         index++;
         messageText.text = message[index];
 
@@ -52,6 +56,11 @@ public class ScreenHandle : MonoBehaviour {
     public void EnableChoosePlants(bool active) {
         introductionPanel.SetActive(!active);
         choosePlantsPanel.SetActive(active);
+    }
+
+    public void EnableInformationPanel(bool active) {
+        InformationButton.GetComponent<Image>().color = new Color32(50, 97, 143, 255);
+        informationPanel.SetActive(active);
     }
     
     private IEnumerator TypeText(string message, Text messageText) {
