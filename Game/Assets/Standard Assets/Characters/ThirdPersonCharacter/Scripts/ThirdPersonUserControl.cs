@@ -38,8 +38,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
-          //  x = JoystickMovimentacaoPersonagem.GetComponent<SimpleTouchController>().movementVector.x; //pega x do joystick
-           // y = JoystickMovimentacaoPersonagem.GetComponent<SimpleTouchController>().movementVector.y; //pega y do joystick
+            //x = JoystickMovimentacaoPersonagem.GetComponent<SimpleTouchController>().movementVector.x; //pega x do joystick
+            //y = JoystickMovimentacaoPersonagem.GetComponent<SimpleTouchController>().movementVector.y; //pega y do joystick
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
