@@ -27,7 +27,7 @@ public class DetalhePlantaManeger : MonoBehaviour {
         joystickASerControlado.active = true;
         objetoASerControladoNoClick.active = false; //desativa o painel
         botaoDetalhePlanta = false;
-        buttonVerDetalhesPlanta.GetComponent<Image>().color = new Color32(255, 255, 255, 255); //restaura a cor do botao ao normal
+        buttonVerDetalhesPlanta.GetComponent<Image>().color = new Color32(201, 201, 201, 255); //restaura a cor do botao ao normal
     }
 
     public void onClickBotaoDetalhePlanta() {
@@ -35,11 +35,11 @@ public class DetalhePlantaManeger : MonoBehaviour {
         if (botaoDetalhePlanta)//se ja esta ativo 
         {
             botaoDetalhePlanta = false; //seta o botao como desativo/falso
-            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            gameObject.GetComponent<Image>().color = new Color32(201, 201, 201, 255);
         } else //seta o botao (colocar a cor azul)
           {
             botaoDetalhePlanta = true; //seta o botao como ativo
-            gameObject.GetComponent<Image>().color = new Color32(50, 97, 143, 255);
+            gameObject.GetComponent<Image>().color = new Color32(116, 255, 123, 255);
         }
     }
 }

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;//a instancia comeca vazia
     public static GameObject[] botoesCanvas;
     JasonController jasonController;
+    public static bool podePlantar = true;
 
     #region UNITY_METHODS
     void Awake() {
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-
+        
     }
     #endregion
 
@@ -69,4 +70,6 @@ public class GameManager : MonoBehaviour {
             }
         }
     }
+
+
 }

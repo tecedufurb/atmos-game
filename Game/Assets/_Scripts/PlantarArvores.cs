@@ -22,14 +22,16 @@ public class PlantarArvores : MonoBehaviour {
     private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
 
     private void FixedUpdate() {
-        if (Input.GetButtonDown("Fire1") && pegaPlantasDoPainel() != null) {
-            Ray pointCameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            hitsInfoAux = returnHitsOfRay(pointCameraRay); //Pega os HitsInfo do do 1º click
-            nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());
-            if (nomesPlantasParaInstanciar != null) { // se nomes não está vazio
-                if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
-                    nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
-                    validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
+        if (GameManager.podePlantar) {
+            if (Input.GetButtonDown("Fire1") && pegaPlantasDoPainel() != null) {
+                Ray pointCameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                hitsInfoAux = returnHitsOfRay(pointCameraRay); //Pega os HitsInfo do do 1º click
+                nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());
+                if (nomesPlantasParaInstanciar != null) { // se nomes não está vazio
+                    if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
+                        nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
+                        validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
+                    }
                 }
             }
         }
@@ -127,6 +129,7 @@ public class PlantarArvores : MonoBehaviour {
         plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
         plantaPrefab.tag = "PlantaDoMundo";    
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
+        ControllerPontuacao.incrementaQntPlantas();
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
         foreach (string tag in naoDeveColidir) {
