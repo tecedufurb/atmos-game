@@ -53,7 +53,7 @@ public class ButtonInformations : MonoBehaviour {
     }
 
     public void Start() {
-        telaPanel = GameObject.Find("VisaoDeCimaCanvas");//tem que usar o find pois essa classe é um prefab,e nao pode receber valores do jogo por referencia(jeito atraves do unity)
+        telaPanel = GameObject.Find("Canvas");//tem que usar o find pois essa classe é um prefab,e nao pode receber valores do jogo por referencia(jeito atraves do unity)
         panelDetalhePlanta = telaPanel.transform.Find("PanelDetalhePlanta").gameObject;
     }
 
