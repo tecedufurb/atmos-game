@@ -84,7 +84,7 @@ public class ScreenHandle : MonoBehaviour {
     public void PlayButton(string scene) {
         ButtonInformations[] plantsButtons = FindObjectsOfType<ButtonInformations>();
         foreach (ButtonInformations button in plantsButtons) {
-            if (button.GetComponent<ButtonInformations>().estadoDoBotao)
+            if (button.estadoDoBotao)
                 PlantsSingleton.Instance.SelectedPlants.Add(button);
         }
         LoadScene(scene);
@@ -112,7 +112,7 @@ public class ScreenHandle : MonoBehaviour {
             botaoPrefab = Instantiate(botaoPrefab) as GameObject; //instancia o botao
             botaoPrefab.transform.SetParent(gridDePlantas.transform, false); //coloca como pai o gridDePlantas
             botaoPrefab.name = p.nomePopular; //nome do botao é nome da planta 
-            //botaoPrefab.tag = "botaoDoCanvas"; //adiciona tag aos botoes
+            botaoPrefab.tag = "botaoDoCanvas"; //adiciona tag aos botoes
 
             ButtonInformations informacoesBotao = botaoPrefab.GetComponent<ButtonInformations>(); //pega o componente informocoes do botao e preenche
             informacoesBotao.NomePopular = p.nomePopular;

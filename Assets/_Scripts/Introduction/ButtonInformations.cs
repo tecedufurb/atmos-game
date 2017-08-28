@@ -53,8 +53,8 @@ public class ButtonInformations : MonoBehaviour {
     }
 
     public void Start() {
-        telaPanel = GameObject.Find("Canvas");//tem que usar o find pois essa classe é um prefab,e nao pode receber valores do jogo por referencia(jeito atraves do unity)
-        panelDetalhePlanta = telaPanel.transform.Find("InformationsPanel").gameObject;
+        telaPanel = GameObject.Find("VisaoDeCimaCanvas");//tem que usar o find pois essa classe é um prefab,e nao pode receber valores do jogo por referencia(jeito atraves do unity)
+        panelDetalhePlanta = telaPanel.transform.Find("PanelDetalhePlanta").gameObject;
     }
 
     /// <summary>
@@ -79,10 +79,10 @@ public class ButtonInformations : MonoBehaviour {
         panelDetalhePlanta.SetActive(true); //ativa o painel
         Text[] arrayTextoPainelDetalhePlanta = panelDetalhePlanta.GetComponentsInChildren<Text>(); //pega os campos de texto
         foreach (Text texto in arrayTextoPainelDetalhePlanta) { //define as informãções de texto
-            if (texto.name == "Details") 
+            if (texto.name == "Detalhes") 
                 texto.text = informacoes;
 
-            if (texto.name == "SpecieName")
+            if (texto.name == "NomeEspecie")
                 texto.text = nomePopular;
         }
         //seta a imagem
