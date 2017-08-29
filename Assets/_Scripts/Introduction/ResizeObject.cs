@@ -11,7 +11,12 @@ public class ResizeObject : MonoBehaviour {
     [SerializeField] private float Speed;
 
     private bool mMaxSize;
-    
+    private float x;
+
+    void Start() {
+        x = transform.localScale.x;
+    }
+
 	void Update () {
         if (m_Active) {
             if (!mMaxSize && (transform.localScale.x <= MaxSize))
@@ -19,7 +24,7 @@ public class ResizeObject : MonoBehaviour {
             else
                 mMaxSize = true;
 
-            if (mMaxSize && (transform.localScale.x > 1))
+            if (mMaxSize && (transform.localScale.x > x))
                 transform.localScale = new Vector3(transform.localScale.x - Time.deltaTime * Speed, transform.localScale.y - Time.deltaTime * Speed, transform.localScale.z);
             else
                 mMaxSize = false;

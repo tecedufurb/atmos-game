@@ -1,19 +1,12 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScreenHandle : MonoBehaviour {
-
-    public string[] m_Message = new string[3];
+    
     public static bool m_Clicked = false;
-
-    private int index;
+    
     private JasonController mJsonController;
-
-    [SerializeField] private Text messageText;
-    [SerializeField] private Button nextMessageButton;
-    [SerializeField] private Button previousMessageButton;
     [SerializeField] private Button InformationButton;
     [SerializeField] private GameObject choosePlantsButton;
     [SerializeField] private GameObject introductionPanel;
@@ -22,41 +15,8 @@ public class ScreenHandle : MonoBehaviour {
     [SerializeField] private GameObject gridDePlantas;
 
     void Start() {
-        index = 0;
-        m_Message[0] = "Olá, essa fase irá testar seus conhecimentos em relação a área  de preservação permanente nos arredores dos rios...";
-        m_Message[1] = "O objetivo é plantar as plantas corretas nos arredores do rio para formar a área de preservação permanente...";
-        m_Message[2] = "Antes de começarmos, clique no botão Escolher plantas para selecionar as plantas com as quais você irá trabalhar.";
-        messageText.text = m_Message[index];
-        StartCoroutine(TypeText(m_Message[index], messageText));
-
         mJsonController = JasonController.transformaJson(); //cria e inicializa jasoncontroller
         insereBotoes();//carrega os botoes de plantas no canvas
-    }
-
-    public void previousMessege() {
-        StopAllCoroutines();
-        index--;
-        messageText.text = m_Message[index];
-
-        if (index == 0)
-            previousMessageButton.gameObject.SetActive(false);
-
-        nextMessageButton.gameObject.SetActive(true);
-        choosePlantsButton.GetComponent<ResizeObject>().m_Active = false;
-    }
-
-    public void nextMessege() {
-        StopAllCoroutines();
-        index++;
-        messageText.text = m_Message[index];
-
-        StartCoroutine(TypeText(m_Message[index], messageText));
-
-        if (index == m_Message.Length - 1) {
-            nextMessageButton.gameObject.SetActive(false);
-            choosePlantsButton.GetComponent<ResizeObject>().m_Active = true;
-        }
-        previousMessageButton.gameObject.SetActive(true);
     }
 
     public void EnableChoosePlants(bool active) {
@@ -92,15 +52,6 @@ public class ScreenHandle : MonoBehaviour {
 
     public void LoadScene(string scene) {
         SceneManager.LoadScene(scene);
-    }
-
-    private IEnumerator TypeText(string message, Text messageText) {
-        messageText.text = "";
-        foreach (char letter in message.ToCharArray()) {
-            messageText.text += letter;
-            yield return 0;
-            yield return new WaitForSeconds(.05f);
-        }
     }
 
     private void insereBotoes() {//metodo que adiciona botoes de plantas ao canvas
