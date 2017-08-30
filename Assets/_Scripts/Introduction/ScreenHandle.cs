@@ -17,6 +17,7 @@ public class ScreenHandle : MonoBehaviour {
     void Start() {
         mJsonController = JasonController.transformaJson(); //cria e inicializa jasoncontroller
         insereBotoes();//carrega os botoes de plantas no canvas
+        
     }
 
     public void EnableChoosePlants(bool active) {
@@ -27,18 +28,34 @@ public class ScreenHandle : MonoBehaviour {
     public void EnableInformationPanel(bool active) {
         choosePlantsPanel.SetActive(!active);
         informationPanel.SetActive(active);
-        InformationButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-        m_Clicked = false;
+
+        if (!active) {
+            InformationButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            ShowInfirmationIcon(0);
+            m_Clicked = false;
+        }        
     }
 
     public void InformationPlantsButton() {
         if (!m_Clicked) {
-            InformationButton.GetComponent<Image>().color = new Color32(50, 97, 143, 255);
+            InformationButton.GetComponent<Image>().color = new Color32(255, 255, 255, 150);
+            ShowInfirmationIcon(140);
             m_Clicked = true;
         } else {
             InformationButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            ShowInfirmationIcon(0);
             m_Clicked = false;
         }
+    }
+
+    private void ShowInfirmationIcon(byte alpha) {
+        GameObject[] plantsButtons = GameObject.FindGameObjectsWithTag("botaoDoCanvas");
+        foreach (GameObject obj in plantsButtons) {
+            foreach (Transform child in obj.transform) {//percorre os transforms do botaoPrefab
+                if (child.name == "InformationIcon")
+                    child.GetComponent<Image>().color = new Color32(255, 255, 255, alpha);
+            }
+        }        
     }
 
     public void PlayButton(string scene) {
@@ -75,7 +92,7 @@ public class ScreenHandle : MonoBehaviour {
             sprite = Resources.Load("Imagens/" + p.imagem, typeof(Sprite)) as Sprite;  //carrega a imagem de acordo com o nome que consta no json
 
             foreach (Transform child in botaoPrefab.transform) {//percorre os transforms do botaoPrefab
-                if (child != botaoPrefab.transform) {//pega o filho do botao
+                if (child.name == "Image") {//pega o filho do botao
                     Image image = child.GetComponent<Image>();//pega a imagem do filho do botao
                     image.overrideSprite = sprite; //seta a imagem no filho
                 }

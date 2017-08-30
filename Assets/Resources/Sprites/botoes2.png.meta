@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ac648c68b01992141b4223049366a248
-timeCreated: 1503952691
+timeCreated: 1504094282
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -17,6 +17,7 @@ TextureImporter:
     21300020: botoes2_10
     21300022: botoes2_11
     21300024: botoes2_12
+    21300026: botoes2_13
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -107,9 +108,9 @@ TextureImporter:
       name: botoes2_1
       rect:
         serializedVersion: 2
-        x: 612
+        x: 614
         y: 801
-        width: 186
+        width: 184
         height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,9 +122,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 807
-        y: 804
-        width: 179
-        height: 178
+        y: 805
+        width: 181
+        height: 177
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,7 +136,7 @@ TextureImporter:
         serializedVersion: 2
         x: 6
         y: 651
-        width: 186
+        width: 184
         height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -148,8 +149,8 @@ TextureImporter:
         serializedVersion: 2
         x: 207
         y: 654
-        width: 185
-        height: 182
+        width: 184
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,7 +162,7 @@ TextureImporter:
         serializedVersion: 2
         x: 407
         y: 651
-        width: 185
+        width: 184
         height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -185,9 +186,9 @@ TextureImporter:
       name: botoes2_7
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 541
-        width: 496
+        width: 494
         height: 97
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,8 +201,8 @@ TextureImporter:
         serializedVersion: 2
         x: 543
         y: 422
-        width: 185
-        height: 182
+        width: 184
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,9 +238,9 @@ TextureImporter:
       name: botoes2_11
       rect:
         serializedVersion: 2
-        x: 364
+        x: 365
         y: 428
-        width: 95
+        width: 94
         height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -252,8 +253,21 @@ TextureImporter:
         serializedVersion: 2
         x: 40
         y: 304
-        width: 867
+        width: 868
         height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: botoes2_13
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 112
+        width: 181
+        height: 181
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
