@@ -8,12 +8,21 @@ public class AudioManager : MonoBehaviour {
 
     [SerializeField] private AudioSource AudioSource;
     [SerializeField] private AudioClip PlantAudio;
+    [SerializeField] private AudioClip ButtonClicked;
 
     /// <summary>
-    /// Plays a sound when the plant was planted.
+    /// Plays a sound when a plant is planted.
     /// </summary>
     public void PlayPlantAudio() {
         AudioSource.clip = PlantAudio;
+        AudioSource.Play();
+    }
+
+    /// <summary>
+    /// Plays a sound when a button is clicked.
+    /// </summary>
+    public void PlayButtonClickedAudio() {
+        AudioSource.clip = ButtonClicked;
         AudioSource.Play();
     }
 }

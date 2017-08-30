@@ -7,6 +7,8 @@ public class ButtonInformations : MonoBehaviour {
     public GameObject telaPanel;
     public bool estadoDoBotao = false;
 
+    private AudioManager mAudioManager;
+
     private string nomePopular;
     private string nomeCientifico;
     private string imagem;
@@ -55,6 +57,8 @@ public class ButtonInformations : MonoBehaviour {
     public void Start() {
         telaPanel = GameObject.Find("Canvas");//tem que usar o find pois essa classe é um prefab,e nao pode receber valores do jogo por referencia(jeito atraves do unity)
         panelDetalhePlanta = telaPanel.transform.Find("PanelDetalhePlanta").gameObject;
+
+        mAudioManager = GameObject.FindObjectOfType<AudioManager>();
     }
 
     /// <summary>
@@ -72,10 +76,10 @@ public class ButtonInformations : MonoBehaviour {
         } else { //se botao detalhe esta ativado
             instanciarDetalhesPlantas();
         }
+        //mAudioManager.PlayButtonClickedAudio();
     }
 
     private void instanciarDetalhesPlantas() {
-        //seta os textos
         panelDetalhePlanta.SetActive(true); //ativa o painel
         Text[] arrayTextoPainelDetalhePlanta = panelDetalhePlanta.GetComponentsInChildren<Text>(); //pega os campos de texto
         foreach (Text texto in arrayTextoPainelDetalhePlanta) { //define as informãções de texto
@@ -93,6 +97,5 @@ public class ButtonInformations : MonoBehaviour {
                 imagem.overrideSprite = sprite; //seta a imagem
             }
         }
-        //panelDetalhePlanta.SetActive(true); //ativa o painel
     }
 }

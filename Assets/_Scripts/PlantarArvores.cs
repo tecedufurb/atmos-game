@@ -23,7 +23,7 @@ public class PlantarArvores : MonoBehaviour {
     private AudioManager mAudioManager;
 
     void Start() {
-        mAudioManager = GameObject.FindObjectOfType<AudioManager>();
+        mAudioManager = FindObjectOfType<AudioManager>();
     }
 
     private void FixedUpdate() {

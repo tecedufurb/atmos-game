@@ -4,14 +4,15 @@ using UnityEngine;
 public class PlantsSingleton : MonoBehaviour {
 
     private static PlantsSingleton mInstance;
-    private List<ButtonInformations> m_SelectedPlants = new List<ButtonInformations>();
+    private List<ButtonInformations> m_SelectedPlants;
 
     public static PlantsSingleton Instance {
         get {
-            if (mInstance == null)
-                mInstance = FindObjectOfType<PlantsSingleton>();
-
             return mInstance;
+        }
+
+        set {
+            mInstance = value;
         }
     }
 
@@ -26,6 +27,11 @@ public class PlantsSingleton : MonoBehaviour {
     }
 
     void Awake() {
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
     }
 }

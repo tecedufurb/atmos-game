@@ -48,7 +48,7 @@ public class TutorialScript : MonoBehaviour {
         foreach (char letter in message.ToCharArray()) {
             messageText.text += letter;
             yield return 0;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.04f);
         }
     }
 }

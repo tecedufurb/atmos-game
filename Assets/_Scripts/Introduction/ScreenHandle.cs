@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -59,6 +60,7 @@ public class ScreenHandle : MonoBehaviour {
 
     public void PlayButton(string scene) {
         ButtonInformations[] plantsButtons = FindObjectsOfType<ButtonInformations>();
+        PlantsSingleton.Instance.SelectedPlants = new List<ButtonInformations>();
         foreach (ButtonInformations button in plantsButtons) {
             if (button.estadoDoBotao)
                 PlantsSingleton.Instance.SelectedPlants.Add(button);
