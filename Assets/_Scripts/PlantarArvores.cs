@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
@@ -20,6 +19,12 @@ public class PlantarArvores : MonoBehaviour {
 
     RaycastHit[] hitsInfoAux; //armazena o hit inicial
     private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
+
+    private AudioManager mAudioManager;
+
+    void Start() {
+        mAudioManager = GameObject.FindObjectOfType<AudioManager>();
+    }
 
     private void FixedUpdate() {
         if (GameManager.podePlantar) {
@@ -178,5 +183,6 @@ public class PlantarArvores : MonoBehaviour {
             numeroTentativas--;
             numeroDeRaysValidos++;
         }
+        mAudioManager.PlayPlantAudio();
     }
 }

@@ -8,26 +8,25 @@ public class ScreenHandle : MonoBehaviour {
     
     private JasonController mJsonController;
     [SerializeField] private Button InformationButton;
-    [SerializeField] private GameObject choosePlantsButton;
-    [SerializeField] private GameObject introductionPanel;
-    [SerializeField] private GameObject choosePlantsPanel;
-    [SerializeField] private GameObject informationPanel;
-    [SerializeField] private GameObject gridDePlantas;
+    [SerializeField] private GameObject ChoosePlantsButton;
+    [SerializeField] private GameObject IntroductionPanel;
+    [SerializeField] private GameObject ChoosePlantsPanel;
+    [SerializeField] private GameObject InformationPanel;
+    [SerializeField] private GameObject GridDePlantas;
 
     void Start() {
         mJsonController = JasonController.transformaJson(); //cria e inicializa jasoncontroller
         insereBotoes();//carrega os botoes de plantas no canvas
-        
     }
 
     public void EnableChoosePlants(bool active) {
-        introductionPanel.SetActive(!active);
-        choosePlantsPanel.SetActive(active);
+        IntroductionPanel.SetActive(!active);
+        ChoosePlantsPanel.SetActive(active);
     }
 
     public void EnableInformationPanel(bool active) {
-        choosePlantsPanel.SetActive(!active);
-        informationPanel.SetActive(active);
+        ChoosePlantsPanel.SetActive(!active);
+        InformationPanel.SetActive(active);
 
         if (!active) {
             InformationButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
@@ -78,7 +77,7 @@ public class ScreenHandle : MonoBehaviour {
 
         foreach (Planta p in mJsonController.plantas) {//para cada planta no json
             botaoPrefab = Instantiate(botaoPrefab) as GameObject; //instancia o botao
-            botaoPrefab.transform.SetParent(gridDePlantas.transform, false); //coloca como pai o gridDePlantas
+            botaoPrefab.transform.SetParent(GridDePlantas.transform, false); //coloca como pai o gridDePlantas
             botaoPrefab.name = p.nomePopular; //nome do botao é nome da planta 
             botaoPrefab.tag = "botaoDoCanvas"; //adiciona tag aos botoes
 
