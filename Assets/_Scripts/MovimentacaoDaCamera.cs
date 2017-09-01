@@ -62,7 +62,7 @@ public class MovimentacaoDaCamera : MonoBehaviour {
     void movimentacaoCamera(float horizontal, float vertical) {
         if (horizontal > 0) {
             //if our current X is > than the minimum range AND less than maximum range
-            if (transform.position.x < 355)  //300
+            if (transform.position.x < 300)  //300
             {
                 transform.Translate(Vector3.right * velocidade * Time.deltaTime, Space.World);
             }

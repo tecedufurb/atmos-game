@@ -14,26 +14,21 @@ public class ControllerPontuacao : MonoBehaviour {
 
     private void Start() {
         imagem = objetoComImagem.GetComponentInChildren<Image>();//pega a imagem para ser atualizada
+        qntAtualPlantas = 0; //quando começa tem 0 plantas
     }
 
-    public static bool isQntAtualPlantasGreateOrEqualQntTotalPlantas() {
-        return (qntAtualPlantas >= qntTotalPlantas);
-    }
-
-    public static void setQntAtualPlantas(int qnt) {
-        if (qnt>qntTotalPlantas) {//se qnt > total
+    public static void incrementaQntPlantas() {
+        if (qntAtualPlantas >= qntTotalPlantas) {//se qnt > total
             qntAtualPlantas = qntTotalPlantas; //se qntAtual = maximoPlantas
+            qntPlantasChanged = true;
+            PontuacaoPlantas.reachedMaxQuantity();
         }
-        if (qnt >= 0 && qnt <= qntTotalPlantas) { //so qnt >0 e menor que qntTotal
-            qntAtualPlantas = qnt;
+        else {
+            qntAtualPlantas++;
             qntPlantasChanged = true;
         }
     }
 
-    public static void incrementaQntPlantas() {
-        qntAtualPlantas++;
-        qntPlantasChanged = true;
-    }
 
     void Update() {
         if (qntPlantasChanged) {
@@ -43,7 +38,7 @@ public class ControllerPontuacao : MonoBehaviour {
     }
 
     private void updateImage() {
-        double porcentagem = (double)qntAtualPlantas / qntTotalPlantas * 100 / 100; /// 100;//works
+        double porcentagem = (double)qntAtualPlantas / qntTotalPlantas * 100 / 100;
         imagem.fillAmount = (float)porcentagem;
     }
 

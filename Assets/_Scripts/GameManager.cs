@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour {
           {
             Destroy(gameObject); //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
         }
-        //Sets this to not be destroyed when reloading scene
-        DontDestroyOnLoad(gameObject);
 
         //insereBotoes();//carrega os botoes de plantas no canvas
         InstantiateButtons();
@@ -29,7 +27,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-
+        podePlantar = true; //quando jogo comeca pode plantar
     }
 
     void Update() {
