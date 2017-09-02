@@ -29,7 +29,6 @@ public class ControllerPontuacao : MonoBehaviour {
         }
     }
 
-
     void Update() {
         if (qntPlantasChanged) {
             updateImage();

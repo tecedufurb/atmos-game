@@ -7,7 +7,7 @@ public class PlantarArvores : MonoBehaviour {
     #region arraysComparacao
     private string[] naoDeveColidir = { "Agua", "Untagged", "PlantaDoMundo" };
     private string casoEspeciais = "PlantaDoMundo"; //se colidir com planta do mundo, deve pegar o objeto que colidiu e destruilo 
-    private string[] deveColidir = { "Terreno" }; //esse pode adicionado novas coisa
+    private string[] deveColidir = { "AreaApp", "Terreno" }; //esse pode adicionado novas coisa
     private string terrenoTag = "Terreno";//esse é especifico para terreno
     #endregion
 
@@ -70,14 +70,16 @@ public class PlantarArvores : MonoBehaviour {
                 for (int i = 0; i < 5; i++) {
                     plantasParaInstanciar.Add(plantasSelecionadas[0]);//joga 5 vezes a planta na lista
                 }
-            } else if (numeroPlantasSelecionadas == 2) {
+            }
+            else if (numeroPlantasSelecionadas == 2) {
                 plantasParaInstanciar.Add(plantasSelecionadas[0]);
                 plantasParaInstanciar.Add(plantasSelecionadas[0]);
                 plantasParaInstanciar.Add(plantasSelecionadas[1]);
                 plantasParaInstanciar.Add(plantasSelecionadas[1]);
                 int random = (int)Random.Range(0.0f, 1.9f);  //gera um random entre 0 e 1
                 plantasParaInstanciar.Add(plantasSelecionadas[random]); //adiciona uma das duas plantas a lista
-            } else if (numeroPlantasSelecionadas == 3) {
+            }
+            else if (numeroPlantasSelecionadas == 3) {
                 plantasParaInstanciar.Add(plantasSelecionadas[0]);
                 plantasParaInstanciar.Add(plantasSelecionadas[1]);
                 plantasParaInstanciar.Add(plantasSelecionadas[2]);
@@ -90,20 +92,23 @@ public class PlantarArvores : MonoBehaviour {
                         break;
                     }
                 }
-            } else if (numeroPlantasSelecionadas == 4) {
+            }
+            else if (numeroPlantasSelecionadas == 4) {
                 plantasParaInstanciar.Add(plantasSelecionadas[0]);
                 plantasParaInstanciar.Add(plantasSelecionadas[1]);
                 plantasParaInstanciar.Add(plantasSelecionadas[2]);
                 plantasParaInstanciar.Add(plantasSelecionadas[3]);
                 int random = (int)Random.Range(0.0f, 3.9f);  //gera um random entre 0 e 3
                 plantasParaInstanciar.Add(plantasSelecionadas[random]);
-            } else if (numeroPlantasSelecionadas == 5) {
+            }
+            else if (numeroPlantasSelecionadas == 5) {
                 for (int i = 0; i < 5; i++) {
                     plantasParaInstanciar.Add(plantasSelecionadas[i]);//joga uma planta de cada na lista
                 }
             }
             return plantasParaInstanciar; //retorna o nome das plantas para instanciar
-        } else {
+        }
+        else {
             return null;
         }
     }
@@ -132,19 +137,31 @@ public class PlantarArvores : MonoBehaviour {
     private void instanciaPlanta(RaycastHit hitToInstantiate, string nomePlantaParaInstanciar) { //instancia as plantas, passar somente os RayscastHits com o terreno
         var plantaPrefab = Resources.Load("Prefabs/" + nomePlantaParaInstanciar) as GameObject;//carrega prefab
         plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
-        plantaPrefab.tag = "PlantaDoMundo";    
+        plantaPrefab.tag = "PlantaDoMundo";
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
         ControllerPontuacao.incrementaQntPlantas();
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
-        foreach (string tag in naoDeveColidir) {
-            foreach (RaycastHit hitInfo in hitsInfo) {
+
+        foreach (RaycastHit hitInfo in hitsInfo) {
+            foreach (string tag in naoDeveColidir) {
                 if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
                     return false; //nao é um ponto valido
                 }
             }
         }
-        return true;
+        bool auxBool = false;
+        foreach (RaycastHit hitInfo in hitsInfo) {
+            foreach (string tag in deveColidir) {
+                if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
+                    if (auxBool) {
+                        return true; //é um ponto valido
+                    }
+                    auxBool = true;
+                }
+            }
+        }
+        return false;
     }
     private RaycastHit[] returnHitsOfRay(Ray ray) {
         return Physics.RaycastAll(ray, distanciaMaximaRay);
@@ -163,14 +180,12 @@ public class PlantarArvores : MonoBehaviour {
         return newRay;
     }
 
-    private void validarPlantar(RaycastHit[] hitsInfo, Ray rayOrigem) { 
+    private void validarPlantar(RaycastHit[] hitsInfo, Ray rayOrigem) {
         Ray rayAuxiliar;
         RaycastHit hitToInstatiate;
-        int numeroDeRaysValidos = 1; //ja comeca com 1 planta instanciada
+        int numeroDeRaysValidos = 0; //ja comeca com 1 planta instanciada
         int numeroTentativas = 15;//ira tentar ate 15 vezes
-        int countNomePlantaParaInstanciar=3;
-        hitToInstatiate =returnHitTerrain(hitsInfo);//adiciona 1º planta
-        instanciaPlanta(hitToInstatiate,nomesPlantasParaInstanciar[nomesPlantasParaInstanciar.Count-1]);//pega 1 valor da lista e instancia
+        int countNomePlantaParaInstanciar = 4; //é um aux
 
         while (numeroDeRaysValidos < 5 && numeroTentativas > 0) { //se ainda nao tem 5 plantas geradas && ainda nao tentou 20 vezes 
             rayAuxiliar = createNewRay(rayOrigem); //cria um novo raio
