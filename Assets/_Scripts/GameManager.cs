@@ -1,23 +1,27 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour {
     public GameObject gridDePlantas;
     public static GameManager instance = null;//a instancia comeca vazia
     public static GameObject[] botoesCanvas;
-    JasonController jasonController;
+    JsonControllerDetalhePlantas jsonControllerDetalhePlantas;
+    JsonControllerPlantasErradas jsonControllerPlantasErradas;
+    JsonControllerPlantasCorretas jsonControllerPlantasCorretas;
     public static bool podePlantar = true;
 
     #region UNITY_METHODS
     void Awake() {
 
-        jasonController = JasonController.transformaJson(); //cria e inicializa jasoncontroller
+        startJson();
 
         if (instance == null) //Check if instance already exists
         {
             instance = this;  //if not, set instance to this
-        } else if (instance != this)  //If instance already exists and it's not this:
-          {
+        }
+        else if (instance != this)  //If instance already exists and it's not this:
+        {
             Destroy(gameObject); //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
         }
 
@@ -25,13 +29,30 @@ public class GameManager : MonoBehaviour {
         InstantiateButtons();
         botoesCanvas = GameObject.FindGameObjectsWithTag("botaoDoCanvas");//array com os botoes do canvas
     }
+    void startJson() { //inicializa jsons
+        jsonControllerDetalhePlantas = JsonControllerDetalhePlantas.transformaJson(); //cria e inicializa jasoncontroller
+        jsonControllerPlantasCorretas = JsonControllerPlantasCorretas.transformaJson(); //cria e inicializa jasoncontroller
+        jsonControllerPlantasErradas = JsonControllerPlantasErradas.transformaJson(); //cria e inicializa jasoncontroller
+    }
+
+    void criaListasJsons() {
+        
+        foreach (PlantaIncorreta planta in jsonControllerPlantasErradas.plantasIncorretas) {
+            PontuacaoPlantas.nomesPlantasErradas.Add(planta.nomePlanta);
+        }
+
+        foreach (PlantaCorreta planta in jsonControllerPlantasCorretas.plantasCorretas) {
+            PontuacaoPlantas.nomePlantaE_Grupo.Add(planta.nomePlanta,planta.grupo);
+        }
+    }
 
     private void Start() {
         podePlantar = true; //quando jogo comeca pode plantar
+        criaListasJsons();
     }
 
     void Update() {
-        
+
     }
     #endregion
 
@@ -43,7 +64,7 @@ public class GameManager : MonoBehaviour {
             botaoPrefab = (Resources.Load("Prefabs/Button") as GameObject);
         }
 
-        foreach (Planta p in jasonController.plantas) //para cada planta no json
+        foreach (Planta p in jsonControllerDetalhePlantas.plantas) //para cada planta no json
         {
             botaoPrefab = Instantiate(botaoPrefab) as GameObject; //instancia o botao
             botaoPrefab.transform.SetParent(gridDePlantas.transform, false); //coloca como pai o gridDePlantas

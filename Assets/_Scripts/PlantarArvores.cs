@@ -138,6 +138,8 @@ public class PlantarArvores : MonoBehaviour {
         var plantaPrefab = Resources.Load("Prefabs/" + nomePlantaParaInstanciar) as GameObject;//carrega prefab
         plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
         plantaPrefab.tag = "PlantaDoMundo";
+        plantaPrefab.GetComponent<DetalhePlantaMundo>().setValor(PontuacaoPlantas.setValorPlanta(nomePlantaParaInstanciar));
+        PontuacaoPlantas.atualizaQuantidadePlantasPontuacao(nomePlantaParaInstanciar);
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
         ControllerPontuacao.incrementaQntPlantas();
     }

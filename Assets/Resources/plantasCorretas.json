@@ -1,0 +1,36 @@
+{
+	"plantasCorretas":[
+		{
+			"nomePlanta":"Banana",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Abacate",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Abacaxi",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Laranja",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Kiwi",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Pinheiro",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Bambu",
+			"grupo":"teste1"
+		},
+		{
+			"nomePlanta":"Flor",
+			"grupo":"teste1"
+		}
+	]
+}

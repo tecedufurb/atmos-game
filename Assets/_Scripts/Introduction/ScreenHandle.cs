@@ -7,7 +7,7 @@ public class ScreenHandle : MonoBehaviour {
     
     public static bool m_Clicked = false;
     
-    private JasonController mJsonController;
+    private JsonControllerDetalhePlantas mJsonController;
     [SerializeField] private Button InformationButton;
     [SerializeField] private GameObject ChoosePlantsButton;
     [SerializeField] private GameObject IntroductionPanel;
@@ -16,7 +16,7 @@ public class ScreenHandle : MonoBehaviour {
     [SerializeField] private GameObject GridDePlantas;
 
     void Start() {
-        mJsonController = JasonController.transformaJson(); //cria e inicializa jasoncontroller
+        mJsonController = JsonControllerDetalhePlantas.transformaJson(); //cria e inicializa jasoncontroller
         insereBotoes();//carrega os botoes de plantas no canvas
     }
 

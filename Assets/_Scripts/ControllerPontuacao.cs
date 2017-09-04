@@ -9,7 +9,7 @@ public class ControllerPontuacao : MonoBehaviour {
     private Image imagem;
 
     public const int qntTotalPlantas = 100;
-    private static int qntAtualPlantas;
+    private static int qntAtualPlantas;  //qnt que o controller esta exibindo atualmente
     private static bool qntPlantasChanged; //armazena se precisa atualizar a imagem
 
     private void Start() {

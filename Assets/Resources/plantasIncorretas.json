@@ -1,0 +1,28 @@
+{
+	"plantasIncorretas":[
+		{
+			"nomePlanta":"Errada1"
+		},
+		{
+			"nomePlanta":"Errada2"
+		},
+		{
+			"nomePlanta":"Errada3"
+		},
+		{
+			"nomePlanta":"Errada4"
+		},
+		{
+			"nomePlanta":"Errada5"
+		},
+		{
+			"nomePlanta":"Errada6"
+		},
+		{
+			"nomePlanta":"Errada7"
+		},
+		{
+			"nomePlanta":"Errada8"
+		}
+	]
+}
