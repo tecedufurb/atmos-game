@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PontuacaoPlantas : MonoBehaviour {
@@ -8,44 +7,57 @@ public class PontuacaoPlantas : MonoBehaviour {
     private static int qntPlantasCorretas;//qualquer 1 dos 3 grupos
     private static int qntPlantasIncorretas;//todos as plantas erradas
     public static List<string> nomesPlantasErradas = new List<string>();
-    public static Dictionary<string,string> nomePlantaE_Grupo = new Dictionary<string,string>();
+    public static Dictionary<string, string> nomePlantaE_Grupo = new Dictionary<string, string>();
 
-    //aqui ler arquivo json, fazer isso somente no start do jogo, talvez junto do game maneger, ou algo assim
-    //ler arquivo json2 que tem o nome da plantas erradas
+    private static int valorPontPlantaErrada = -10;
+    private static int valorPontPlantaCorreta = 10;
+    private static int qntTotalPlantas = ControllerPontuacao.qntTotalPlantas;
 
     public static void reachedMaxQuantity() {
         GameManager.podePlantar = false;
 
+        SetValoresPanelEstatisticas();
         DialogPlayerController.instance.showEstatisticas();
-
     }
 
     private static void SetValoresPanelEstatisticas() {
+        generateValuePontuacao();
         DialogPlayerController.instance.setPontuacao(pontuacaoAtual);
         DialogPlayerController.instance.setPlantasCorretas(qntPlantasCorretas);
         DialogPlayerController.instance.setPlantasIncorretas(qntPlantasIncorretas);
     }
-    public static int setValorPlanta(string nomePlanta) {
-        int valor = 10;
-        //pega as vars da classe e calcula
 
-        return valor;
+    private static void generateValuePontuacao() {
+        if (qntPlantasIncorretas == 0) {
+            qntPlantasIncorretas = 1;
+        }
+        pontuacaoAtual = ((qntPlantasCorretas / qntPlantasIncorretas) * qntTotalPlantas) * 10;
+    }
+
+    public static int setValorPlanta(string nomePlanta) {
+        foreach (var plantaErrada in nomesPlantasErradas) {
+            if (plantaErrada == nomePlanta) {
+                return valorPontPlantaErrada;
+            }
+        }
+        return valorPontPlantaCorreta;
     }
 
     public static void atualizaQuantidadePlantasPontuacao(string nomePlanta) {
-        //percorre as listas, compara os nomes, pega o grupo a que pertence
-        //e ataualiza as vars da classe
+        foreach (var plantaErrada in nomesPlantasErradas) {
+            if (plantaErrada == nomePlanta) {
+                qntPlantasIncorretas++;
+                break;
+            }
+        }
+        qntPlantasCorretas++;
     }
 
-
-
-    void Start () {
-		
-        
-    }
-	
-	// Update is called once per frame
-	void Update () {
-       
+    void OnDestroy() {
+        pontuacaoAtual = 0;
+        qntPlantasIncorretas = 0;
+        qntPlantasCorretas = 0;
+        nomesPlantasErradas.Clear();
+        nomePlantaE_Grupo.Clear();
     }
 }

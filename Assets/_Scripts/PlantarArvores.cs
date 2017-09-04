@@ -49,7 +49,7 @@ public class PlantarArvores : MonoBehaviour {
         for (int i = 0; i < botoesCanvas.Length; i++) { //seleciona o nome das plantas que estao selecionadas 
             informacao = botoesCanvas[i].GetComponent<InformacoesBotao>();
             if (informacao.estadoDoBotao) { //se o botao esta ativo
-                nomesPlantasSelecionadas.Add(informacao.name); //adiciona o nome a lista
+                nomesPlantasSelecionadas.Add(informacao.Imagem); //adiciona o nome a lista
             }
         }
         if (nomesPlantasSelecionadas.Count > 5) {

@@ -29,11 +29,11 @@ public class DialogPlayerController : MonoBehaviour {
     }
 
     public void setPlantasCorretas(int qntPlantasCorretas) {
-        pontuacao.GetComponent<Text>().text = qntPlantasCorretas + " plantas";
+        plantasCorretas.GetComponent<Text>().text = qntPlantasCorretas + " plantas";
     }
 
     public void setPlantasIncorretas(int qntPlantasIncorretas) {
-        pontuacao.GetComponent<Text>().text = qntPlantasIncorretas + " plantas";
+        plantasIncorretas.GetComponent<Text>().text = qntPlantasIncorretas + " plantas";
     }
 
     public void showEstatisticas() {

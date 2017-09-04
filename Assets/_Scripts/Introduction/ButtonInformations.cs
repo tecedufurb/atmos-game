@@ -93,7 +93,7 @@ public class ButtonInformations : MonoBehaviour {
         Image[] arrayImagemsPainelDetalhePlanta = panelDetalhePlanta.GetComponentsInChildren<Image>(); //pega os campos de texto
         foreach (Image imagem in arrayImagemsPainelDetalhePlanta) { //percorre o array de imagens
             if (imagem.name == "Image") {  //se é a imagem do painel detalhe planta
-                Sprite sprite = Resources.Load("Imagens/" + nomePopular, typeof(Sprite)) as Sprite;  //carrega a imagem de acordo com o nome
+                Sprite sprite = Resources.Load("Imagens/" + Imagem, typeof(Sprite)) as Sprite;  //carrega a imagem de acordo com o nome
                 imagem.overrideSprite = sprite; //seta a imagem
             }
         }

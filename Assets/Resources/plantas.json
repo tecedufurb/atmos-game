@@ -1,52 +1,52 @@
 {
 	"plantas":[
 		{
-			"nomePopular":"Banana",
-			"nomeCientifico":"Bananais algumacoisa",
-			"imagem":"banana",
-			"informacoes":"A banana server para comer e etc,etc..."
+			"nomePopular":"Picão",
+			"nomeCientifico":"Bidens pilosa",
+			"imagem":"picao",
+			"informacoes":"Planta rudeiral bastante comum nestes ambientes altamente degradados, cresce em pastagens e terrenos baldios, se alastrando rapidamente devido aos frutos que aderem ao pelo de animais e roupas, mas que desprendem-se facilmente, ao contrário dos carrapichos Desmodium (Família Fabaceae). Possui porte ereto, de aproximadamente 70cm de altura, com flores do disco amarelas, com pétalas amerelas, flores do raio podem possuir uma diminuta  pétala branca ou amarela. É originária do Caribe, mas alastrou-se pelo mundo como erva subespontânea. Floresce ao longo de todo o ano."
 		},
 		{
-			"nomePopular":"Abacate",
-			"nomeCientifico":"Abacate blealgumacoisa",
-			"imagem":"abacate",
-			"informacoes":"O abacate server para comer e etc,etc..."
+			"nomePopular":"Mangue-de-formiga",
+			"nomeCientifico":"Clusia criuva",
+			"imagem":"mangue",
+			"informacoes":"Espécie arbustiva-arbórea muito comum na mata atlântica, crescendo especialmente em restingas e locais pedregosos, se destaca pela suculência das folhas, que lembram as folhas do mangue. Suas flores são extremamente perfumadas, para atrair o coleóptero Dinaltica bahiensis, o qual vêm atrás de pólens oferecido pelas flores masculinas, e visita por engano as femininas, e os frutos são em forma de cápsula que se abre em cinco, expondo as sementes com um vistoso arilo vermelho, as quais são consumidas por aves e secundariamente, por formigas. Possui a característica de emitir grande quantidade de raízes caulinares."
 		},
 		{
-			"nomePopular":"Abacaxi",
-			"nomeCientifico":"Abacaxi alahuakaba",
-			"imagem":"Abacaxi",
-			"informacoes":"O Abacaxi server para comer e fazer suco"
+			"nomePopular":"Pé-de-silva",
+			"nomeCientifico":"Mimosa bimucronata",
+			"imagem":"pe_de_silva",
+			"informacoes":"È um arbusto de caule tortuoso da família das leguminosas. É comum em solos úmidos e brejosos. Tem altura entre 6 e 10 metros. É encontrada no Brasil em vários estados; por exemplo, no Rio Grande do Sul. Possui propriedade melíferas. Suas flores são brancas e disposta em capítulos. Os frutos são vagens."
 		},
 		{
-			"nomePopular":"Laranja",
-			"nomeCientifico":"Laranja lima",
-			"imagem":"Laranja",
-			"informacoes":"A Laranja server para fazer suco"
+			"nomePopular":"Bacupari",
+			"nomeCientifico":"Rheedia gardneriana",
+			"imagem":"bacupari",
+			"informacoes":"Espécie com ampla distribuição na América do Sul tropical e Subtropical, é a espécie com a distribuição mais austral do gênero. Ocorre em florestas úmidas, no sub-bosque ou em capoeiras e formações secundárias, embora incomum a estes ambientes. Suas flores aromáticas são visitadas por uma ampla gama de insetos, os frutos são consumidos especialmente por mamíferos, como roedores e primatas, que são seus dispersores."
 		},
 		{
-			"nomePopular":"Kiwi",
-			"nomeCientifico":"Kiwi verde",
-			"imagem":"Kiwi",
-			"informacoes":"O Kiwi server para ...."
+			"nomePopular":"Soroca",
+			"nomeCientifico":"Sorocea bonplandii",
+			"imagem":"soroca",
+			"informacoes":"SORÓKA-IBA vem do tupi guarani e significa “Arvore frutífera com folha que rasga” pelo fato de as folhas terem dentes e espinhos cortantes. É uma espécie muito resistente a secas e a geadas, podendo ser cultivada em todo o território brasileiro. O plantio deve ser feito no mês de setembro a novembro e o espaçamento é de 4 m entre plantas e 5 m entre linhas, devendo serem plantadas preferencialmente sob a sombra de arvores grandes, porquê a pleno sol as arvores ficam com as folhas amareladas e produzem menos frutos."
 		},
 		{
-			"nomePopular":"Pinheiro",
-			"nomeCientifico":"Pinheiro cientifico",
-			"imagem":"Pinheiro",
-			"informacoes":"O Pinheiro server para ...."
+			"nomePopular":"Orelha-de-onça",
+			"nomeCientifico":"Tibouchina urvilleana",
+			"imagem":"orelha_de_onca",
+			"informacoes":"A Orelha-de-onça é um arbusto ou pequena árvore com cerca de 1 a 4 m de altura. Os frutos são cápsulas deiscentes no ápice. O local de cultivo deve ser ensolarado, mas em regiões tropicais, se ficar em meia sombra na hora do sol forte ele se desenvolverá melhor."
 		},
 		{
-			"nomePopular":"Bambu",
-			"nomeCientifico":"Bambu ble",
-			"imagem":"Bambu",
-			"informacoes":"O Bambu server para testar"
+			"nomePopular":"Taboa",
+			"nomeCientifico":"Typha domingensis",
+			"imagem":"taboa",
+			"informacoes":"Altamente adaptável, encontra-se espalhada por todo o mundo, e em algumas partes é uma espécie invasora considerada uma praga. Estudos realizados em zonas húmidas comprovaram que populações de Typha domingensis são uma forma eficaz de reduzir a contaminação bacteriana de águas destinadas a usos agrícolas, permitindo reduções de até 98% da concentração de enterobactérias potencialmente patogénicas"
 		},
 		{
-			"nomePopular":"Flor",
-			"nomeCientifico":"Flor bla",
-			"imagem":"Flor",
-			"informacoes":"A Flor server para ..."
+			"nomePopular":"Chama-rita",
+			"nomeCientifico":"Vernonia tweediana",
+			"imagem":"chama_rita",
+			"informacoes":"È um arbusto com cerca de 2m de altura, com vasta distribuição no Sul, Sudeste e Centro-Oeste do Brasil, aparecendo raramente no Nordeste. É encontrada em ambientes como bordas de florestas e formações com vegetação herbáceo-arbustiva, em praticamente todas as formações secundárias e menos frequentemente nos campos de altitude."
 		}
 	]
 }

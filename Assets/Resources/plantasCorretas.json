@@ -1,36 +1,36 @@
 {
 	"plantasCorretas":[
 		{
-			"nomePlanta":"Banana",
-			"grupo":"teste1"
+			"nomePlanta":"Bidens pilosa",
+			"grupo":"Erva"
 		},
 		{
-			"nomePlanta":"Abacate",
-			"grupo":"teste1"
+			"nomePlanta":"Clusia criuva",
+			"grupo":"Arbusto"
 		},
 		{
-			"nomePlanta":"Abacaxi",
-			"grupo":"teste1"
+			"nomePlanta":"Mimosa bimucronata",
+			"grupo":"Árvore"
 		},
 		{
-			"nomePlanta":"Laranja",
-			"grupo":"teste1"
+			"nomePlanta":"Rheedia gardneriana",
+			"grupo":"Árvore"
 		},
 		{
-			"nomePlanta":"Kiwi",
-			"grupo":"teste1"
+			"nomePlanta":"Sorocea bonplandii ",
+			"grupo":"Erva"
 		},
 		{
-			"nomePlanta":"Pinheiro",
-			"grupo":"teste1"
+			"nomePlanta":"Tibouchina urvilleana",
+			"grupo":"Arbusto"
 		},
 		{
-			"nomePlanta":"Bambu",
-			"grupo":"teste1"
+			"nomePlanta":"Typha domingensis",
+			"grupo":"Arbusto"
 		},
 		{
-			"nomePlanta":"Flor",
-			"grupo":"teste1"
+			"nomePlanta":"Vernonia tweediana",
+			"grupo":"Arbusto"
 		}
 	]
 }
