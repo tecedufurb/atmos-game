@@ -1,28 +1,25 @@
 {
 	"plantasIncorretas":[
 		{
-			"nomePlanta":"Euterpe edulis"
+			"nomePlanta":"capim_rabo_de_burro"
 		},
 		{
-			"nomePlanta":"Melinis minutiflora"
+			"nomePlanta":"pau_de_facho"
 		},
 		{
-			"nomePlanta":"Guapira opposita"
+			"nomePlanta":"palmito"
 		},
 		{
-			"nomePlanta":"Aparisthmium cordatum"
+			"nomePlanta":"maria_mole"
 		},
 		{
-			"nomePlanta":"Andropogon bicornis"
+			"nomePlanta":"capim_de_melado"
 		},
 		{
 			"nomePlanta":"chama_rita"
 		},
 		{
 			"nomePlanta":"taboa"
-		},
-		{
-			"nomePlanta":"Errada8"
 		}
 	]
 }

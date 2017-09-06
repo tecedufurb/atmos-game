@@ -1,35 +1,35 @@
 {
 	"plantasCorretas":[
 		{
-			"nomePlanta":"Bidens pilosa",
+			"nomePlanta":"picao",
 			"grupo":"Erva"
 		},
 		{
-			"nomePlanta":"Clusia criuva",
+			"nomePlanta":"mangue_de_formiga",
 			"grupo":"Arbusto"
 		},
 		{
-			"nomePlanta":"Mimosa bimucronata",
-			"grupo":"¡rvore"
+			"nomePlanta":"pe_de_silva",
+			"grupo":"√Årvore"
 		},
 		{
-			"nomePlanta":"Rheedia gardneriana",
-			"grupo":"¡rvore"
+			"nomePlanta":"bacupari",
+			"grupo":"√Årvore"
 		},
 		{
-			"nomePlanta":"Sorocea bonplandii ",
+			"nomePlanta":"soroca",
 			"grupo":"Erva"
 		},
 		{
-			"nomePlanta":"Tibouchina urvilleana",
+			"nomePlanta":"orelha_de_onca",
 			"grupo":"Arbusto"
 		},
 		{
-			"nomePlanta":"Typha domingensis",
+			"nomePlanta":"taboa",
 			"grupo":"Arbusto"
 		},
 		{
-			"nomePlanta":"Vernonia tweediana",
+			"nomePlanta":"chama_rita",
 			"grupo":"Arbusto"
 		}
 	]

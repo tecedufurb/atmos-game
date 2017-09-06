@@ -10,7 +10,7 @@ public class JsonControllerDetalhePlantas {
     }
     public static JsonControllerDetalhePlantas transformaJson() //metodo que transforma json em texto
     {
-        TextAsset texto = Resources.Load("plantas") as TextAsset;
+        TextAsset texto = Resources.Load("plantasDetalhes") as TextAsset;
         return JsonUtility.FromJson<JsonControllerDetalhePlantas>(texto.text);
     }
 }
