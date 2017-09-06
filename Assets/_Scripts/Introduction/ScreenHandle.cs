@@ -65,11 +65,6 @@ public class ScreenHandle : MonoBehaviour {
             if (button.estadoDoBotao)
                 PlantsSingleton.Instance.SelectedPlants.Add(button);
         }
-        LoadScene(scene);
-    }
-
-    public void LoadScene(string scene) {
-        SceneManager.LoadScene(scene);
     }
 
     private void insereBotoes() {//metodo que adiciona botoes de plantas ao canvas
