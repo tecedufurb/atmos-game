@@ -17,6 +17,8 @@ public class PlantarArvores : MonoBehaviour {
     private float distanciaMaximaRay = 300;
     #endregion
 
+    private static bool dentroAreaApp = false; //determina se pontuacao deve mudar ou nao
+
     RaycastHit[] hitsInfoAux; //armazena o hit inicial
     private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
 
@@ -139,11 +141,19 @@ public class PlantarArvores : MonoBehaviour {
         plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
         plantaPrefab.tag = "PlantaDoMundo";
         plantaPrefab.GetComponent<DetalhePlantaMundo>().setValor(PontuacaoPlantas.setValorPlanta(nomePlantaParaInstanciar));
-        PontuacaoPlantas.atualizaQuantidadePlantasPontuacao(nomePlantaParaInstanciar);
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
-        ControllerPontuacao.incrementaQntPlantas();
+        if (dentroAreaApp) {
+            ControllerPontuacao.incrementaQntPlantas(); //somente atualiza termometro se planta dentro app
+            if (GameManager.podePlantar)  //só atualiza estatisticas pode plantar   
+                PontuacaoPlantas.atualizaQuantidadePlantasPontuacao(nomePlantaParaInstanciar); //atualiza estatisticas
+        }
+        else {
+            //FAZ BARULHO DE NAO POSSIVEL PLANTAR( o som re-aciona se ja estiver tocando?(usar um que não se re-acione(espere terimanar o som)))
+        }
+
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
+        dentroAreaApp = false; //reset variavel
 
         foreach (RaycastHit hitInfo in hitsInfo) {
             foreach (string tag in naoDeveColidir) {
@@ -157,13 +167,14 @@ public class PlantarArvores : MonoBehaviour {
             foreach (string tag in deveColidir) {
                 if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
                     if (auxBool) {
-                        return true; //é um ponto valido
+                        //return true; //é um ponto valido
+                        dentroAreaApp = true;
                     }
                     auxBool = true;
                 }
             }
         }
-        return false;
+        return true;
     }
     private RaycastHit[] returnHitsOfRay(Ray ray) {
         return Physics.RaycastAll(ray, distanciaMaximaRay);

@@ -29,9 +29,11 @@ public class PontuacaoPlantas : MonoBehaviour {
 
     private static void generateValuePontuacao() {
         if (qntPlantasIncorretas == 0) {
-            qntPlantasIncorretas = 1;
+            pontuacaoAtual = ((qntPlantasCorretas / 1) * qntTotalPlantas)/10;
         }
-        pontuacaoAtual = ((qntPlantasCorretas / qntPlantasIncorretas) * qntTotalPlantas) * 10;
+        else {
+            pontuacaoAtual = ((qntPlantasCorretas / qntPlantasIncorretas) * qntTotalPlantas);
+        }
     }
 
     public static int setValorPlanta(string nomePlanta) {
@@ -47,7 +49,7 @@ public class PontuacaoPlantas : MonoBehaviour {
         foreach (var plantaErrada in nomesPlantasErradas) {
             if (plantaErrada == nomePlanta) {
                 qntPlantasIncorretas++;
-                break;
+                return;
             }
         }
         qntPlantasCorretas++;
