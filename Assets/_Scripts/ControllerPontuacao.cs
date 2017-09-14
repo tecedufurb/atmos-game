@@ -8,22 +8,27 @@ public class ControllerPontuacao : MonoBehaviour {
     public GameObject objetoComImagem;
     private Image imagem;
 
-    public const int qntTotalPlantas = 200;
-    private static int qntAtualPlantas = 0;  //qnt que o controller esta exibindo atualmente
+    public static int qntTotalPlantas = PontuacaoPlantas.qntTotalPlantasReal;
+    public static int qntAtualPlantas = 0;  //qnt que o controller esta exibindo atualmente
     private static bool qntPlantasChanged = false; //armazena se precisa atualizar a imagem
 
     private void Start() {
         imagem = objetoComImagem.GetComponentInChildren<Image>();//pega a imagem para ser atualizada
     }
 
+    public static bool isQntAtualPlantasGreaterOrEqualQntTotalPlantas() {
+        if (qntAtualPlantas >= qntTotalPlantas) {
+            return true;
+        }
+        return false;
+    }
+
     public static void incrementaQntPlantas() {
-        if (qntAtualPlantas >= qntTotalPlantas) {//se qnt > total
-            qntAtualPlantas = qntTotalPlantas; //se qntAtual = maximoPlantas
+        if (qntAtualPlantas >= qntTotalPlantas) {
+            qntAtualPlantas = qntTotalPlantas; 
             qntPlantasChanged = true;
-            PontuacaoPlantas.reachedMaxQuantity();
         }
         else {
-           // Debug.Log("ELSE");
             qntAtualPlantas++;
             qntPlantasChanged = true;
         }
@@ -31,7 +36,6 @@ public class ControllerPontuacao : MonoBehaviour {
 
     void Update() {
         if (qntPlantasChanged) {
-            Debug.Log(qntAtualPlantas);
             updateImage();
             qntPlantasChanged = false;
         }
@@ -44,6 +48,6 @@ public class ControllerPontuacao : MonoBehaviour {
 
     private void OnDestroy() {
         qntAtualPlantas = 0;
+        qntPlantasChanged = false;
     }
-
 }

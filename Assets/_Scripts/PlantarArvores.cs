@@ -8,7 +8,7 @@ public class PlantarArvores : MonoBehaviour {
     private string[] naoDeveColidir = { "Agua", "Untagged", "PlantaDoMundo" };
     private string casoEspeciais = "PlantaDoMundo"; //se colidir com planta do mundo, deve pegar o objeto que colidiu e destruilo 
     private string[] deveColidir = { "AreaApp", "Terreno" }; //esse pode adicionado novas coisa
-    private string terrenoTag = "Terreno";//esse é especifico para terreno
+    private string terrenoTag = "Terreno";//esse é especifico para terreno    
     #endregion
 
     #region caracteristicasPlantar 
@@ -17,7 +17,7 @@ public class PlantarArvores : MonoBehaviour {
     private float distanciaMaximaRay = 300;
     #endregion
 
-    private static bool dentroAreaApp = false; //determina se pontuacao deve mudar ou nao
+    private static string colidiuComBox = null; //determina se colidiu com alguma box
 
     RaycastHit[] hitsInfoAux; //armazena o hit inicial
     private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
@@ -142,19 +142,12 @@ public class PlantarArvores : MonoBehaviour {
         plantaPrefab.tag = "PlantaDoMundo";
         plantaPrefab.GetComponent<DetalhePlantaMundo>().setValor(PontuacaoPlantas.setValorPlanta(nomePlantaParaInstanciar));
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
-        if (dentroAreaApp) {
-            ControllerPontuacao.incrementaQntPlantas(); //somente atualiza termometro se planta dentro app
-            if (GameManager.podePlantar)  //só atualiza estatisticas pode plantar   
-                PontuacaoPlantas.atualizaQuantidadePlantasPontuacao(nomePlantaParaInstanciar); //atualiza estatisticas
+        if (colidiuComBox != null) {  //se colidiu com alguma box
+            PontuacaoPlantas.incrementaBox(colidiuComBox, nomePlantaParaInstanciar);
         }
-        else {
-            //FAZ BARULHO DE NAO POSSIVEL PLANTAR( o som re-aciona se ja estiver tocando?(usar um que não se re-acione(espere terimanar o som)))
-        }
-
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
-        dentroAreaApp = false; //reset variavel
-
+        colidiuComBox = null; //reset variavel
         foreach (RaycastHit hitInfo in hitsInfo) {
             foreach (string tag in naoDeveColidir) {
                 if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
@@ -162,16 +155,10 @@ public class PlantarArvores : MonoBehaviour {
                 }
             }
         }
-        bool auxBool = false;
         foreach (RaycastHit hitInfo in hitsInfo) {
-            foreach (string tag in deveColidir) {
-                if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
-                    if (auxBool) {
-                        //return true; //é um ponto valido
-                        dentroAreaApp = true;
-                    }
-                    auxBool = true;
-                }
+            string aux = PontuacaoPlantas.colidiuComBox(hitInfo.transform.tag);
+            if (aux != null) {
+                colidiuComBox = aux;
             }
         }
         return true;
@@ -184,6 +171,10 @@ public class PlantarArvores : MonoBehaviour {
             if (hit.transform.tag == terrenoTag) {
                 return hit;//retorna o hitInfo do terreno
             }
+        }
+        Debug.Log("HITS in hitsInfo .transform.tag");
+        foreach (RaycastHit hit in hitsInfo) {
+            Debug.Log(hit.transform.tag);
         }
         throw new System.Exception("Nao encontrou colisao com terreno!----PANIC MODE ON!!  ");
         return new RaycastHit();

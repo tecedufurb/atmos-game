@@ -3,21 +3,57 @@ using UnityEngine;
 
 public class PontuacaoPlantas : MonoBehaviour {
 
-    private static int pontuacaoAtual;
-    private static int qntPlantasCorretas;//qualquer 1 dos 3 grupos
-    private static int qntPlantasIncorretas;//todos as plantas erradas
-    public static List<string> nomesPlantasErradas = new List<string>();
-    public static Dictionary<string, string> nomePlantaE_Grupo = new Dictionary<string, string>();
-
     private static int valorPontPlantaErrada = -10;
     private static int valorPontPlantaCorreta = 10;
-    private static int qntTotalPlantas = ControllerPontuacao.qntTotalPlantas;
+    public static int qntTotalPlantas = 300; 
+    private static int qntForaAreaAppAceitavel = 30;
+    public static int qntTotalPlantasReal = qntTotalPlantas - qntForaAreaAppAceitavel;
+    public static int qntPlantaPorGrupo = qntTotalPlantasReal / 6 + 1;
+
+    private static int pontuacaoAtual;
+    private static int qntPlantasCorretas;
+    private static int qntPlantasIncorretas;
+
+    public static List<string> nomesPlantasErradas = new List<string>();
+    public static Dictionary<string, string> nomePlantaE_Grupo = new Dictionary<string, string>();
+    private static Dictionary<string, int> boxsQntPlantas = new Dictionary<string, int>() { { "Box1", 0 }, { "Box2", 0 }, { "Box3", 0 }, { "Box4", 0 }, { "Box5", 0 }, { "Box6", 0 } };
+    private static Dictionary<string, bool> boxsIsFull = new Dictionary<string, bool>() { { "Box1", false }, { "Box2", false }, { "Box3", false }, { "Box4", false }, { "Box5", false }, { "Box6", false } };
+
+    private static bool isAllBoxesFull() {
+        foreach (var i in boxsIsFull.Values) {
+            if (i == false) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void incrementaBox(string box,string nomePlanta) {
+        if (!boxsIsFull[box]) { //se ainda nao chegou no maximo
+            boxsQntPlantas[box] = boxsQntPlantas[box] + 1;
+            ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
+            atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
+            if (boxsQntPlantas[box] >= qntPlantaPorGrupo) {
+                boxsIsFull[box] = true;
+                if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) { 
+                    reachedMaxQuantity();
+                } 
+            }
+        }
+    }
+
+    public static string colidiuComBox(string tagColisao) {
+        if (boxsQntPlantas.ContainsKey(tagColisao)) {
+            return tagColisao;
+        }
+        return null;
+    }
 
     public static void reachedMaxQuantity() {
         GameManager.podePlantar = false;
-
         SetValoresPanelEstatisticas();
         DialogPlayerController.instance.showEstatisticas();
+        resetaValores();
     }
 
     private static void SetValoresPanelEstatisticas() {
@@ -29,10 +65,10 @@ public class PontuacaoPlantas : MonoBehaviour {
 
     private static void generateValuePontuacao() {
         if (qntPlantasIncorretas == 0) {
-            pontuacaoAtual = ((qntPlantasCorretas / 1) * qntTotalPlantas)/10;
+            pontuacaoAtual = ((qntPlantasCorretas / 1) * qntTotalPlantasReal) / 10;
         }
         else {
-            pontuacaoAtual = ((qntPlantasCorretas / qntPlantasIncorretas) * qntTotalPlantas);
+            pontuacaoAtual = ((qntPlantasCorretas / qntPlantasIncorretas) * qntTotalPlantasReal);
         }
     }
 
@@ -55,11 +91,13 @@ public class PontuacaoPlantas : MonoBehaviour {
         qntPlantasCorretas++;
     }
 
-    void OnDestroy() {
+    private static void resetaValores() {
         pontuacaoAtual = 0;
         qntPlantasIncorretas = 0;
         qntPlantasCorretas = 0;
-        nomesPlantasErradas.Clear();
-        nomePlantaE_Grupo.Clear();
+        nomesPlantasErradas = new List<string>();
+        nomePlantaE_Grupo = new Dictionary<string, string>();
+        boxsIsFull = new Dictionary<string, bool>() { { "Box1", false }, { "Box2", false }, { "Box3", false }, { "Box4", false }, { "Box5", false }, { "Box6", false } };
+        boxsQntPlantas = new Dictionary<string, int>() { { "Box1", 0 }, { "Box2", 0 }, { "Box3", 0 }, { "Box4", 0 }, { "Box5", 0 }, { "Box6", 0 } };
     }
 }
