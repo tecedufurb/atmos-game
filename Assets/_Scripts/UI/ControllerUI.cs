@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,5 +10,10 @@ public class ControllerUI : MonoBehaviour {
 
     public void deactivateCanvas(GameObject canvasOrPanel) {
         canvasOrPanel.SetActive(false);
+    }
+
+    public void quitGame() {
+        Debug.Log("a");
+        Application.Quit();
     }
 }
