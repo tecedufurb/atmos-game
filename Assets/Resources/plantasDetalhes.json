@@ -52,31 +52,31 @@
 			"nomePopular":"Capim-rabo-de-burro",
 			"nomeCientifico":"Andropogon bicornis",
 			"imagem":"capim_rabo_de_burro",
-			"informacoes":"Planta errada 1"
+			"informacoes":"Detalhes da planta Capim-rabo-de-burro"
 		},
 		{
 			"nomePopular":"Pau-de-facho",
 			"nomeCientifico":"Aparisthmium cordatum",
 			"imagem":"pau_de_facho",
-			"informacoes":"Planta errada 2"
+			"informacoes":"Detalhes da planta Pau-de-facho"
 		},
 		{
-			"nomePopular":"Palmito ",
+			"nomePopular":"Palmito",
 			"nomeCientifico":"Euterpe edulis",
 			"imagem":"palmito",
-			"informacoes":"Planta errada 3"
+			"informacoes":"Detalhes da planta Palmito"
 		},
 		{
 			"nomePopular":"Maria-mole",
 			"nomeCientifico":"Guapira opposita",
 			"imagem":"maria_mole",
-			"informacoes":"Planta errada 4"
+			"informacoes":"Detalhes da planta Maria-mole"
 		},
 		{
 			"nomePopular":"Capim-de-melado",
 			"nomeCientifico":"Melinis minutiflora",
 			"imagem":"capim_de_melado",
-			"informacoes":"Planta errada 5"
+			"informacoes":"Detalhes da planta Capim-de-melado"
 		}
 	]
 }

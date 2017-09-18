@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 public class FPSDisplay : MonoBehaviour
-{
+{/*
     float deltaTime = 0.0f;
 
     void Update()
@@ -23,5 +23,5 @@ public class FPSDisplay : MonoBehaviour
         float fps = 1.0f / deltaTime;
         string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         GUI.Label(rect, text, style);
-    }
+    } */
 }

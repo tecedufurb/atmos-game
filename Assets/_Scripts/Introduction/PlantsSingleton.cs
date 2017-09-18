@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlantsSingleton : MonoBehaviour {
 
     private static PlantsSingleton mInstance;
-    private List<ButtonInformations> m_SelectedPlants;
+    private List<InformacoesBotaoIntroductionScene> m_SelectedPlants;
 
     public static PlantsSingleton Instance {
         get {
@@ -16,7 +16,7 @@ public class PlantsSingleton : MonoBehaviour {
         }
     }
 
-    public List<ButtonInformations> SelectedPlants {
+    public List<InformacoesBotaoIntroductionScene> SelectedPlants {
         get {
             return m_SelectedPlants;
         }

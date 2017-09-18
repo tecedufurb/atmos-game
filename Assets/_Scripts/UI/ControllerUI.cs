@@ -13,7 +13,6 @@ public class ControllerUI : MonoBehaviour {
     }
 
     public void quitGame() {
-        Debug.Log("a");
         Application.Quit();
     }
 }

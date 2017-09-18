@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour {
         }
 
         foreach (PlantaCorreta planta in jsonControllerPlantasCorretas.plantasCorretas) {
-            PontuacaoPlantas.nomePlantaE_Grupo.Add(planta.nomePlanta,planta.grupo);
+            PontuacaoPlantas.nomePlantaE_Grupo.Add(planta.nomePlanta, planta.grupo);
         }
     }
 
@@ -55,7 +55,9 @@ public class GameManager : MonoBehaviour {
         if (botaoPrefab == null) //carrega prefab se esta vazio
             botaoPrefab = (Resources.Load("Prefabs/Button") as GameObject);
 
-        foreach (ButtonInformations p in PlantsSingleton.Instance.SelectedPlants) {//para cada planta no json
+        foreach (var p in PlantsSingleton.Instance.SelectedPlants) {//para cada planta no json
+            Debug.Log("aqui "+p.NomePopular);
+            Debug.Log("aqui " + p.Imagem);
             botaoPrefab = Instantiate(botaoPrefab) as GameObject; //instancia o botao
             botaoPrefab.transform.SetParent(gridDePlantas.transform, false); //coloca como pai o gridDePlantas
             botaoPrefab.name = p.NomePopular; //nome do botao é nome da planta 
@@ -69,10 +71,20 @@ public class GameManager : MonoBehaviour {
             Sprite sprite; //sprite usado para popular iamgens no canvas
             sprite = Resources.Load("Imagens/" + p.Imagem, typeof(Sprite)) as Sprite;  //carrega a imagem de acordo com o nome que consta no json
 
+            var textoNomePlanta = botaoPrefab.transform.GetChild(1).GetChild(0).gameObject;
+            //valida tamnha do nome da planta para caber no botao
+            if (!(p.NomePopular.Length > 12)) { //se é menor que 12 chars
+                textoNomePlanta.GetComponent<Text>().text = p.NomePopular;
+            }
+            else {
+                textoNomePlanta.GetComponent<Text>().text = p.NomePopular.Substring(0, 13) + "..";
+            }
+
             foreach (Transform child in botaoPrefab.transform) {//percorre os transforms do botaoPrefab
                 if (child != botaoPrefab.transform) {//pega o filho do botao
                     Image image = child.GetComponent<Image>();//pega a imagem do filho do botao
                     image.overrideSprite = sprite; //seta a imagem no filho
+                    break;
                 }
             }
         }
