@@ -5,7 +5,7 @@ public class PontuacaoPlantas : MonoBehaviour {
 
     private static int valorPontPlantaErrada = -10;
     private static int valorPontPlantaCorreta = 10;
-    public static int qntTotalPlantas = 300; 
+    public static int qntTotalPlantas = 300;
     private static int qntForaAreaAppAceitavel = 30;
     public static int qntTotalPlantasReal = qntTotalPlantas - qntForaAreaAppAceitavel;
     public static int qntPlantaPorGrupo = qntTotalPlantasReal / 6 + 1;
@@ -28,16 +28,16 @@ public class PontuacaoPlantas : MonoBehaviour {
         return true;
     }
 
-    public static void incrementaBox(string box,string nomePlanta) {
+    public static void incrementaBox(string box, string nomePlanta) {
         if (!boxsIsFull[box]) { //se ainda nao chegou no maximo
             boxsQntPlantas[box] = boxsQntPlantas[box] + 1;
             ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
             atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
             if (boxsQntPlantas[box] >= qntPlantaPorGrupo) {
                 boxsIsFull[box] = true;
-                if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) { 
+                if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) {
                     reachedMaxQuantity();
-                } 
+                }
             }
         }
     }
@@ -65,10 +65,13 @@ public class PontuacaoPlantas : MonoBehaviour {
 
     private static void generateValuePontuacao() {
         if (qntPlantasIncorretas == 0) {
-            pontuacaoAtual = ((qntPlantasCorretas / 1) * qntTotalPlantasReal) / 10;
+            pontuacaoAtual = ((qntPlantasCorretas * 10)) / 6;
         }
         else {
-            pontuacaoAtual = ((qntPlantasCorretas / qntPlantasIncorretas) * qntTotalPlantasReal);
+            if ((((qntPlantasCorretas * 10) - (qntPlantasIncorretas * 2)) / 6) > 0)
+                pontuacaoAtual = ((qntPlantasCorretas * 10) - (qntPlantasIncorretas * 2)) / 6;
+            else
+                pontuacaoAtual = 0;
         }
     }
 

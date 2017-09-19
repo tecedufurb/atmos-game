@@ -14,8 +14,8 @@ public class ExpandirRecolherListaPlantas : MonoBehaviour {
         }
         else { //se nao esta recolhido, recolhe a lista 
             recolhido = true;
-            gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(96f, -50);
-            gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(196, 50);
+            gameObject.GetComponent<RectTransform>().offsetMin = new Vector2(98f, -50);
+            gameObject.GetComponent<RectTransform>().offsetMax = new Vector2(200, 50);
         }
     }
 }

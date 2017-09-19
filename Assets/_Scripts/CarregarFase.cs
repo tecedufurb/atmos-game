@@ -16,6 +16,11 @@ public class CarregarFase : MonoBehaviour {
         StartCoroutine(LoadingScreen());
     }
 
+    public void LoadScreen(string fase) {
+        this.fase = fase;
+        StartCoroutine(LoadingScreen());
+    }
+
     IEnumerator LoadingScreen()
     {
         loadingScreenCanvas.active = true;

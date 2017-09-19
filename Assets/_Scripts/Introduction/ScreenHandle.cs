@@ -9,6 +9,7 @@ public class ScreenHandle : MonoBehaviour {
     [SerializeField] private GameObject gridDePlantas; //pai dos botoes plantas
     public GameObject DetalhePlantaPanel;
     public Text NomePlantaDetalhePanel;
+    public GameObject panelMenosDeUmaPlantaSelecionada;
 
     void Start() {
         jsonControllerDetalhePlantas = JsonControllerDetalhePlantas.transformaJson(); //cria e inicializa jasoncontroller
@@ -22,13 +23,19 @@ public class ScreenHandle : MonoBehaviour {
             if (button.estadoDoBotao)
                 PlantsSingleton.Instance.SelectedPlants.Add(button);
         }
+        if (PlantsSingleton.Instance.SelectedPlants.Count < 1) {
+            panelMenosDeUmaPlantaSelecionada.SetActive(true);
+        }
+        else {
+            gameObject.GetComponent<CarregarFase>().LoadScreen(scene);
+        }
     }
 
     public void SelecionaDeselecionaBotaoPlanta() {
         string planta = NomePlantaDetalhePanel.GetComponent<Text>().text;
         foreach (Transform p in gridDePlantas.gameObject.transform) {
             if (planta == p.name) {
-                if(p.GetComponent<InformacoesBotaoIntroductionScene>().estadoDoBotao != SelecionarPlanta.Instance.getEstado()) {
+                if (p.GetComponent<InformacoesBotaoIntroductionScene>().estadoDoBotao != SelecionarPlanta.Instance.getEstado()) {
                     p.GetComponent<InformacoesBotaoIntroductionScene>().clicarBotao();
                 }
                 SelecionarPlanta.Instance.setEstado(p.GetComponent<InformacoesBotaoIntroductionScene>().estadoDoBotao);
@@ -36,35 +43,6 @@ public class ScreenHandle : MonoBehaviour {
         }
     }
 
-
-    /*private void insereBotoes() {//metodo que adiciona botoes de plantas ao canvas
-        GameObject botaoPrefab = null;//botao que vai ser instanciado   
-        if (botaoPrefab == null) //carrega prefab se esta vazio
-            botaoPrefab = (Resources.Load("Prefabs/ButtonPrefabIntroScene") as GameObject);
-
-        foreach (Planta p in mJsonController.plantas) {//para cada planta no json
-            botaoPrefab = Instantiate(botaoPrefab) as GameObject; //instancia o botao
-            botaoPrefab.transform.SetParent(gridDePlantas.transform, false); //coloca como pai o gridDePlantas
-            botaoPrefab.name = p.nomePopular; //nome do botao é nome da planta 
-            botaoPrefab.tag = "botaoDoCanvas"; //adiciona tag aos botoes
-
-            ButtonInformations informacoesBotao = botaoPrefab.GetComponent<ButtonInformations>(); //pega o componente informocoes do botao e preenche
-            informacoesBotao.NomePopular = p.nomePopular;
-            informacoesBotao.NomeCientifico = p.nomeCientifico;
-            informacoesBotao.Informacoes = p.informacoes;
-            informacoesBotao.Imagem = p.imagem;
-
-            Sprite sprite; //sprite usado para popular iamgens no canvas
-            sprite = Resources.Load("Imagens/" + p.imagem, typeof(Sprite)) as Sprite;  //carrega a imagem de acordo com o nome que consta no json
-
-            foreach (Transform child in botaoPrefab.transform) {//percorre os transforms do botaoPrefab
-                if (child.name == "Image") {//pega o filho do botao
-                    Image image = child.GetComponent<Image>();//pega a imagem do filho do botao
-                    image.overrideSprite = sprite; //seta a imagem no filho
-                }
-            }
-        }
-    }*/
     private void InstantiateButtons() {//metodo que adiciona botoes de plantas ao canvas
         GameObject botaoPrefab = null; //botao que vai ser instanciado   
         if (botaoPrefab == null) //carrega prefab se esta vazio

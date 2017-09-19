@@ -56,8 +56,6 @@ public class GameManager : MonoBehaviour {
             botaoPrefab = (Resources.Load("Prefabs/Button") as GameObject);
 
         foreach (var p in PlantsSingleton.Instance.SelectedPlants) {//para cada planta no json
-            Debug.Log("aqui "+p.NomePopular);
-            Debug.Log("aqui " + p.Imagem);
             botaoPrefab = Instantiate(botaoPrefab) as GameObject; //instancia o botao
             botaoPrefab.transform.SetParent(gridDePlantas.transform, false); //coloca como pai o gridDePlantas
             botaoPrefab.name = p.NomePopular; //nome do botao é nome da planta 
