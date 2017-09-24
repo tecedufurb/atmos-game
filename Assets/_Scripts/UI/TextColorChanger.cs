@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TextColorChanger : MonoBehaviour {
@@ -11,7 +10,8 @@ public class TextColorChanger : MonoBehaviour {
     private byte g;
     private byte b;
     private bool fluxoParaEsquerda = true;//var aux
-
+    public enum Opcao { TextMenu, TextSuaPontuacao, TextParabens };
+    public Opcao opcao;
     void Start() {
         texto = textObject.GetComponent<Text>();
         r = ((Color32)texto.color).r;
@@ -19,22 +19,44 @@ public class TextColorChanger : MonoBehaviour {
         b = ((Color32)texto.color).b;
     }
 
-    void updateGreenValue() {
+    void changeColorMainMenu() {
         if (g >= 33 && fluxoParaEsquerda) {
+            g--;
+        }else {
+            fluxoParaEsquerda = false;
+        }
+        if (g <= 150 && !fluxoParaEsquerda) {
+            g++;
+        }else {
+            fluxoParaEsquerda = true;
+        }
+    }
+
+    void changeColorMuitoBem() {
+        if (g > 90 && fluxoParaEsquerda) {
             g--;
         }
         else {
             fluxoParaEsquerda = false;
         }
-        if (g <= 150 && !fluxoParaEsquerda) {
+        if (g < 180 && !fluxoParaEsquerda) {
             g++;
         }
         else {
             fluxoParaEsquerda = true;
         }
     }
+
     void Update() {
-        updateGreenValue();
+        if (Opcao.TextMenu.ToString() == opcao.ToString()) {
+            changeColorMainMenu();
+        }
+        else if (Opcao.TextParabens.ToString() == opcao.ToString()) {
+            changeColorMuitoBem();
+        }
+        else if (Opcao.TextSuaPontuacao.ToString() == opcao.ToString()) {
+
+        }
         texto.color = new Color32(r, g, b, 255);
     }
 }

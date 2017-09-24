@@ -19,6 +19,12 @@ public class PontuacaoPlantas : MonoBehaviour {
     private static Dictionary<string, int> boxsQntPlantas = new Dictionary<string, int>() { { "Box1", 0 }, { "Box2", 0 }, { "Box3", 0 }, { "Box4", 0 }, { "Box5", 0 }, { "Box6", 0 } };
     private static Dictionary<string, bool> boxsIsFull = new Dictionary<string, bool>() { { "Box1", false }, { "Box2", false }, { "Box3", false }, { "Box4", false }, { "Box5", false }, { "Box6", false } };
 
+
+    void Start() {
+        BoxesTerrainGenerator.instance.generateListBoxes();
+    }
+
+
     private static bool isAllBoxesFull() {
         foreach (var i in boxsIsFull.Values) {
             if (i == false) {

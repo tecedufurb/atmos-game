@@ -40,14 +40,12 @@ public class SelecionarPlanta : MonoBehaviour {
     public void clickBotao() {
         if (estado) {
             estado = false;
-            texto.transform.Translate(60 ,0 , 0, Space.World);
             texto.GetComponent<Text>().text = "Selecionar";
             botao.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             gameObjectImagem.active = false;
         }
         else {
             estado = true;
-            texto.transform.Translate(-60, 0, 0, Space.World);
             texto.GetComponent<Text>().text = "Selecionado!!";
             botao.GetComponent<Image>().color = Color.yellow;
             gameObjectImagem.active = true;

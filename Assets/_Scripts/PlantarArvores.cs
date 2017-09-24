@@ -169,6 +169,7 @@ public class PlantarArvores : MonoBehaviour {
     private RaycastHit returnHitTerrain(RaycastHit[] hitsInfo) {
         foreach (RaycastHit hit in hitsInfo) {
             if (hit.transform.tag == terrenoTag) {
+                Debug.Log("COORDENADA: " + hit.point);
                 return hit;//retorna o hitInfo do terreno
             }
         }
