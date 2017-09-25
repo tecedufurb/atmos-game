@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Container {
+    public bool isFull;
+    public double start, end, qnt;
+    public Container(bool isFull, double start, double end, double qnt) {
+        this.isFull = isFull;
+        this.start = start;
+        this.end = end;
+        this.qnt = qnt;
+    }
+}
+
 public class BoxesTerrainGenerator : MonoBehaviour {
 
     public int startTerrainCord = 0;
     public int finalTerrainCord = 500;
     private int realTerrainLenght;
-    private int qntBoxes = 10;
+    public static int qntBoxes = 7;
 
     public static BoxesTerrainGenerator instance = null;//a instancia comeca vazia
-    private Dictionary<int, List<double>> boxes = new Dictionary<int, List<double>>();
+    private static List<Container> boxes = new List<Container>();
+
 
     void Awake() {
+
         if (instance == null) {
             instance = this;
         }
@@ -22,30 +35,25 @@ public class BoxesTerrainGenerator : MonoBehaviour {
         realTerrainLenght = finalTerrainCord - startTerrainCord;
     }
 
-    public Dictionary<int, List<double>> generateListBoxes() {
+    private void OnDestroy() {
+        boxes = new List<Container>();
+    }
+
+    public List<Container> generateListBoxes() {
         double tamBox = (double)realTerrainLenght / qntBoxes;
-
-
         double aux1 = 0;
         double aux2 = 0;
         for (int i = 0; i < qntBoxes; i++) {
             if (i == 0) {
                 aux2 = aux1 + tamBox;
-                boxes.Add(i, new List<double>(new double[] { aux1, aux2 }));
+                boxes.Add(new Container(false, aux1, aux2, 0));
             }
             else {
-                aux1 = aux2 + 0.0000000001;
+                aux1 = aux2 + 0.0001;
                 aux2 = aux2 + tamBox;
-                boxes.Add(i, new List<double> { aux1, aux2 });
+                boxes.Add(new Container(false, aux1, aux2, 0));
             }
         }
-
-        string s = "";
-        foreach (var item in boxes) {
-            s = s + " key " + item.Key + " valor1: " + item.Value.ToArray().GetValue(0) + " valor2: " + item.Value.ToArray().GetValue(1);
-        }
-        Debug.Log(s);
         return boxes;
-
     }
 }

@@ -17,7 +17,8 @@ public class PlantarArvores : MonoBehaviour {
     private float distanciaMaximaRay = 300;
     #endregion
 
-    private static string colidiuComBox = null; //determina se colidiu com alguma box
+    private static bool colidiuComApp;
+    private static int areaApp = 1; //determina se colidiu com lado esquerdo ou direito do rio
 
     RaycastHit[] hitsInfoAux; //armazena o hit inicial
     private List<string> nomesPlantasParaInstanciar; //nomes das plantas selecionadas no painel
@@ -142,12 +143,12 @@ public class PlantarArvores : MonoBehaviour {
         plantaPrefab.tag = "PlantaDoMundo";
         plantaPrefab.GetComponent<DetalhePlantaMundo>().setValor(PontuacaoPlantas.setValorPlanta(nomePlantaParaInstanciar));
         nomesPlantasParaInstanciar.Remove(nomePlantaParaInstanciar);//remove o nome da lista de plantas para instanciar
-        if (colidiuComBox != null) {  //se colidiu com alguma box
-            PontuacaoPlantas.incrementaBox(colidiuComBox, nomePlantaParaInstanciar);
+        if (colidiuComApp) {  //se colidiu com alguma box
+            PontuacaoPlantas.incrementaBox(hitToInstantiate.point, nomePlantaParaInstanciar, areaApp);
         }
     }
     private bool validaLocalPlanta(RaycastHit[] hitsInfo) { //se nao colidiu com naoDeveColidir
-        colidiuComBox = null; //reset variavel
+        colidiuComApp = false; ; //reset variavel
         foreach (RaycastHit hitInfo in hitsInfo) {
             foreach (string tag in naoDeveColidir) {
                 if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
@@ -156,9 +157,13 @@ public class PlantarArvores : MonoBehaviour {
             }
         }
         foreach (RaycastHit hitInfo in hitsInfo) {
-            string aux = PontuacaoPlantas.colidiuComBox(hitInfo.transform.tag);
-            if (aux != null) {
-                colidiuComBox = aux;
+            if (hitInfo.transform.tag == "AreaApp1") {
+                colidiuComApp = true;
+                areaApp = 1;
+            }
+            if (hitInfo.transform.tag == "AreaApp2") {
+                colidiuComApp = true;
+                areaApp = 2;
             }
         }
         return true;
@@ -169,7 +174,7 @@ public class PlantarArvores : MonoBehaviour {
     private RaycastHit returnHitTerrain(RaycastHit[] hitsInfo) {
         foreach (RaycastHit hit in hitsInfo) {
             if (hit.transform.tag == terrenoTag) {
-                Debug.Log("COORDENADA: " + hit.point);
+                //Debug.Log("COORDENADA: " + hit.point);
                 return hit;//retorna o hitInfo do terreno
             }
         }

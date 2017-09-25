@@ -5,10 +5,10 @@ public class PontuacaoPlantas : MonoBehaviour {
 
     private static int valorPontPlantaErrada = -10;
     private static int valorPontPlantaCorreta = 10;
-    public static int qntTotalPlantas = 300;
-    private static int qntForaAreaAppAceitavel = 30;
+    public static int qntTotalPlantas = 200;
+    private static int qntForaAreaAppAceitavel = 5;
     public static int qntTotalPlantasReal = qntTotalPlantas - qntForaAreaAppAceitavel;
-    public static int qntPlantaPorGrupo = qntTotalPlantasReal / 6 + 1;
+    public static int qntPlantaPorGrupo = qntTotalPlantasReal / BoxesTerrainGenerator.qntBoxes / 2;
 
     private static int pontuacaoAtual;
     private static int qntPlantasCorretas;
@@ -17,42 +17,71 @@ public class PontuacaoPlantas : MonoBehaviour {
     public static List<string> nomesPlantasErradas = new List<string>();
     public static Dictionary<string, string> nomePlantaE_Grupo = new Dictionary<string, string>();
     private static Dictionary<string, int> boxsQntPlantas = new Dictionary<string, int>() { { "Box1", 0 }, { "Box2", 0 }, { "Box3", 0 }, { "Box4", 0 }, { "Box5", 0 }, { "Box6", 0 } };
-    private static Dictionary<string, bool> boxsIsFull = new Dictionary<string, bool>() { { "Box1", false }, { "Box2", false }, { "Box3", false }, { "Box4", false }, { "Box5", false }, { "Box6", false } };
+
+    private static List<Container> box1;//lado esquerdo do rio
+    private static List<Container> box2;//lado direito do rio
+
+    public static void incrementaBox(Vector3 coord, string nomePlanta, int areaApp) {
+        int cont = 0;
+        if (areaApp == 1) {
+            foreach (Container i in box1) {
+                if ((coord.x >= i.start) && (coord.x <= i.end)) {
+                    if (!i.isFull) { //se nao esta cheio
+                        box1[cont] = new Container(box1[cont].isFull, box1[cont].start, box1[cont].end, box1[cont].qnt + 1);
+                        Debug.Log("1 box: " + cont + " val: " + i.qnt);
+                        ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
+                        atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
+                        if (i.qnt >= qntPlantaPorGrupo) {
+                            Debug.Log("full box " + cont);
+                            box1[cont] = new Container(true, box1[cont].start, box1[cont].end, box1[cont].qnt);
+                            if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) {
+                                reachedMaxQuantity();
+                            }
+                        }
+                    }
+                    break;
+                }
+                cont++;
+            }
+        }
+        else {
+            foreach (Container i in box2) {
+                if ((coord.x >= i.start) && (coord.x <= i.end)) {
+                    if (!i.isFull) { //se nao esta cheio
+                        box2[cont] = new Container(box2[cont].isFull, box2[cont].start, box2[cont].end, box2[cont].qnt + 1);
+                        Debug.Log("2 box: " + cont + " val: " + i.qnt);
+                        ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
+                        atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
+                        if (i.qnt >= qntPlantaPorGrupo) {
+                            Debug.Log("full box " + cont);
+                            box2[cont] = new Container(true, box2[cont].start, box2[cont].end, box2[cont].qnt);
+                            if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) {
+                                reachedMaxQuantity();
+                            }
+                        }
+                    }
+                    break;
+                }
+                cont++;
+            }
+        }
+    }
 
 
     void Start() {
-        BoxesTerrainGenerator.instance.generateListBoxes();
-    }
-
-
-    private static bool isAllBoxesFull() {
-        foreach (var i in boxsIsFull.Values) {
-            if (i == false) {
-                return false;
-            }
+        box1 = BoxesTerrainGenerator.instance.generateListBoxes();
+        box2 = new List<Container>(box1);
+        string s = "1 - ";
+        foreach (Container item in box1) {
+            s = s + " full " + item.isFull + " start: " + item.start + " end: " + item.end + " qnt " + item.qnt;
         }
-        return true;
-    }
+       // Debug.Log(s);
 
-    public static void incrementaBox(string box, string nomePlanta) {
-        if (!boxsIsFull[box]) { //se ainda nao chegou no maximo
-            boxsQntPlantas[box] = boxsQntPlantas[box] + 1;
-            ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
-            atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
-            if (boxsQntPlantas[box] >= qntPlantaPorGrupo) {
-                boxsIsFull[box] = true;
-                if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) {
-                    reachedMaxQuantity();
-                }
-            }
+        string d = "2 - ";
+        foreach (Container item in box1) {
+            d = d + " full " + item.isFull + " start: " + item.start + " end: " + item.end + " qnt " + item.qnt;
         }
-    }
-
-    public static string colidiuComBox(string tagColisao) {
-        if (boxsQntPlantas.ContainsKey(tagColisao)) {
-            return tagColisao;
-        }
-        return null;
+       // Debug.Log(d);
     }
 
     public static void reachedMaxQuantity() {
@@ -71,11 +100,11 @@ public class PontuacaoPlantas : MonoBehaviour {
 
     private static void generateValuePontuacao() {
         if (qntPlantasIncorretas == 0) {
-            pontuacaoAtual = ((qntPlantasCorretas * 10)) / 6;
+            pontuacaoAtual = ((qntPlantasCorretas * 10)) / 7;
         }
         else {
-            if ((((qntPlantasCorretas * 10) - (qntPlantasIncorretas * 2)) / 6) > 0)
-                pontuacaoAtual = ((qntPlantasCorretas * 10) - (qntPlantasIncorretas * 2)) / 6;
+            if ((((qntPlantasCorretas * 10) - (qntPlantasIncorretas * 2)) / 67 > 0))
+                pontuacaoAtual = ((qntPlantasCorretas * 10) - (qntPlantasIncorretas * 2)) / 7;
             else
                 pontuacaoAtual = 0;
         }
@@ -106,7 +135,7 @@ public class PontuacaoPlantas : MonoBehaviour {
         qntPlantasCorretas = 0;
         nomesPlantasErradas = new List<string>();
         nomePlantaE_Grupo = new Dictionary<string, string>();
-        boxsIsFull = new Dictionary<string, bool>() { { "Box1", false }, { "Box2", false }, { "Box3", false }, { "Box4", false }, { "Box5", false }, { "Box6", false } };
-        boxsQntPlantas = new Dictionary<string, int>() { { "Box1", 0 }, { "Box2", 0 }, { "Box3", 0 }, { "Box4", 0 }, { "Box5", 0 }, { "Box6", 0 } };
+        box1 = null;
+        box2 = null;
     }
 }

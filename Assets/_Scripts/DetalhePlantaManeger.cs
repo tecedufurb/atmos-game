@@ -23,7 +23,7 @@ public class DetalhePlantaManeger : MonoBehaviour {
         if (gameObject.name != "CloseButton") { //se nao é o objeto CloseButton
             var t = gameObject.transform.GetChild(0).gameObject;
             t.GetComponent<RectTransform>().offsetMax = new Vector2(0.0f, 0.0f);
-            t.GetComponent<RectTransform>().offsetMin = new Vector2(-0.5f, -200f);
+            t.GetComponent<RectTransform>().offsetMin = new Vector2(-0.5f, -330f);
         }
     }
 }

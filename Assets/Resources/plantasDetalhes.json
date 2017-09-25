@@ -34,7 +34,7 @@
 			"nomePopular":"Orelha-de-onça",
 			"nomeCientifico":"Tibouchina urvilleana",
 			"imagem":"orelha_de_onca",
-			"informacoes":"A Orelha-de-onça é um arbusto ou pequena árvore com cerca de 1 a 4 m de altura. Os frutos são cápsulas deiscentes no ápice. O local de cultivo deve ser ensolarado, mas em regiões tropicais, se ficar em meia sombra na hora do sol forte ele se desenvolverá melhor."
+			"informacoes":"A Orelha-de-onça é um arbusto ou pequena árvore com cerca de 1 a 4 m de altura. Os frutos são cápsulas deiscentes no ápice. O local de cultivo deve ser ensolarado, mas em regiões tropicais, se ficar em meia sombra na hora do sol forte ele se desenvolverá melhor. Floresce do final da primavera até o final do outono."
 		},
 		{
 			"nomePopular":"Taboa",
@@ -52,31 +52,31 @@
 			"nomePopular":"Capim-rabo-de-burro",
 			"nomeCientifico":"Andropogon bicornis",
 			"imagem":"capim_rabo_de_burro",
-			"informacoes":"Detalhes da planta Capim-rabo-de-burro"
+			"informacoes":"É considerada uma planta daninha, infestando principalmente pastagens, beira de estradas e terrenos baldios. Representa uma das espécies herbáceas mais importantes no início do desenvolvimento da vegetação secundária, desaparecendo nos estágios da capoeira e capoeirão. Floresce de dezembro até abril, permanecendo com frutos até julho."
 		},
 		{
 			"nomePopular":"Pau-de-facho",
 			"nomeCientifico":"Aparisthmium cordatum",
 			"imagem":"pau_de_facho",
-			"informacoes":"Detalhes da planta Pau-de-facho"
+			"informacoes":"É uma espécie pioneira localmente bem sucedida utilizada na restauração de áreas degradadas, geralmente encontrada em solos arenoso de restingas e altas encostas. Cresce em encostas mais altas e suas cristas onde a vegetação é geralmente menor, em matas costeiras e restingas. Floresce de novembro a fevereiro."
 		},
 		{
 			"nomePopular":"Palmito",
 			"nomeCientifico":"Euterpe edulis",
 			"imagem":"palmito",
-			"informacoes":"Detalhes da planta Palmito"
+			"informacoes":"Euterpe edulis é uma palmeira amplamente distribuída, ocorrendo de forma contínua ao longo de toda a Mata Atlântica e também em parte do Cerrado. Em áreas de Florestas Úmidas bem preservadas, geralmente apresenta uma elevada abundância, podendo formar grandes subpopulações.  Floresce entre Setembro e Dezembro. Amadurece entre Abril e Julho."
 		},
 		{
 			"nomePopular":"Maria-mole",
 			"nomeCientifico":"Guapira opposita",
 			"imagem":"maria_mole",
-			"informacoes":"Detalhes da planta Maria-mole"
+			"informacoes":"Originaria da mata atlântica, ocorrendo na beira de riachos e rios e próximo as nascentes dos biomas da floresta semidecidual com distribuição bem irregular. Frutifica nos meses de novembro a dezembro. Recomendo que a arvore seja plantada próximo a rios e lagos para alimentar peixes e atrair pássaros. As flores são melíferas e indico o plantio da mesma pelos criadores de abelhas indígenas."
 		},
 		{
 			"nomePopular":"Capim-de-melado",
 			"nomeCientifico":"Melinis minutiflora",
 			"imagem":"capim_de_melado",
-			"informacoes":"Detalhes da planta Capim-de-melado"
+			"informacoes":"É uma gramínea nativa da África. Foi introduzida no Brasil com a finalidade de atuar como forrageira e formar pastagens por ser uma planta rústica e de rápido crescimento. No entanto naturalizou-se e transformou-se em invasora de diversos ecossistemas, como o cerrado. No processo de invasão, a planta cresce por cima da vegetação herbácea nativa causando sombreamento e morte dessa vegetação, deslocando espécies nativas de flora e fauna."
 		}
 	]
 }
