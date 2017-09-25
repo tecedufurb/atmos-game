@@ -22,24 +22,40 @@ public class TextColorChanger : MonoBehaviour {
     void changeColorMainMenu() {
         if (g >= 33 && fluxoParaEsquerda) {
             g--;
-        }else {
+        }
+        else {
             fluxoParaEsquerda = false;
         }
         if (g <= 150 && !fluxoParaEsquerda) {
             g++;
-        }else {
+        }
+        else {
             fluxoParaEsquerda = true;
         }
     }
 
     void changeColorMuitoBem() {
-        if (g > 90 && fluxoParaEsquerda) {
+        if (g > 50 && fluxoParaEsquerda) {
             g--;
         }
         else {
             fluxoParaEsquerda = false;
         }
-        if (g < 180 && !fluxoParaEsquerda) {
+        if (g < 200 && !fluxoParaEsquerda) {
+            g++;
+        }
+        else {
+            fluxoParaEsquerda = true;
+        }
+    }
+    void changeColorSuaPontuacao() {
+        if (g > 100 && fluxoParaEsquerda) {
+            g--;
+        }
+        else {
+            fluxoParaEsquerda = false;
+        }
+        if (g < 230 && !fluxoParaEsquerda) {
             g++;
         }
         else {
@@ -55,7 +71,7 @@ public class TextColorChanger : MonoBehaviour {
             changeColorMuitoBem();
         }
         else if (Opcao.TextSuaPontuacao.ToString() == opcao.ToString()) {
-
+            changeColorSuaPontuacao();
         }
         texto.color = new Color32(r, g, b, 255);
     }

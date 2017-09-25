@@ -37,10 +37,6 @@ public class GameManager : MonoBehaviour {
         foreach (PlantaIncorreta planta in jsonControllerPlantasErradas.plantasIncorretas) {
             PontuacaoPlantas.nomesPlantasErradas.Add(planta.nomePlanta);
         }
-
-        foreach (PlantaCorreta planta in jsonControllerPlantasCorretas.plantasCorretas) {
-            PontuacaoPlantas.nomePlantaE_Grupo.Add(planta.nomePlanta, planta.grupo);
-        }
     }
 
     private void Start() {

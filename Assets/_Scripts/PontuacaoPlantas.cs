@@ -15,8 +15,6 @@ public class PontuacaoPlantas : MonoBehaviour {
     private static int qntPlantasIncorretas;
 
     public static List<string> nomesPlantasErradas = new List<string>();
-    public static Dictionary<string, string> nomePlantaE_Grupo = new Dictionary<string, string>();
-    private static Dictionary<string, int> boxsQntPlantas = new Dictionary<string, int>() { { "Box1", 0 }, { "Box2", 0 }, { "Box3", 0 }, { "Box4", 0 }, { "Box5", 0 }, { "Box6", 0 } };
 
     private static List<Container> box1;//lado esquerdo do rio
     private static List<Container> box2;//lado direito do rio
@@ -28,11 +26,9 @@ public class PontuacaoPlantas : MonoBehaviour {
                 if ((coord.x >= i.start) && (coord.x <= i.end)) {
                     if (!i.isFull) { //se nao esta cheio
                         box1[cont] = new Container(box1[cont].isFull, box1[cont].start, box1[cont].end, box1[cont].qnt + 1);
-                        Debug.Log("1 box: " + cont + " val: " + i.qnt);
                         ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
                         atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
                         if (i.qnt >= qntPlantaPorGrupo) {
-                            Debug.Log("full box " + cont);
                             box1[cont] = new Container(true, box1[cont].start, box1[cont].end, box1[cont].qnt);
                             if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) {
                                 reachedMaxQuantity();
@@ -49,11 +45,9 @@ public class PontuacaoPlantas : MonoBehaviour {
                 if ((coord.x >= i.start) && (coord.x <= i.end)) {
                     if (!i.isFull) { //se nao esta cheio
                         box2[cont] = new Container(box2[cont].isFull, box2[cont].start, box2[cont].end, box2[cont].qnt + 1);
-                        Debug.Log("2 box: " + cont + " val: " + i.qnt);
                         ControllerPontuacao.incrementaQntPlantas(); //Atualiza termometro 
                         atualizaQuantidadePlantasPontuacao(nomePlanta); //atualiza estatisticas
                         if (i.qnt >= qntPlantaPorGrupo) {
-                            Debug.Log("full box " + cont);
                             box2[cont] = new Container(true, box2[cont].start, box2[cont].end, box2[cont].qnt);
                             if (ControllerPontuacao.isQntAtualPlantasGreaterOrEqualQntTotalPlantas()) {
                                 reachedMaxQuantity();
@@ -71,17 +65,6 @@ public class PontuacaoPlantas : MonoBehaviour {
     void Start() {
         box1 = BoxesTerrainGenerator.instance.generateListBoxes();
         box2 = new List<Container>(box1);
-        string s = "1 - ";
-        foreach (Container item in box1) {
-            s = s + " full " + item.isFull + " start: " + item.start + " end: " + item.end + " qnt " + item.qnt;
-        }
-       // Debug.Log(s);
-
-        string d = "2 - ";
-        foreach (Container item in box1) {
-            d = d + " full " + item.isFull + " start: " + item.start + " end: " + item.end + " qnt " + item.qnt;
-        }
-       // Debug.Log(d);
     }
 
     public static void reachedMaxQuantity() {
@@ -134,7 +117,6 @@ public class PontuacaoPlantas : MonoBehaviour {
         qntPlantasIncorretas = 0;
         qntPlantasCorretas = 0;
         nomesPlantasErradas = new List<string>();
-        nomePlantaE_Grupo = new Dictionary<string, string>();
         box1 = null;
         box2 = null;
     }
