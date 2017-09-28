@@ -8,12 +8,17 @@ public class CarregarFase : MonoBehaviour {
     public Slider slider;//barra de carregar
     public string fase; //fase que sera carregada
     public GameObject loadingScreenCanvas;
+    private bool podeClicar = true; //validar se ja não hoube click e esta carregando
 
     AsyncOperation async;
 
     public void LoadScreen()
     {
-        StartCoroutine(LoadingScreen());
+        if (podeClicar) {
+            podeClicar = false;
+            StartCoroutine(LoadingScreen());
+        }
+        
     }
 
     public void LoadScreen(string fase) {
