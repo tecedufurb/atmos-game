@@ -2,11 +2,12 @@
 
 public class AterarModoDeExibicao : MonoBehaviour {
 
-    private static bool isVisaoDeCima = true; //variavel deve ser estatica, para nao existir outra
+    private static bool isVisaoDeCima = true;
     public GameObject visaoCimaObjetosMundo;
     public GameObject visaoCimaCanvas;
     public GameObject visao1PessoaObjetosMundo;
     public GameObject visao1PessoaCanvas;
+    public GameObject rio;
     
     public void onClickMudarVisao() {
         if (isVisaoDeCima) { //se esta na visao de cima
@@ -16,6 +17,7 @@ public class AterarModoDeExibicao : MonoBehaviour {
             visaoCimaCanvas.active = false; //desativa canvas visao de cima
             visaoCimaObjetosMundo.active = false; //desativa objetos do mundo da visao de cima
             isVisaoDeCima = false; //desativar visao de cima
+            rio.GetComponent<AudioSource>().enabled = true;
         } else {
             GameManager.podePlantar = true;
             visaoCimaObjetosMundo.active = true; //ativa os objetos do mundo da visao de cima
@@ -23,6 +25,7 @@ public class AterarModoDeExibicao : MonoBehaviour {
             visao1PessoaCanvas.active = false; //desativa canvas visao do personagem
             visao1PessoaObjetosMundo.active = false; //desativa objetos mundo visao do personagem
             isVisaoDeCima = true; //ativa a visao de cima
+            rio.GetComponent<AudioSource>().enabled = false;
         }
     }
 }
