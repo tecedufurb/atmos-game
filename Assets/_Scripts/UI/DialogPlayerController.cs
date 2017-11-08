@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogPlayerController : MonoBehaviour {
 
+    public GameObject panelMsgErroRemoverPlanta;
     public GameObject panelEstatisticas;
     public GameObject pontuacao;
     public GameObject plantasCorretas;
@@ -43,12 +44,25 @@ public class DialogPlayerController : MonoBehaviour {
     public void acaoVoltarAoMenu() {
         panelEstatisticas.active = false;
     }
-    void Start() {
 
+    public void exibeErroAoRemoverPlanta(int codigoErro) {
+        if (codigoErro == 0) {
+            StartCoroutine(printaMsgErroNaTela(panelMsgErroRemoverPlanta.transform.GetChild(0).gameObject));
+        }
+        else if (codigoErro == 1) {
+            StartCoroutine(printaMsgErroNaTela(panelMsgErroRemoverPlanta.transform.GetChild(1).gameObject));
+        }
+        else {
+            Debug.LogError("CODIGO ERRO NAO ENCONTRADO:" + codigoErro);
+        }
     }
 
+  
+    IEnumerator printaMsgErroNaTela(GameObject msgErro) {
+        var t = msgErro.GetComponent<RectTransform>();
+        //for () {
 
-    void Update() {
-
+        //}
+        yield return null;
     }
 }

@@ -5,6 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 public class SimpleCharacterControl : MonoBehaviour {
 
     public GameObject joystickMovimentacao;
+    private bool canMoveBool = true;
 
     private enum ControlMode {
         Tank,
@@ -69,7 +70,8 @@ public class SimpleCharacterControl : MonoBehaviour {
             if (!m_collisions.Contains(collision.collider)) {
                 m_collisions.Add(collision.collider);
             }
-        } else {
+        }
+        else {
             if (m_collisions.Contains(collision.collider)) {
                 m_collisions.Remove(collision.collider);
             }
@@ -100,18 +102,37 @@ public class SimpleCharacterControl : MonoBehaviour {
         }
 
         m_wasGrounded = m_isGrounded;
+
+        if (Input.GetButtonDown("Fire1") && !GameManager.IsPointerOverUIObject()) {
+            Debug.Log("CLICK");
+            canMoveBool = true;
+            //m_animator.SetTrigger("Pickup");
+
+            //nao pode movimentar jogador enquanto remove a planta(botar um wait de 2 segundos)
+            //criar uma nova classe removerPlanta
+
+        }
+    }
+
+    public void canMove(bool estado) {
+        canMoveBool = estado;
     }
 
     private void TankUpdate() {
-        float v = joystickMovimentacao.GetComponent<SimpleTouchController>().GetTouchPosition.y;
-        float h = joystickMovimentacao.GetComponent<SimpleTouchController>().GetTouchPosition.x;
+        float v = 0;
+        float h = 0;
+        if (canMoveBool) {
+            v = joystickMovimentacao.GetComponent<SimpleTouchController>().GetTouchPosition.y;
+            h = joystickMovimentacao.GetComponent<SimpleTouchController>().GetTouchPosition.x;
+        }
 
 
         bool walk = Input.GetKey(KeyCode.LeftShift);
 
         if (v < 0) {
             if (walk) { v *= m_backwardsWalkScale; } else { v *= m_backwardRunScale; }
-        } else if (walk) {
+        }
+        else if (walk) {
             v *= m_walkScale;
         }
 

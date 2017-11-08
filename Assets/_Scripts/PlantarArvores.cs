@@ -116,7 +116,7 @@ public class PlantarArvores : MonoBehaviour {
         }
     }
     private bool isFirstClickValid(RaycastHit[] hitsInfo) { //Verifica se o raio também nao colidiu com UI
-        if (!IsPointerOverUIObject()) {//se nao colidiu com o botoes UI
+        if (!GameManager.IsPointerOverUIObject()) {//se nao colidiu com o botoes UI
             foreach (string tag in naoDeveColidir) {
                 foreach (RaycastHit hitInfo in hitsInfo) {
                     if (hitInfo.transform.tag == tag) { //se uma das tags é igual a naoDevePlantas
@@ -130,13 +130,7 @@ public class PlantarArvores : MonoBehaviour {
         }
         return false;
     }
-    private bool IsPointerOverUIObject() { //metodo que verifica se colidiu com UI
-        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
-        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        return results.Count > 0;
-    }
+   
     private void instanciaPlanta(RaycastHit hitToInstantiate, string nomePlantaParaInstanciar) { //instancia as plantas, passar somente os RayscastHits com o terreno
         var plantaPrefab = Resources.Load("Prefabs/" + nomePlantaParaInstanciar) as GameObject;//carrega prefab
         plantaPrefab = Instantiate(plantaPrefab, hitToInstantiate.point, new Quaternion(), GameObject.Find("PlantasDoTerreno").transform) as GameObject;//instancia planta
