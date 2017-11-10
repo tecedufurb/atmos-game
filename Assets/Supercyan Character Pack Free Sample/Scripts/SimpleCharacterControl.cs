@@ -102,16 +102,6 @@ public class SimpleCharacterControl : MonoBehaviour {
         }
 
         m_wasGrounded = m_isGrounded;
-
-        if (Input.GetButtonDown("Fire1") && !GameManager.IsPointerOverUIObject()) {
-            Debug.Log("CLICK");
-            canMoveBool = true;
-            //m_animator.SetTrigger("Pickup");
-
-            //nao pode movimentar jogador enquanto remove a planta(botar um wait de 2 segundos)
-            //criar uma nova classe removerPlanta
-
-        }
     }
 
     public void canMove(bool estado) {

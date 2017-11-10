@@ -72,9 +72,8 @@ public class RemoverPlanta : MonoBehaviour {
 
     public void resetCubo() {
         expandeCuboBool = false;
-        float x = cubo.GetComponent<BoxCollider>().center.x;
-        float y = cubo.GetComponent<BoxCollider>().center.y;
-        cubo.GetComponent<BoxCollider>().center = new Vector3(x, y, 0);
+        cubo.GetComponent<BoxCollider>().center = new Vector3(0, 0, 0);
+        cubo.GetComponent<Transform>().position= cubo.GetComponentInParent<Transform>().position;
     }
 
     private void expandeCubo() {
@@ -88,7 +87,7 @@ public class RemoverPlanta : MonoBehaviour {
                 exibeErro(1);
                 return;
             }
-            cubo.GetComponent<BoxCollider>().center = new Vector3(x, y, z + 2);
+            cubo.GetComponent<BoxCollider>().center = new Vector3(x, y, z + 4);
         }
     }
 }

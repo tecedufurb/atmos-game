@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogPlayerController : MonoBehaviour {
 
-    public GameObject panelMsgErroRemoverPlanta;
+    public GameObject gameObjectComMensagensDeErro;
     public GameObject panelEstatisticas;
     public GameObject pontuacao;
     public GameObject plantasCorretas;
@@ -46,23 +46,31 @@ public class DialogPlayerController : MonoBehaviour {
     }
 
     public void exibeErroAoRemoverPlanta(int codigoErro) {
+        GameObject msgCodigoErro;
+        GameObject cloneMensagemDeErro;
         if (codigoErro == 0) {
-            StartCoroutine(printaMsgErroNaTela(panelMsgErroRemoverPlanta.transform.GetChild(0).gameObject));
+            msgCodigoErro = gameObjectComMensagensDeErro.transform.GetChild(0).gameObject;
+            cloneMensagemDeErro = Instantiate(msgCodigoErro, msgCodigoErro.GetComponentInParent<Transform>(), true);
+            StartCoroutine(printaMsgErroNaTela(cloneMensagemDeErro.GetComponent<Transform>()));
         }
         else if (codigoErro == 1) {
-            StartCoroutine(printaMsgErroNaTela(panelMsgErroRemoverPlanta.transform.GetChild(1).gameObject));
+            msgCodigoErro = gameObjectComMensagensDeErro.transform.GetChild(1).gameObject;
+            cloneMensagemDeErro = Instantiate(msgCodigoErro, msgCodigoErro.GetComponentInParent<Transform>(), true);
+            StartCoroutine(printaMsgErroNaTela(cloneMensagemDeErro.GetComponent<Transform>()));
         }
         else {
-            Debug.LogError("CODIGO ERRO NAO ENCONTRADO:" + codigoErro);
+            Debug.LogError("Erro ao processar codigo do erro ao remover planta:" + codigoErro);
         }
     }
 
-  
-    IEnumerator printaMsgErroNaTela(GameObject msgErro) {
-        var t = msgErro.GetComponent<RectTransform>();
-        //for () {
-
-        //}
-        yield return null;
+    IEnumerator printaMsgErroNaTela(Transform msgErroTransform) {
+        msgErroTransform.gameObject.active = true;
+        while (msgErroTransform.position.y > 46.0) {
+            msgErroTransform.position = new Vector3(msgErroTransform.position.x, msgErroTransform.position.y - 0.01f, msgErroTransform.position.z);
+            yield return null;
+        }
+        Destroy(msgErroTransform.gameObject);
     }
 }
+
+
