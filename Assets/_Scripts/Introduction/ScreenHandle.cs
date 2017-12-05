@@ -26,7 +26,7 @@ public class ScreenHandle : MonoBehaviour {
             panelMenosDeUmaPlantaSelecionada.SetActive(true);
         }
         else {
-            gameObject.GetComponent<CarregarFase>().LoadScreen(scene);
+            gameObject.GetComponent<CarregarFase>().LoadScene(scene);
         }
     }
 

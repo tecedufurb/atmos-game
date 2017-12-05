@@ -33,3 +33,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 *.meta
+
+Assets/VSCode/
+
+\.vscode/

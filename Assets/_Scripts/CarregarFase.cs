@@ -12,18 +12,12 @@ public class CarregarFase : MonoBehaviour {
 
     AsyncOperation async;
 
-    public void LoadScreen()
-    {
+    public void LoadScene(string fase) {
+        this.fase = fase;
         if (podeClicar) {
             podeClicar = false;
             StartCoroutine(LoadingScreen());
         }
-        
-    }
-
-    public void LoadScreen(string fase) {
-        this.fase = fase;
-        StartCoroutine(LoadingScreen());
     }
 
     IEnumerator LoadingScreen()
