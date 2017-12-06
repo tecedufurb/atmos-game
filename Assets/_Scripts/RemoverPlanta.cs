@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RemoverPlanta : MonoBehaviour {
 
+    public GameObject animacaoRemoverPlanta;
+    private GameObject animacaoRemoverPlantaClone;
     public GameObject cubo;
     public GameObject personagem;
     public GameObject botaoSimENao;
@@ -46,6 +48,10 @@ public class RemoverPlanta : MonoBehaviour {
         if (exibirSimENao) { //exibe sim e nao e esconde botao remover
             botaoRemover.active = false;
             botaoSimENao.active = true;
+            animacaoRemoverPlantaClone = Instantiate(animacaoRemoverPlanta);
+            animacaoRemoverPlantaClone.transform.position = planta.transform.position;
+            animacaoRemoverPlantaClone.active = true;
+            //instance.planta.transform;
         }
         else { //exibe botao remover e esconde sim e nao
             botaoRemover.active = true;
@@ -60,11 +66,13 @@ public class RemoverPlanta : MonoBehaviour {
 
     public void sim() {
         Destroy(instance.planta);
+        Destroy(animacaoRemoverPlantaClone);
         instance.personagem.GetComponent<SimpleCharacterControl>().canMove(true);
         exibeSimENao(false);
     }
 
     public void nao() {
+        Destroy(animacaoRemoverPlantaClone);
         instance.personagem.GetComponent<SimpleCharacterControl>().canMove(true);
         exibeSimENao(false);
     }
@@ -87,7 +95,7 @@ public class RemoverPlanta : MonoBehaviour {
                 exibeErro(1);
                 return;
             }
-            cubo.GetComponent<BoxCollider>().center = new Vector3(x, y, z + 4);
+            cubo.GetComponent<BoxCollider>().center = new Vector3(x, y, z + 2);
         }
     }
 }
