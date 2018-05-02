@@ -13,6 +13,7 @@ public class ScreenHandle : MonoBehaviour
 
     [Tooltip("Prefab that is model to the button beign displayed at the selection of plants")]
     public GameObject ModelOfButtonToPlantSelection;
+    public GameObject LoadingScreen;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class ScreenHandle : MonoBehaviour
         if (PlantsSingleton.Instance.SelectedPlants.Count < 1)
             panelMenosDeUmaPlantaSelecionada.SetActive(true);
         else
-            gameObject.GetComponent<SceneLoader>().LoadScene(scene);
+            LoadingScreen.GetComponent<SceneLoader>().LoadScene(scene);
     }
 
     public void SelecionaDeselecionaBotaoPlanta()
