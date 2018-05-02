@@ -19,16 +19,13 @@ public class SceneLoader : MonoBehaviour {
         }
     }
 
-    IEnumerator LoadingScreen()
-    {
+    IEnumerator LoadingScreen(){
         async = SceneManager.LoadSceneAsync(fase);
         async.allowSceneActivation = false;
 
-        while (async.isDone == false)
-        {
+        while (async.isDone == false){
             slider.value = async.progress;
-            if (async.progress == 0.9f)
-            {
+            if (async.progress == 0.9f){
                 slider.value = 1f;
                 async.allowSceneActivation = true;
             }
