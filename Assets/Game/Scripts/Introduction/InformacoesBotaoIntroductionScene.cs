@@ -54,7 +54,7 @@ public class InformacoesBotaoIntroductionScene : MonoBehaviour {
     public void clicarBotao() {
         if (estadoDoBotao) {
             gameObject.GetComponent<Button>().image.color = new Color(255, 255, 255);
-            if (!(SceneManager.GetActiveScene().name == "Introduction")) {
+            if (!(SceneManager.GetActiveScene().name == "Introducao")) {
                 var botaoNomePlanta = gameObject.transform.GetChild(1).gameObject;
                 botaoNomePlanta.GetComponent<Button>().image.color = new Color(255, 255, 255);
             }
@@ -63,7 +63,7 @@ public class InformacoesBotaoIntroductionScene : MonoBehaviour {
         else //seta a cor botao selecionado
         {
             gameObject.GetComponent<Button>().image.color = new Color32(0, 174, 0, 255);
-            if (!(SceneManager.GetActiveScene().name == "Introduction")) {
+            if (!(SceneManager.GetActiveScene().name == "Introducao")) {
                 var botaoNomePlanta = gameObject.transform.GetChild(1).gameObject;
                 botaoNomePlanta.GetComponent<Button>().image.color = new Color32(0, 174, 0, 255);
             }
@@ -72,8 +72,8 @@ public class InformacoesBotaoIntroductionScene : MonoBehaviour {
     }
 
     public void Start() {
-        if (SceneManager.GetActiveScene().name == "Introduction") {
-            sceneCanvas = GameObject.Find("UI"); //busca durante execucao pois é um prefab
+        if (SceneManager.GetActiveScene().name == "Introducao") {
+            sceneCanvas = GameObject.Find("Canvas"); //busca durante execucao pois é um prefab
         }
         else {
             sceneCanvas = GameObject.Find("VisaoDeCimaCanvas"); //busca durante execucao pois é um prefab
