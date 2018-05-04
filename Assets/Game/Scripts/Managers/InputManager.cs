@@ -1,9 +1,9 @@
-﻿using Lean.Touch;
+﻿//using Lean.Touch;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class InputManager : MonoBehaviour{
-
+    /*
     [Tooltip("Ignore fingers with StartedOverGui?")]
     public bool IgnoreGuiFingers = true;
 
@@ -39,6 +39,6 @@ public class InputManager : MonoBehaviour{
     public void OnCameraZoom(UnityEngine.UI.Scrollbar scrollbar){
         if (OnZoom != null)
             OnZoom(scrollbar.value);
-    }
+    } */
 
 }
