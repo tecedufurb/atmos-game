@@ -29,19 +29,25 @@ public class PlantarArvores : MonoBehaviour {
         mAudioManager = FindObjectOfType<AudioManager>();
     }
 
-    private void FixedUpdate() {
-        if (GameManager.podePlantar) {
-            if (Input.GetButtonDown("Fire1") && pegaPlantasDoPainel() != null) {
-                Ray pointCameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-                hitsInfoAux = returnHitsOfRay(pointCameraRay); //Pega os HitsInfo do do 1º click
-                nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());
-                if (nomesPlantasParaInstanciar != null) { // se nomes não está vazio
-                    if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
-                        nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
-                        validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
-                    }
+    private void OnEnable(){
+        InputManager.OnTap += plantar;
+    }
+
+    private void OnDisable(){
+          InputManager.OnTap -= plantar;
+    }
+
+    private void plantar(){
+        if (GameManager.podePlantar && pegaPlantasDoPainel() != null) {
+            Ray pointCameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            hitsInfoAux = returnHitsOfRay(pointCameraRay); //Pega os HitsInfo do do 1º click
+            nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());
+            if (nomesPlantasParaInstanciar != null) { // se nomes não está vazio
+                if (isFirstClickValid(hitsInfoAux)) { //se o 1 click nao colidiu com agua ou outro objeto untagged ou um painel
+                    nomesPlantasParaInstanciar = retornaNomePlantasParaInstanciar(pegaPlantasDoPainel());//pega o nome das plantas selecionadas quando faz o click
+                    validarPlantar(hitsInfoAux, pointCameraRay); //tentar plantar
                 }
-            }
+            }   
         }
     }
 

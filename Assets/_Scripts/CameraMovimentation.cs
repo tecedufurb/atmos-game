@@ -11,7 +11,6 @@ public class CameraMovimentation : MonoBehaviour{
      void Awake(){
          pushForce = 50;
         rb = GetComponent<Rigidbody>();
-        Debug.Log(rb.name);
     }
 
     private void OnEnable(){
