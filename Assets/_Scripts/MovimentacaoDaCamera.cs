@@ -10,19 +10,16 @@ public class MovimentacaoDaCamera : MonoBehaviour {
 
     private float x, y; //x e y do joysick visao de cima
 
-
-    private void Update() {
+    void FixedUpdate() //move a camera
+    {
 
         x = Joystick3Person.GetComponent<SimpleTouchController>().movementVector.x; //pega x do joystick
         y = Joystick3Person.GetComponent<SimpleTouchController>().movementVector.y; //pega y do joystick
-
         movimentacaoCamera(x, y); //move a camera
-      
-    }
-    void FixedUpdate() //move a camera
-    {
+
         #region zoom camera
         // If there are two touches on the device...
+
         if (Input.touchCount == 2) {
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
@@ -62,13 +59,13 @@ public class MovimentacaoDaCamera : MonoBehaviour {
     void movimentacaoCamera(float horizontal, float vertical) {
         if (horizontal > 0) {
             //if our current X is > than the minimum range AND less than maximum range
-            if (transform.position.x < 300)  //300
+            if (transform.position.x < 320)  //300
             {
                 transform.Translate(Vector3.right * velocidade * Time.deltaTime, Space.World);
             }
         } else if (horizontal < 0) {
             //if our current X is > than the minimum range AND less than maximum range
-            if (transform.position.x > 200)  //160 
+            if (transform.position.x > 180)  //160
             {
                 transform.Translate(Vector3.left * velocidade * Time.deltaTime, Space.World);
             }

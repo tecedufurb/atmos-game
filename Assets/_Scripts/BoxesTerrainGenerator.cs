@@ -15,8 +15,8 @@ public struct Container {
 
 public class BoxesTerrainGenerator : MonoBehaviour {
 
-    public int startTerrainCord = 0;
-    public int finalTerrainCord = 500;
+    private int startTerrainCord = 0;
+    private int finalTerrainCord = 380;
     private int realTerrainLenght;
     public static int qntBoxes = 7;
 

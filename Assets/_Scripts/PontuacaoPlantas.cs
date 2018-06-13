@@ -6,7 +6,7 @@ public class PontuacaoPlantas : MonoBehaviour {
     private static int valorPontPlantaErrada = -10;
     private static int valorPontPlantaCorreta = 10;
     public static int qntTotalPlantas = 200;
-    private static int qntForaAreaAppAceitavel = 5;
+    private static int qntForaAreaAppAceitavel = 0;
     public static int qntTotalPlantasReal = qntTotalPlantas - qntForaAreaAppAceitavel;
     public static int qntPlantaPorGrupo = qntTotalPlantasReal / BoxesTerrainGenerator.qntBoxes / 2;
 
