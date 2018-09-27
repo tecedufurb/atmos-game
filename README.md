@@ -3,5 +3,5 @@
 
 ## Unity version
 
-The current version is 2018.1.0f2
+The current version is 2017.4.4
 

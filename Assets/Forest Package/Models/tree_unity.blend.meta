@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 7b5a3ea1c9f3b8a4ca0b2082ff37b708
+timeCreated: 1532464827
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: broken-tree
+    100002: grass
+    100004: roots-tree
+    100006: stone-black-1
+    100008: stone-black-2
+    100010: stone-black-3
+    100012: stone-black-snow-1
+    100014: stone-black-snow-2
+    100016: stone-black-snow-3
+    100018: stone-gray-1
+    100020: stone-gray-2
+    100022: stone-gray-3
+    100024: stone-gray-snow-1
+    100026: stone-gray-snow-2
+    100028: stone-gray-snow-3
+    100030: tree-christmas
+    100032: tree-christmas-snow
+    100034: tree-empty
+    100036: tree-empty-snow
+    100038: tree-full
+    100040: //RootNode
+    100042: white-tree
+    400000: broken-tree
+    400002: grass
+    400004: roots-tree
+    400006: stone-black-1
+    400008: stone-black-2
+    400010: stone-black-3
+    400012: stone-black-snow-1
+    400014: stone-black-snow-2
+    400016: stone-black-snow-3
+    400018: stone-gray-1
+    400020: stone-gray-2
+    400022: stone-gray-3
+    400024: stone-gray-snow-1
+    400026: stone-gray-snow-2
+    400028: stone-gray-snow-3
+    400030: tree-christmas
+    400032: tree-christmas-snow
+    400034: tree-empty
+    400036: tree-empty-snow
+    400038: tree-full
+    400040: //RootNode
+    400042: white-tree
+    2300000: broken-tree
+    2300002: grass
+    2300004: roots-tree
+    2300006: stone-black-1
+    2300008: stone-black-2
+    2300010: stone-black-3
+    2300012: stone-black-snow-1
+    2300014: stone-black-snow-2
+    2300016: stone-black-snow-3
+    2300018: stone-gray-1
+    2300020: stone-gray-2
+    2300022: stone-gray-3
+    2300024: stone-gray-snow-1
+    2300026: stone-gray-snow-2
+    2300028: stone-gray-snow-3
+    2300030: tree-christmas
+    2300032: tree-christmas-snow
+    2300034: tree-empty
+    2300036: tree-empty-snow
+    2300038: tree-full
+    2300040: white-tree
+    3300000: broken-tree
+    3300002: grass
+    3300004: roots-tree
+    3300006: stone-black-1
+    3300008: stone-black-2
+    3300010: stone-black-3
+    3300012: stone-black-snow-1
+    3300014: stone-black-snow-2
+    3300016: stone-black-snow-3
+    3300018: stone-gray-1
+    3300020: stone-gray-2
+    3300022: stone-gray-3
+    3300024: stone-gray-snow-1
+    3300026: stone-gray-snow-2
+    3300028: stone-gray-snow-3
+    3300030: tree-christmas
+    3300032: tree-christmas-snow
+    3300034: tree-empty
+    3300036: tree-empty-snow
+    3300038: tree-full
+    3300040: white-tree
+    4300000: broken-tree
+    4300002: grass
+    4300004: white-tree
+    4300006: roots-tree
+    4300008: stone-black-1
+    4300010: stone-black-2
+    4300012: stone-black-3
+    4300014: stone-black-snow-1
+    4300016: stone-black-snow-2
+    4300018: stone-black-snow-3
+    4300020: stone-gray-1
+    4300022: stone-gray-2
+    4300024: stone-gray-3
+    4300026: stone-gray-snow-1
+    4300028: stone-gray-snow-2
+    4300030: stone-gray-snow-3
+    4300032: tree-christmas-snow
+    4300034: tree-christmas
+    4300036: tree-empty-snow
+    4300038: tree-empty
+    4300040: tree-full
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 2
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,84 @@
+Para 2018/2:
+fazer uma pesquisa com uma turma, vendo o que eles gostariam de ver em um jogo.
+deixar algumas coisas ja sugeridas: poder colocar casas, destruir coisas,pontuacao, multiplayer, etc..
+perguntar de tipo de jogo gostariam: corrida,luta,acao, planejamento
+
+fazer nova programacao do troll
+
+Fazer:
+
+
+ter repositorio com exemplos de coisas na unity:
+*exemplo de um personagem 3d andando
+*exemplo de projeto cardboard
+*exemplo de projeto meultiplayer
+*etc... 
+
+*Fazer todos os paineis usando ancoras para que a resolucao se adpte ao dispositivo
+
+
+
+--------------------------------------------------------------------------------------------------
+sugestoes from alex:
+
+mudar nome do jogo
+background da assest botar que nem o da pluvia
+mudar icone poderia ser plante low poly
+
+ver asset polybrush
+
+atmos continua? ou entra uma pessoa e substitue ele
+
+tutorial(fazer no estilo do alto(ensinar a selecionar planta e plantar))
+
++feedback
+
+personagem feminina
+
+fazer novo menu(estilo alto adventure)
+
+fazer a parte do balao(personagem estar jogango semntes de cima do balao)
+
+sonorização, ambientação( barulho e plnta,andar, vento, arvores, passarinhos, agua)
+
+iluminação( usar luz mais quente, que lembre por do sol)
+
+-----------------------------------------------------------------------------------------------------
+
+
+programar tudo pensando nos nivieis de dificuldade
+
+adicionar tempo limite na esquerda em cima da tela
+
+
+
+jogo tem: inimigos mais fortes, inimigos mais fracos
+para matar inimigos deve tar um tap neles, ou ter que fazer um desenho na tela
+os boses ficam congelados quando tomam dano
+
+
+o jogador comeca com 15 plantas para plantar, a cada wave que ele sobrevive pode plantar mais 15(ou menos, ajustar de acordo com a dificuldade) plantas
+
+a quantida de inimigos de cada wave é definida pela dificuldade, a dificuldade tambem define a vida dos inimigos
+
+
+jeitos de interacao: desenho na tela ou tap no personagem
+
+inimigo 1: coloca planta errada, quando recebe tap fica congelado, quando congelado é afastado fazendo desenho na tela
+inimigo 2: remove planta boa
+
+personagem 1: coloca planta boa, mas se o jogador ou o inimigo o atacar foje
+personagem 2: remove planta ruim, mas se o jogador ou o inimigo o atacar foje
+personagem 3: traz algum tipo de powerup
+
+
+quando click em fase 1 acontecer: começa o tutorial(tem a opcao skip na direita em cima), vao ser mini-videos mostrando
+a jogabilidade, consultar no caderno quais minivideos vao ser
+
+
+é bom que seja identifical qual planta foi plantada
+
+
+pensar em mecanica em que o jogador nao planta, apenas os personagens do jogo plantam
+
+
