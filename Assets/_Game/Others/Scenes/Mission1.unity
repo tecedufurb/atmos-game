@@ -8344,6 +8344,8 @@ MonoBehaviour:
   - {fileID: 1962304360}
   - {fileID: 765400629}
   - {fileID: 2090383586}
+  initialQntOfPlants: 30
+  missionTimeInSeconds: 300
 --- !u!95 &1006729935
 Animator:
   serializedVersion: 3

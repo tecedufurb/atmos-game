@@ -10,8 +10,12 @@ public class GameManager : MonoBehaviour {
     public Text qntOfSeedsText;
     public GameObject score;
     public GameObject[] objectsToDeactivate;
-    
+
     private readonly int qntOfSeedReplenishedAfterWave = 20;
+
+    [Header("Mission configuration")]
+    public string initialQntOfPlants;
+    public int missionTimeInSeconds;
 
     private void OnEnable() {
         InputManager.OnTap += processTap;
@@ -28,8 +32,8 @@ public class GameManager : MonoBehaviour {
     }
 
     void Start() {
-        timer.resumeTimer();
-        qntOfSeedsText.text = 20.ToString();
+        qntOfSeedsText.text = initialQntOfPlants;
+        timer.GetComponent<Timer>().startTimer(missionTimeInSeconds);
     }
 
     private void waveEnded() {

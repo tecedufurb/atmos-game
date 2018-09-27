@@ -5,7 +5,7 @@ public class Timer : MonoBehaviour {
 
     private Text timerText;
 
-    private readonly int time = 300; // five minutes
+    private int initialTime;
     private float currentTime;
     private bool timerRunning;
 
@@ -19,21 +19,29 @@ public class Timer : MonoBehaviour {
 
     void Start() {
         timerText = GetComponent<Text>();
-        currentTime = time;
     }
 
     void Update() { //TODO deixar cor do tempo vermelho quando o tempo estiver acabando
         if (timerRunning) {
             currentTime -= Time.deltaTime;
-            timerText.text = ((int) currentTime / 60).ToString("00") + ":" + ((int) currentTime % 60).ToString("00");
+            timerText.text = timeIntToMinutes(currentTime);
             if (currentTime <= 0) {
                 if (OnTimeIsUp != null) {
                     OnTimeIsUp();
                     pauseTimer();
-                    resetTimer();
                 }
             }
         }
+    }
+
+    public void startTimer(int timeInSeconds) {
+        initialTime = timeInSeconds;
+        currentTime = timeInSeconds;
+        resumeTimer();
+    }
+
+    public string timeIntToMinutes(float timeInSeconds) {
+        return ((int) currentTime / 60).ToString("00") + ":" + ((int) currentTime % 60).ToString("00");
     }
 
     public void resumeTimer() {
@@ -44,12 +52,13 @@ public class Timer : MonoBehaviour {
         timerRunning = false;
     }
 
-    public void resetTimer() {
-        currentTime = time;
-    }
-
     public float getTimeRemaining() {
         return currentTime;
+    }
+
+    public void resetTimer() {
+        currentTime = initialTime;
+        resumeTimer();
     }
 
 }
