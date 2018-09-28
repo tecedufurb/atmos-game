@@ -9,7 +9,6 @@ public class TextModifier : MonoBehaviour {
     }
 
     public IEnumerator changeSizeOfText(Text text, int scaleOfChangeInFont) {
-        print("teste");
         int maxFontSize = text.fontSize + scaleOfChangeInFont;
         int minFontSize = text.fontSize - 2;
         int currentSize = text.fontSize;
@@ -26,7 +25,7 @@ public class TextModifier : MonoBehaviour {
                 if (currentSize <= minFontSize)
                     scaleSizeUp = true;
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 

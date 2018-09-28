@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour {
     }
 
     private void timerEnded() {
-        print("timer ended");
         displayScore();
     }
 

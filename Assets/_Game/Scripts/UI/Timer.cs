@@ -39,7 +39,6 @@ public class Timer : MonoBehaviour {
             timerText.text = timeIntToMinutes(currentTime);
             if (currentTime <= 0) {
                 StopCoroutine(coroutineScaleOfText);
-                print("end");
                 if (OnTimeIsUp != null) {
                     OnTimeIsUp();
                     pauseTimer();
