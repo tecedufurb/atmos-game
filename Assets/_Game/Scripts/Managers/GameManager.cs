@@ -44,14 +44,14 @@ public class GameManager : MonoBehaviour {
     public void activatePlantingMode(bool option) {
         if (option) {
             for (int i = 0; i < objectsToDeactivate.Length; i++) {
-                objectsToDeactivate[i].active = true;
+                objectsToDeactivate[i].SetActive(true);
             }
 
             planting.enabled = true;
         }
         else {
             for (int i = 0; i < objectsToDeactivate.Length; i++) {
-                objectsToDeactivate[i].active = false;
+                objectsToDeactivate[i].SetActive(false);
             }
 
             planting.enabled = false;
