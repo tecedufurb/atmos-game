@@ -2,13 +2,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextModifier : MonoBehaviour {
+public class TextModifier : MonoBehaviour { //TODO use this class
 
     public void changeColorOfText(Text text, Color color) {
         text.color = color;
     }
 
-    public IEnumerator changeSizeOfText(Text text, int scaleOfChangeInFont) {
+    private IEnumerator changeSizeOfText(Text text, int scaleOfChangeInFont) {
         int maxFontSize = text.fontSize + scaleOfChangeInFont;
         int minFontSize = text.fontSize - 2;
         int currentSize = text.fontSize;

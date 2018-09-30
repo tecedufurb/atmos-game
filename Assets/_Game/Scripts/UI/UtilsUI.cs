@@ -21,7 +21,7 @@ public class UtilsUI : MonoBehaviour {
         StartCoroutine(LoadingScreen(sceneName));
     }
 
-    IEnumerator LoadingScreen(string sceneName) {
+    private IEnumerator LoadingScreen(string sceneName) {
         async = SceneManager.LoadSceneAsync(sceneName);
         async.allowSceneActivation = false;
 

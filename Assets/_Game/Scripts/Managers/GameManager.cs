@@ -3,14 +3,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
-    public Timer timer;
     public Planting planting;
     public PlantsSelectorController selectedPlants;
     public WavesManager waveManager;
     public Text qntOfSeedsText;
+    public TimerBetweenWaves timerBetweenWaves;
     public Score score;
     public GameObject[] objectsToDeactivate;
 
+    private Timer timer;
 
     [Header("Mission configuration")]
     public string initialQntOfPlants;
@@ -21,20 +22,22 @@ public class GameManager : MonoBehaviour {
     private void OnEnable() {
         InputManager.OnTap += processTap;
         WavesManager.OnWaveEnded += waveEnded;
-        //Timer.OnTimeIsUp += startWave;
+        TimerBetweenWaves.OnTimeIsUp += startWave;
         RiparianForestCompletation.OnRiparianForestIsReady += displayScore;
     }
 
     private void OnDisable() {
         InputManager.OnTap -= processTap;
         WavesManager.OnWaveEnded -= waveEnded;
-        //Timer.OnTimeIsUp -= startWave;
+        TimerBetweenWaves.OnTimeIsUp -= startWave;
         RiparianForestCompletation.OnRiparianForestIsReady -= displayScore;
     }
 
     void Start() {
         qntOfSeedsText.text = initialQntOfPlants;
-        timer.GetComponent<Timer>().startTimer();
+        timer = GetComponent<Timer>();
+        timer.startTimer();
+        timerBetweenWaves.startTimer(timeBetweenWaves);
     }
 
     private void waveEnded() {
@@ -47,21 +50,24 @@ public class GameManager : MonoBehaviour {
             for (int i = 0; i < objectsToDeactivate.Length; i++) {
                 objectsToDeactivate[i].SetActive(true);
             }
-
-            planting.enabled = true;
+            timerBetweenWaves.startTimer(timeBetweenWaves);
+            allowPlanting(true);
         }
         else {
             for (int i = 0; i < objectsToDeactivate.Length; i++) {
                 objectsToDeactivate[i].SetActive(false);
             }
-
-            planting.enabled = false;
+            allowPlanting(false);
         }
     }
 
     public void startWave() {
         waveManager.startNextWave();
         activatePlantingMode(false);
+    }
+
+    public void allowPlanting(bool state) {
+        planting.enabled = state;
     }
 
     private void processTap(Vector2 screenPosition) {
