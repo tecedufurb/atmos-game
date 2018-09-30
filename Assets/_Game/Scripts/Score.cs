@@ -6,18 +6,25 @@ public class Score : MonoBehaviour {
     public Timer timer;
     public PlantsDiversity plantsDiversity;
 
-
     #region Score
 
-    [Header("Score")] public Text timeBonus;
+    [Header("Score")]
+    public Text timeBonus;
+
     public Text diversityBonus;
     public Text totalScore;
     public Text grade;
 
     #endregion
 
-    public void showScore() {
-        int pointsByTime = (int) (timer.getTimeRemaining() * 1.1f);
+    public void calculateScore(int expectedMissionDurationInSeconds) {
+
+        int pointsByTime = 0;
+        if (timer.getTotalTimeElapsed() < expectedMissionDurationInSeconds) // if have take fewer time than expected
+            pointsByTime = (int) (Mathf.Abs(timer.getTotalTimeElapsed() - expectedMissionDurationInSeconds) * 1.3f); // get bonus points of time
+        if (pointsByTime > 0 && pointsByTime < 50) // set the minimum bonus to 50
+            pointsByTime = 50;
+
         timeBonus.text = "Bonus de tempo:    " + pointsByTime;
 
         int pointsByDiversity = plantsDiversity.getDiversity() * 60;
@@ -32,9 +39,12 @@ public class Score : MonoBehaviour {
             grade.text = "8/10";
         else if (total >= 156)
             grade.text = "7.5/10";
-        else 
+        else
             grade.text = "6/10";
-        
+    }
+
+    public void showScore() {
+        gameObject.SetActive(true);
     }
 
 }

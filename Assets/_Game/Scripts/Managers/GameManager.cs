@@ -8,37 +8,38 @@ public class GameManager : MonoBehaviour {
     public PlantsSelectorController selectedPlants;
     public WavesManager waveManager;
     public Text qntOfSeedsText;
-    public GameObject score;
+    public Score score;
     public GameObject[] objectsToDeactivate;
 
-    private readonly int qntOfSeedReplenishedAfterWave = 20;
 
     [Header("Mission configuration")]
     public string initialQntOfPlants;
-    public int missionTimeInSeconds;
-
+    public int expectedMissionDurationInSeconds;
+    public int seedsReplenishedAfterWave;
+    public int timeBetweenWaves;
+    
     private void OnEnable() {
         InputManager.OnTap += processTap;
         WavesManager.OnWaveEnded += waveEnded;
-        Timer.OnTimeIsUp += timerEnded;
+        //Timer.OnTimeIsUp += startWave;
         RiparianForestCompletation.OnRiparianForestIsReady += displayScore;
     }
 
     private void OnDisable() {
         InputManager.OnTap -= processTap;
         WavesManager.OnWaveEnded -= waveEnded;
-        Timer.OnTimeIsUp -= timerEnded;
-        RiparianForestCompletation.OnRiparianForestIsReady += displayScore;
+        //Timer.OnTimeIsUp -= startWave;
+        RiparianForestCompletation.OnRiparianForestIsReady -= displayScore;
     }
 
     void Start() {
         qntOfSeedsText.text = initialQntOfPlants;
-        timer.GetComponent<Timer>().startTimer(missionTimeInSeconds);
+        timer.GetComponent<Timer>().startTimer();
     }
 
     private void waveEnded() {
         activatePlantingMode(true);
-        qntOfSeedsText.text = (int.Parse(qntOfSeedsText.text) + qntOfSeedReplenishedAfterWave).ToString();
+        qntOfSeedsText.text = (int.Parse(qntOfSeedsText.text) + seedsReplenishedAfterWave).ToString();
     }
 
     public void activatePlantingMode(bool option) {
@@ -91,14 +92,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void timerEnded() {
-        displayScore();
-    }
-
     private void displayScore() {
+        RiparianForestCompletation.OnRiparianForestIsReady -= displayScore; // when display score can unsubscribe, so that displayScore isn't called more than once
         timer.pauseTimer();
-        score.SetActive(true);
-        score.GetComponent<Score>().showScore();
+        score.calculateScore(expectedMissionDurationInSeconds);
+        score.showScore();
     }
 
 }

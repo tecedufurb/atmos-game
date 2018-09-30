@@ -5505,16 +5505,17 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 416522, guid: bee8d047e16101c438fb33382ab66935, type: 2}
   m_PrefabInternal: {fileID: 683723442}
---- !u!1 &687504585 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1989264045395844, guid: 9e92737fa80ab446ab805d52e92bed1f,
-    type: 2}
-  m_PrefabInternal: {fileID: 2063128296}
 --- !u!224 &687504586 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224075663911857886, guid: 9e92737fa80ab446ab805d52e92bed1f,
     type: 2}
   m_PrefabInternal: {fileID: 2063128296}
+--- !u!114 &687504587 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114236852693173856, guid: 9e92737fa80ab446ab805d52e92bed1f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2063128296}
+  m_Script: {fileID: 11500000, guid: 3c9fea9cec90b49c28c5f2aa4bc6cf70, type: 3}
 --- !u!1001 &687553889
 Prefab:
   m_ObjectHideFlags: 0
@@ -7866,7 +7867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 12.5, y: -8.9}
+  m_AnchoredPosition: {x: 12.5, y: -8.900024}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &975599719
@@ -8351,13 +8352,14 @@ MonoBehaviour:
   selectedPlants: {fileID: 896766640}
   waveManager: {fileID: 1417237623}
   qntOfSeedsText: {fileID: 2090383588}
-  score: {fileID: 687504585}
+  score: {fileID: 687504587}
   objectsToDeactivate:
   - {fileID: 1962304360}
   - {fileID: 765400629}
   - {fileID: 2090383586}
-  initialQntOfPlants: 30
-  missionTimeInSeconds: 300
+  initialQntOfPlants: 80
+  expectedMissionDurationInSeconds: 300
+  timeBetweenWaves: 30
 --- !u!95 &1006729935
 Animator:
   serializedVersion: 3
