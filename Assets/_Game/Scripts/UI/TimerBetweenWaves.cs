@@ -6,6 +6,7 @@ public class TimerBetweenWaves : MonoBehaviour {
 
     private Image timer;
     private Coroutine timerCoroutine;
+    private float fillAmount;
 
     #region Events
 
@@ -16,18 +17,19 @@ public class TimerBetweenWaves : MonoBehaviour {
     #endregion
 
     void Start() {
-        timer = gameObject.GetComponent<Image>();
+        timer = GetComponent<Image>();
     }
 
     public void startTimer(int timeBetweenWave) {
         timer.fillAmount = 1f;
-        resumeTimer(timeBetweenWave);
+        fillAmount = 1f / timeBetweenWave;
+        resumeTimer();
     }
 
 
-    public void resumeTimer(int timeBetweenWave) {
-        float fillAmount = 1f / timeBetweenWave;
-        timerCoroutine = StartCoroutine(updateTimer(fillAmount));
+    public void resumeTimer() {
+        if (gameObject.activeInHierarchy) // only resume timer if is active
+            timerCoroutine = StartCoroutine(updateTimer(fillAmount));
     }
 
     public void pauseTimer() {

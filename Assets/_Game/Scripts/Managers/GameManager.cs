@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
@@ -9,16 +10,20 @@ public class GameManager : MonoBehaviour {
     public Text qntOfSeedsText;
     public TimerBetweenWaves timerBetweenWaves;
     public Score score;
+    public Helper helper;
     public GameObject[] objectsToDeactivate;
+
+    public static bool isGamePaused;
 
     private Timer timer;
 
     [Header("Mission configuration")]
     public string initialQntOfPlants;
+
     public int expectedMissionDurationInSeconds;
     public int seedsReplenishedAfterWave;
     public int timeBetweenWaves;
-    
+
     private void OnEnable() {
         InputManager.OnTap += processTap;
         WavesManager.OnWaveEnded += waveEnded;
@@ -41,7 +46,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void waveEnded() {
-        activatePlantingMode(true);
+        Invoke("activatePlantingMode", 2); // wait 2 second to player don't plant in wrong place accidentally
         qntOfSeedsText.text = (int.Parse(qntOfSeedsText.text) + seedsReplenishedAfterWave).ToString();
     }
 
@@ -50,15 +55,20 @@ public class GameManager : MonoBehaviour {
             for (int i = 0; i < objectsToDeactivate.Length; i++) {
                 objectsToDeactivate[i].SetActive(true);
             }
-            timerBetweenWaves.startTimer(timeBetweenWaves);
+
             allowPlanting(true);
-        }
-        else {
+            timerBetweenWaves.startTimer(timeBetweenWaves);
+        } else {
             for (int i = 0; i < objectsToDeactivate.Length; i++) {
                 objectsToDeactivate[i].SetActive(false);
             }
+
             allowPlanting(false);
         }
+    }
+
+    private void activatePlantingMode() { // used to add delay before enable planting mode
+        activatePlantingMode(true);
     }
 
     public void startWave() {
@@ -84,7 +94,8 @@ public class GameManager : MonoBehaviour {
         int[] plantsSelected = selectedPlants.getSelectedPlants();
         if (plantsSelected != null) {
             planting.plant(plantsSelected, screenPosition, int.Parse(qntOfSeedsText.text));
-            qntOfSeedsText.text = (int.Parse(qntOfSeedsText.text) - planting.getQntOfPlantsInstantiatedLastTap()).ToString();
+            qntOfSeedsText.text =
+                (int.Parse(qntOfSeedsText.text) - planting.getQntOfPlantsInstantiatedLastTap()).ToString();
         }
     }
 
@@ -103,6 +114,16 @@ public class GameManager : MonoBehaviour {
         timer.pauseTimer();
         score.calculateScore(expectedMissionDurationInSeconds);
         score.showScore();
+    }
+
+    public void pauseGame() {
+        isGamePaused = true;
+        Time.timeScale = 0;
+    }
+
+    public void resumeGame() {
+        isGamePaused = false;
+        Time.timeScale = 1;
     }
 
 }

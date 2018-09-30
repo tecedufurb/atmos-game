@@ -1,35 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Timer : MonoBehaviour {
 
-    private float currentTime;
-    private bool timerRunning;
-
-    void Update() {
-        if (timerRunning) {
-            currentTime += Time.deltaTime;
-        }
-    }
+    private Coroutine timerCoroutine;
+    private int secondsElapsed;
 
     public void startTimer() {
-        resumeTimer();
+        timerCoroutine = StartCoroutine(updateTimer());
     }
 
     public void resumeTimer() {
-        timerRunning = true;
+        timerCoroutine = StartCoroutine(updateTimer());
     }
 
     public void pauseTimer() {
-        timerRunning = false;
+        StopCoroutine(timerCoroutine);
     }
 
     public int getTotalTimeElapsed() {
-        return (int)currentTime;
+        return secondsElapsed;
     }
 
     public void resetTimer() {
-        currentTime = 0f;
+        secondsElapsed = 0;
         resumeTimer();
+    }
+
+    private IEnumerator updateTimer() {
+        while (true) {
+            yield return new WaitForSeconds(1);
+            secondsElapsed++;
+        }
     }
 
 }
