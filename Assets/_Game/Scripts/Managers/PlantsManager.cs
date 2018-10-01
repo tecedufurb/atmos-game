@@ -17,13 +17,20 @@ public class PlantsManager : MonoBehaviour {
     #endregion
 
     private void OnEnable() {
-        Planting.OnAddPlant += addPlant;
+        Planting.OnPlantsAddedOnLastTap += addPlants;
         PlantController.OnPlantIsDead += removePlant;
     }
 
     private void OnDisable() {
-        Planting.OnAddPlant -= addPlant;
+        Planting.OnPlantsAddedOnLastTap -= addPlants;
         PlantController.OnPlantIsDead -= removePlant;
+    }
+
+    private void addPlants(GameObject[] plants) {
+        for (int i = 0; i < plants.Length; i++) {
+            if (plants[i] != null) // check if have plants on array
+                addPlant(plants[i]);
+        }
     }
 
     private void addPlant(GameObject plant) {
@@ -32,11 +39,10 @@ public class PlantsManager : MonoBehaviour {
             plantsOutsideOfRiparianForest.Add(plant);
         else if (plantController.isOnLeftSide()) {
             plantsLeftSideRiparianForest.Add(plant);
-            notifyChange();
-        }
-        else {
+            notifyChangeOnRiparianForest();
+        } else {
             plantsRightSideRiparianForest.Add(plant);
-            notifyChange();
+            notifyChangeOnRiparianForest();
         }
     }
 
@@ -55,7 +61,7 @@ public class PlantsManager : MonoBehaviour {
             for (int i = 0; i < plantsLeftSideRiparianForest.Count; i++) {
                 if (plantsLeftSideRiparianForest[i].name == plant.name) {
                     plantsLeftSideRiparianForest.RemoveAt(i);
-                    notifyChange();
+                    notifyChangeOnRiparianForest();
                     return;
                 }
             }
@@ -64,7 +70,7 @@ public class PlantsManager : MonoBehaviour {
             for (int i = 0; i < plantsRightSideRiparianForest.Count; i++) {
                 if (plantsRightSideRiparianForest[i].name == plant.name) {
                     plantsRightSideRiparianForest.RemoveAt(i);
-                    notifyChange();
+                    notifyChangeOnRiparianForest();
                     return;
                 }
             }
@@ -98,7 +104,7 @@ public class PlantsManager : MonoBehaviour {
         return result;
     }
 
-    private void notifyChange() {
+    private void notifyChangeOnRiparianForest() {
         if (OnRiparianForestChanged != null) // notify that a change has been made in riparian forest
             OnRiparianForestChanged(plantsLeftSideRiparianForest.Count + plantsRightSideRiparianForest.Count);
     }

@@ -24,43 +24,46 @@ public class Planting : MonoBehaviour {
     private Ray firstRay;
     private int plantingAttempts;
     private int plantsCountHelper;
+    private GameObject[] plantsInstantiatedOnLastTap;
 
     #endregion
 
     #region Events
 
-    public delegate void AddPlant(GameObject plant);
+    public delegate void PlantsAddedOnLastTap(GameObject[] plants);
 
-    public static event AddPlant OnAddPlant;
+    public static event PlantsAddedOnLastTap OnPlantsAddedOnLastTap;
 
     #endregion
 
 
+    public void plant(int[] selectedPlants, Vector2 screenPosition, int qntOfSeedsAvailable) {
+        //Debug.DrawRay(firstRay.origin, firstRay.direction * 1000, Color.yellow, 40);
 
-    public void plant(int[] selectedPlants, Vector2 screenPosition,int qntOfSeedsAvailable) {
         int[] plantsToInstantiate = getPlantsToInstantiate(selectedPlants);
         firstRay = Camera.main.ScreenPointToRay(screenPosition);
-        //Debug.DrawRay(firstRay.origin, firstRay.direction * 1000, Color.yellow, 40);
-        
-        qntOfPlantsInstantiated = 0; 
+
+        // resets
+        plantsInstantiatedOnLastTap = new GameObject[5];
         plantingAttempts = 0;
         plantsCountHelper = 0;
+        qntOfPlantsInstantiated = 0;
         while (plantsCountHelper < plantsToInstantiate.Length && plantingAttempts <= maxPlantingAttempts &&
-               plantsCountHelper < quantityOfPlantsByTap && qntOfSeedsAvailable>0) {
-            if (plant(plantsToInstantiate[plantsCountHelper], newRandomRay())) {
+               plantsCountHelper < quantityOfPlantsByTap && qntOfSeedsAvailable > 0) {
+            if (plant(plantsToInstantiate[plantsCountHelper], newRandomRay(), plantsCountHelper)) {
                 qntOfSeedsAvailable--;
-                plantsCountHelper++;
-            }
-            else
+            } else
                 plantingAttempts++;
         }
+
+        if (OnPlantsAddedOnLastTap != null)
+            OnPlantsAddedOnLastTap(plantsInstantiatedOnLastTap);
     }
 
-    private bool plant(int plant, Ray ray) {
+    private bool plant(int plant, Ray ray, int countHelper) {
         hitsInRaycast = Physics.RaycastAll(ray, raycastDistance);
         if (validateRay()) {
-            if (OnAddPlant != null)
-                OnAddPlant(instantiatePlant(plant, getHitWithTerrain().point));
+            plantsInstantiatedOnLastTap[countHelper] = instantiatePlant(plant, getHitWithTerrain().point);
             return true;
         }
 
@@ -68,10 +71,12 @@ public class Planting : MonoBehaviour {
     }
 
     private GameObject instantiatePlant(int plant, Vector3 position) {
-        GameObject plantObject = Instantiate(plants[plant], position, plants[plant].transform.rotation,fatherOfPlants); // instancia planta
+        GameObject plantObject =
+            Instantiate(plants[plant], position, plants[plant].transform.rotation, fatherOfPlants); // instancia planta
         plantObject.name = "Plant" + qntOfPlantsCreated;
         plantObject.GetComponent<PlantController>().initializePlant(getSideOfRiparianForest());
         qntOfPlantsCreated++;
+        plantsCountHelper++;
         qntOfPlantsInstantiated++;
         return plantObject;
     }
@@ -156,29 +161,25 @@ public class Planting : MonoBehaviour {
             for (int i = 0; i < plantsToInstantiate.Length; i++) {
                 plantsToInstantiate[i] = selectedPlants[0];
             }
-        }
-        else if (selectedPlants.Length <= 2) {
+        } else if (selectedPlants.Length <= 2) {
             plantsToInstantiate[0] = selectedPlants[0];
             plantsToInstantiate[1] = selectedPlants[0];
             plantsToInstantiate[2] = selectedPlants[1];
             plantsToInstantiate[3] = selectedPlants[1];
             plantsToInstantiate[4] = selectedPlants[Random.Range(0, 2)]; // random between 0 and 1
-        }
-        else if (selectedPlants.Length <= 3) {
+        } else if (selectedPlants.Length <= 3) {
             plantsToInstantiate[0] = selectedPlants[0];
             plantsToInstantiate[1] = selectedPlants[1];
             plantsToInstantiate[2] = selectedPlants[2];
             plantsToInstantiate[3] = selectedPlants[Random.Range(0, 3)]; // random between 0 and 2
             plantsToInstantiate[4] = selectedPlants[Random.Range(0, 3)]; // random between 0 and 2
-        }
-        else if (selectedPlants.Length <= 4) {
+        } else if (selectedPlants.Length <= 4) {
             plantsToInstantiate[0] = selectedPlants[0];
             plantsToInstantiate[1] = selectedPlants[1];
             plantsToInstantiate[2] = selectedPlants[2];
             plantsToInstantiate[3] = selectedPlants[3];
             plantsToInstantiate[4] = selectedPlants[Random.Range(0, 4)]; // random between 0 and 3
-        }
-        else if (selectedPlants.Length <= 5) {
+        } else if (selectedPlants.Length <= 5) {
             return selectedPlants;
         }
 
