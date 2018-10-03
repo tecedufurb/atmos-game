@@ -7520,7 +7520,6 @@ GameObject:
   - component: {fileID: 896766641}
   - component: {fileID: 896766640}
   - component: {fileID: 896766639}
-  - component: {fileID: 896766642}
   m_Layer: 0
   m_Name: PlantsManager
   m_TagString: Untagged
@@ -7598,19 +7597,6 @@ MonoBehaviour:
   - {fileID: 1182698940182368, guid: 0f441f2e5b31243178846c284d410c84, type: 2}
   - {fileID: 1769523439122992, guid: c8ab6637fbdd04f78b56014cc8b9609d, type: 2}
   - {fileID: 1116288241299382, guid: 3252670f861cb45dd8304310620c1ec5, type: 2}
---- !u!114 &896766642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 896766636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c313f296c77bc4216ba04a9701525a7a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  completationIndicator: {fileID: 1528942705}
-  plantsDiversity: {fileID: 896766639}
 --- !u!1 &902064264
 GameObject:
   m_ObjectHideFlags: 0
@@ -8496,6 +8482,7 @@ GameObject:
   - component: {fileID: 1006729935}
   - component: {fileID: 1006729934}
   - component: {fileID: 1006729936}
+  - component: {fileID: 1006729937}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8542,7 +8529,7 @@ MonoBehaviour:
   initialQntOfPlants: 80
   expectedMissionDurationInSeconds: 300
   seedsReplenishedAfterWave: 20
-  timeBetweenWaves: 60
+  timeBetweenWaves: 500
 --- !u!95 &1006729935
 Animator:
   serializedVersion: 3
@@ -8571,6 +8558,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01790e11f875c48c884752684ac19432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1006729937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1006729932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d8186183e6144a8983f15b6fdc86662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  riparianForestDisplay: {fileID: 1528942705}
+  qntOfPlantsOnEachSideOfRiver: 40
+  qntOfBoxesOnEachSide: 8
+  coordinateStartOfBoxes: -180
+  coordinateEndOfBoxes: 230
 --- !u!1001 &1041309983
 Prefab:
   m_ObjectHideFlags: 0

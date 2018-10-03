@@ -10,9 +10,15 @@ public class PlantsManager : MonoBehaviour {
     #region Events
 
     public delegate void
-        RiparianForestChanged(int qntOfPlantsInRiparianArea); // called when a plant is added or removed of terrain
+        PlantAddedToRiparianForest(bool isOnLeftSide, Transform plant); // called when a plant is added of riparian area
 
-    public static event RiparianForestChanged OnRiparianForestChanged;
+    public static event PlantAddedToRiparianForest OnPlantAddedToRiparianForest;
+
+    public delegate void
+        PlantRemovedOfRiparianForest(bool isOnLeftSide,
+        Transform plant); // called when a plant is removed of riparian area
+
+    public static event PlantRemovedOfRiparianForest OnPlantRemovedOfRiparianForest;
 
     #endregion
 
@@ -39,11 +45,13 @@ public class PlantsManager : MonoBehaviour {
             plantsOutsideOfRiparianForest.Add(plant);
         else if (plantController.isOnLeftSide()) {
             plantsLeftSideRiparianForest.Add(plant);
-            notifyChangeOnRiparianForest();
-        } else {
+            notifyPlantAddedToRiparianForest(true, plant);
+        } else if (!plantController.isOnLeftSide()) {
             plantsRightSideRiparianForest.Add(plant);
-            notifyChangeOnRiparianForest();
+            notifyPlantAddedToRiparianForest(false, plant);
         }
+        
+        throw new System.Exception("Plant have not been added!");
     }
 
     private void removePlant(GameObject plant) {
@@ -60,8 +68,8 @@ public class PlantsManager : MonoBehaviour {
         if (plantController.isOnLeftSide())
             for (int i = 0; i < plantsLeftSideRiparianForest.Count; i++) {
                 if (plantsLeftSideRiparianForest[i].name == plant.name) {
+                    notifyPlantRemovedOfRiparianForest(true, plant);
                     plantsLeftSideRiparianForest.RemoveAt(i);
-                    notifyChangeOnRiparianForest();
                     return;
                 }
             }
@@ -69,13 +77,13 @@ public class PlantsManager : MonoBehaviour {
         if (!plantController.isOnLeftSide())
             for (int i = 0; i < plantsRightSideRiparianForest.Count; i++) {
                 if (plantsRightSideRiparianForest[i].name == plant.name) {
+                    notifyPlantRemovedOfRiparianForest(false, plant);
                     plantsRightSideRiparianForest.RemoveAt(i);
-                    notifyChangeOnRiparianForest();
                     return;
                 }
             }
 
-        Debug.Log("Plant have not been removed!");
+        throw new System.Exception("Plant have not been removed!");
     }
 
     public GameObject getPlantOfLeftSide() {
@@ -104,9 +112,22 @@ public class PlantsManager : MonoBehaviour {
         return result;
     }
 
-    private void notifyChangeOnRiparianForest() {
-        if (OnRiparianForestChanged != null) // notify that a change has been made in riparian forest
-            OnRiparianForestChanged(plantsLeftSideRiparianForest.Count + plantsRightSideRiparianForest.Count);
+    public List<GameObject> getPlantsLeftSideOfRiparianForest() {
+        return plantsLeftSideRiparianForest;
+    }
+
+    public List<GameObject> getPlantsRightSideOfRiparianForest() {
+        return plantsRightSideRiparianForest;
+    }
+
+    private void notifyPlantAddedToRiparianForest(bool isOnLeftSide, GameObject plant) {
+        if (OnPlantAddedToRiparianForest != null)
+            OnPlantAddedToRiparianForest(isOnLeftSide, plant.transform);
+    }
+
+    private void notifyPlantRemovedOfRiparianForest(bool isOnLeftSide, GameObject plant) {
+        if (OnPlantRemovedOfRiparianForest != null)
+            OnPlantRemovedOfRiparianForest(isOnLeftSide, plant.transform);
     }
 
 }

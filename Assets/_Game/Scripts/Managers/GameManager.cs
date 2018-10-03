@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour {
         InputManager.OnTap += processTap;
         WavesManager.OnWaveEnded += waveEnded;
         TimerBetweenWaves.OnTimeIsUp += startWave;
-        RiparianForestCompletation.OnRiparianForestIsReady += displayScore;
+        RiparianForestValidation.OnRiparianForestIsComplete += displayScore;
     }
 
     private void OnDisable() {
         InputManager.OnTap -= processTap;
         WavesManager.OnWaveEnded -= waveEnded;
         TimerBetweenWaves.OnTimeIsUp -= startWave;
-        RiparianForestCompletation.OnRiparianForestIsReady -= displayScore;
+        RiparianForestValidation.OnRiparianForestIsComplete -= displayScore;
     }
 
     void Start() {
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void displayScore() {
-        RiparianForestCompletation.OnRiparianForestIsReady -= displayScore; // when display score can unsubscribe, so that displayScore isn't called more than once
+        RiparianForestValidation.OnRiparianForestIsComplete -= displayScore; // when display score can unsubscribe, so that displayScore isn't called more than once
         timer.pauseTimer();
         score.calculateScore(expectedMissionDurationInSeconds);
         score.showScore();
