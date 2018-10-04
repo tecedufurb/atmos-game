@@ -70,11 +70,11 @@ public class Planting : MonoBehaviour {
         return false;
     }
 
-    private GameObject instantiatePlant(int plant, Vector3 position) {
+    private GameObject instantiatePlant(int plantNumber, Vector3 position) {
         GameObject plantObject =
-            Instantiate(plants[plant], position, plants[plant].transform.rotation, fatherOfPlants); // instancia planta
+            Instantiate(plants[plantNumber], position, plants[plantNumber].transform.rotation, fatherOfPlants); // instantiate plant
         plantObject.name = "Plant" + qntOfPlantsCreated;
-        plantObject.GetComponent<PlantController>().initializePlant(getSideOfRiparianForest());
+        plantObject.GetComponent<PlantController>().initializePlant(getSideOfRiparianForest(),plantNumber);
         qntOfPlantsCreated++;
         plantsCountHelper++;
         qntOfPlantsInstantiated++;
@@ -109,7 +109,7 @@ public class Planting : MonoBehaviour {
                 return false;
         }
 
-        if (collisionCounter != haveToCollide.Length) // validate if have collided with everithing in haveToCollide
+        if (collisionCounter != haveToCollide.Length) // validate if have collided with everything in haveToCollide
             return false;
 
         foreach (RaycastHit hit in hitsInRaycast) { // validate if have not collided with other objects
