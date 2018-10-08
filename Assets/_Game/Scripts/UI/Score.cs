@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
     public Timer timer;
-    public PlantsDiversity plantsDiversity;
+    public PlantsDiversityValidation plantsDiversity;
 
     #region Score
 

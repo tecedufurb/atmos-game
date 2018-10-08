@@ -9,15 +9,16 @@ public class RiparianForestValidation : MonoBehaviour {
     private int[] boxesLeftSide; // each box have the qtd of plants that are inside of it
     private int[] boxesRightSide; // each box have the qtd of plants that are inside of it
 
-    private int qntOfPlantsOnEachBox;
-    private int sizeOfEachBox;
+    private int qntOfPlantsOnEachSideOfRiver;
+    private float sizeOfEachBox;
 
     [Header("Riparian forest validation config")]
-    public int qntOfPlantsOnEachSideOfRiver;
+    public int qntOfPlantsOnEachBox;
 
     public int qntOfBoxesOnEachSide;
-    public int coordinateStartOfBoxes;
-    public int coordinateEndOfBoxes;
+
+    public float coordinateStartOfBoxes;
+    public float coordinateEndOfBoxes;
 
     #region Events
 
@@ -35,7 +36,6 @@ public class RiparianForestValidation : MonoBehaviour {
     private void OnDisable() {
         PlantsManager.OnPlantAddedToRiparianForest -= updatePlantAdded;
         PlantsManager.OnPlantRemovedOfRiparianForest -= updatePlantRemoved;
-        ;
     }
 
     void Start() {
@@ -43,36 +43,35 @@ public class RiparianForestValidation : MonoBehaviour {
     }
 
     private void createBoxes() {
-        qntOfPlantsOnEachBox = qntOfPlantsOnEachSideOfRiver / qntOfBoxesOnEachSide;
+        qntOfPlantsOnEachSideOfRiver = qntOfPlantsOnEachBox * qntOfBoxesOnEachSide;
 
         sizeOfEachBox = (Mathf.Abs(coordinateStartOfBoxes) + Mathf.Abs(coordinateEndOfBoxes)) / qntOfBoxesOnEachSide;
-
         boxesLeftSide = new int[qntOfBoxesOnEachSide];
         boxesRightSide = new int[qntOfBoxesOnEachSide];
     }
 
-    private void updatePlantAdded(bool isOnLeftSide, Transform plant) { // called when a plants is added to riparian area
-        
-        int box = checkOnWhichBoxPlantIs(plant);
+    private void updatePlantAdded(GameObject plant) { // called when a plants is added to riparian area
+
+        int box = checkOnWhichBoxPlantIs(plant.transform);
 
         if (box == int.MaxValue) // if is not on riparian area
             return;
 
-        if (isOnLeftSide)
+        if (plant.GetComponent<PlantController>().isOnLeftSide())
             boxesLeftSide[box]++;
         else
             boxesRightSide[box]++;
         updateDisplay();
     }
 
-    private void updatePlantRemoved(bool isOnLeftSide, Transform plant) { // called when a plants is removed of riparian area
-        
-        int box = checkOnWhichBoxPlantIs(plant);
+    private void updatePlantRemoved(GameObject plant) { // called when a plants is removed of riparian area
+
+        int box = checkOnWhichBoxPlantIs(plant.transform);
 
         if (box == int.MaxValue) // if is not on riparian area
             return;
 
-        if (isOnLeftSide)
+        if (plant.GetComponent<PlantController>().isOnLeftSide())
             boxesLeftSide[box]--;
         else
             boxesRightSide[box]--;
@@ -82,8 +81,6 @@ public class RiparianForestValidation : MonoBehaviour {
     private void updateDisplay() {
         int totalQtdPlantsLeftSide = 0;
         int totalQtdPlantsRightSide = 0;
-        float percentageLeftSide = 0f;
-        float percentageRightSide = 0f;
 
         for (int i = 0; i < boxesLeftSide.Length; i++) {
             if (boxesLeftSide[i] > qntOfPlantsOnEachBox) // allow on each box only max qnt allowed  
@@ -99,8 +96,8 @@ public class RiparianForestValidation : MonoBehaviour {
                 totalQtdPlantsRightSide += boxesRightSide[i];
         }
 
-        percentageLeftSide = (totalQtdPlantsLeftSide * 50) / qntOfPlantsOnEachSideOfRiver;
-        percentageRightSide = (totalQtdPlantsRightSide * 50) / qntOfPlantsOnEachSideOfRiver;
+        float percentageLeftSide = (float) (totalQtdPlantsLeftSide * 50) / qntOfPlantsOnEachSideOfRiver;
+        float percentageRightSide = (float) (totalQtdPlantsRightSide * 50) / qntOfPlantsOnEachSideOfRiver;
 
         int percentageOfBothSides = (int) (percentageLeftSide + percentageRightSide);
 
@@ -115,19 +112,18 @@ public class RiparianForestValidation : MonoBehaviour {
         if (!checkIfPlantIsOnRiparianForestArea(plant)) // if is not on riparian area use a value as escape
             return Int32.MaxValue;
 
-        int plantZ_Position = (int) plant.position.z;
+        float plantZ_Position = plant.position.z;
+
         int box = 0;
-        int helper = coordinateStartOfBoxes;
-        while (true) {
-            if (plantZ_Position > helper) {
-                helper += sizeOfEachBox;
-                box++;
-            } else {
-                break;
-            }
+        float helper = coordinateStartOfBoxes;
+
+        while (plantZ_Position > helper) {
+            helper += sizeOfEachBox;
+            box++;
         }
 
-        return box - 1;
+        box--;
+        return box;
     }
 
     private bool checkIfPlantIsOnRiparianForestArea(Transform plant) {

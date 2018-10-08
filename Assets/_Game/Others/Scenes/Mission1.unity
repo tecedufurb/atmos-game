@@ -7559,10 +7559,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 896766636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188fba006a9af44b594c3124ed6b108e, type: 3}
+  m_Script: {fileID: 11500000, guid: f38229ab06ed74f73bcd09f6a3cbd82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentQuality: {fileID: 281867774}
+  debugText: {fileID: 1200857080}
 --- !u!114 &896766640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8526,7 +8527,7 @@ MonoBehaviour:
   - {fileID: 765400629}
   - {fileID: 2090383586}
   - {fileID: 2138078718}
-  initialQntOfPlants: 80
+  initialQntOfPlants: 200
   expectedMissionDurationInSeconds: 300
   seedsReplenishedAfterWave: 20
   timeBetweenWaves: 500
@@ -8570,9 +8571,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   riparianForestDisplay: {fileID: 1528942705}
-  qntOfPlantsOnEachSideOfRiver: 40
+  qntOfPlantsOnEachBox: 4
   qntOfBoxesOnEachSide: 8
-  coordinateStartOfBoxes: -180
+  coordinateStartOfBoxes: -170
   coordinateEndOfBoxes: 230
 --- !u!1001 &1041309983
 Prefab:
@@ -8861,6 +8862,7 @@ RectTransform:
   - {fileID: 1962304361}
   - {fileID: 951456225}
   - {fileID: 687504586}
+  - {fileID: 1200857079}
   m_Father: {fileID: 762984387}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10177,6 +10179,80 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 434652, guid: d18bc5c5a34308844a5c5684e48318db, type: 2}
   m_PrefabInternal: {fileID: 1198467207}
+--- !u!1 &1200857078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1200857079}
+  - component: {fileID: 1200857081}
+  - component: {fileID: 1200857080}
+  m_Layer: 0
+  m_Name: DebugText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1200857079
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1200857078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1059836594}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -393, y: -24}
+  m_SizeDelta: {x: 200, y: 100}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1200857080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1200857078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 70
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 00
+--- !u!222 &1200857081
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1200857078}
 --- !u!1001 &1203660328
 Prefab:
   m_ObjectHideFlags: 0
@@ -16467,6 +16543,34 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 416522, guid: bee8d047e16101c438fb33382ab66935, type: 2}
   m_PrefabInternal: {fileID: 1916817300}
+--- !u!1 &1924529158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1924529159}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1924529159
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924529158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.9, y: 40.8, z: 230}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1933718701
 Prefab:
   m_ObjectHideFlags: 0
@@ -17817,7 +17921,7 @@ Prefab:
         type: 2}
       propertyPath: plantsDiversity
       value: 
-      objectReference: {fileID: 896766639}
+      objectReference: {fileID: 0}
     - target: {fileID: 114288534986524116, guid: 9e92737fa80ab446ab805d52e92bed1f,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

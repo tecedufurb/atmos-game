@@ -3,6 +3,7 @@
 public class PlantController : MonoBehaviour {
 
     private char sideOfRiver;
+    private int plantNumber; // used to calculate diversity
 
     #region Events
 
@@ -12,8 +13,9 @@ public class PlantController : MonoBehaviour {
 
     #endregion
 
-    public void initializePlant(char sideOfRiver) { // l==left ; r==right 0==outside of riparian forest
+    public void initializePlant(char sideOfRiver, int plantNumber) { // l==left ; r==right 0==outside of riparian forest
         this.sideOfRiver = sideOfRiver;
+        this.plantNumber = plantNumber;
     }
 
     void OnTriggerEnter(Collider other) {
@@ -34,6 +36,10 @@ public class PlantController : MonoBehaviour {
         if (sideOfRiver == 'l')
             return true;
         return false;
+    }
+
+    public int getPlantNumber() {
+        return plantNumber;
     }
 
 }
