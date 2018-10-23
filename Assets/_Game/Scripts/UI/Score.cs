@@ -27,7 +27,7 @@ public class Score : MonoBehaviour {
 
         timeBonus.text = "Bonus de tempo:    " + pointsByTime;
 
-        int pointsByDiversity = plantsDiversity.getDiversity() * 60;
+        int pointsByDiversity = plantsDiversity.getDiversity() * 3;
         diversityBonus.text = "    Diversidade:    " + pointsByDiversity;
 
         int total = pointsByTime + pointsByDiversity;

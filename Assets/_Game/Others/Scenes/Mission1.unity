@@ -17921,7 +17921,7 @@ Prefab:
         type: 2}
       propertyPath: plantsDiversity
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 896766639}
     - target: {fileID: 114288534986524116, guid: 9e92737fa80ab446ab805d52e92bed1f,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
