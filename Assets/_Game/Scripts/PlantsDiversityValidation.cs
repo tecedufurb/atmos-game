@@ -21,7 +21,7 @@ public class PlantsDiversityValidation : MonoBehaviour {
     private static readonly Color bad = new Color32(254, 108, 3, 255);
     private static readonly Color medium = new Color32(214, 152, 9, 255);
     private static readonly Color good = new Color32(230, 254, 0, 255);
-    private static readonly Color excelent = new Color32(0, 168, 36, 255);
+    private static readonly Color excelent = new Color32(0, 168, 5, 255);
 
     #endregion
 
