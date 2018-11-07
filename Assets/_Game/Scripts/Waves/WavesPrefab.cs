@@ -6,7 +6,7 @@ public class WavesPrefab {
     private static readonly List<ChainOfWaves> wavesMedium = new List<ChainOfWaves>();
     private static readonly List<ChainOfWaves> wavesHard = new List<ChainOfWaves>();
 
-    private static readonly TrollConfiguration trollConfigurationEasy = new TrollConfiguration(2, 0.5f, 70);
+    private static readonly TrollConfiguration trollConfigurationEasy = new TrollConfiguration(2, 0.5f, 30);
 
     private static void easyWaveModel1() {
         Wave wave1 = new Wave(5, new float[] {1}, 3f);
