@@ -87,8 +87,6 @@ public class PlantsManager : MonoBehaviour {
     public GameObject getPlantOfLeftSide() {
         if (plantsLeftSideRiparianForest.Count != 0)
             return plantsLeftSideRiparianForest[Random.Range(0, plantsLeftSideRiparianForest.Count)];
-        else if (plantsRightSideRiparianForest.Count != 0) // if there are no more plants in left side, return of right
-            return getPlantOfRightSide();
         else
             return null;
     }
@@ -96,8 +94,6 @@ public class PlantsManager : MonoBehaviour {
     public GameObject getPlantOfRightSide() {
         if (plantsRightSideRiparianForest.Count != 0)
             return plantsRightSideRiparianForest[Random.Range(0, plantsRightSideRiparianForest.Count)];
-        else if (plantsLeftSideRiparianForest.Count != 0) // if there are no more plants in right side, return of left
-            return getPlantOfLeftSide();
         else
             return null;
     }
