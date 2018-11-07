@@ -5,17 +5,15 @@ public class EnemiesManager : MonoBehaviour {
 
     public TrollManager trollManager;
 
-    public void spawnTroll(TrollConfiguration trollConfiguration,char sideOfRiver='0', int spawnNumber = int.MaxValue) {
+    public void spawnTroll(TrollConfiguration trollConfiguration, int spawnNumber = int.MaxValue) {
         // if spawNumber is omitted spawn on random spawn
         // if sideOfRiver is omitted spawn on random side
-        if (sideOfRiver == 'l') // left side
+        if (trollConfiguration.getIsOnLeftSideOfRiver()) // left side
             trollManager.spawnTrollOnLeftSide(trollConfiguration,spawnNumber);
-        else if (sideOfRiver == 'r') // right side
+        else if (!trollConfiguration.getIsOnLeftSideOfRiver()) // right side
             trollManager.spawnTrollOnRightSide(trollConfiguration,spawnNumber);
-        else if (sideOfRiver == '0') // random
-            trollManager.spawnTrollOnRandomSide(trollConfiguration,spawnNumber);
         else
-            throw new Exception("Invalid spawn location: " + sideOfRiver);
+            throw new Exception("Invalid spawn location: ");
     }
 
     public bool checkIfAllEnemiesAreDead() {

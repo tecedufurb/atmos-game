@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TrollManager : MonoBehaviour {
@@ -26,7 +27,7 @@ public class TrollManager : MonoBehaviour {
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnLeftSide[Random.Range(0, spawnLocationsOnLeftSide.Length)].position,
                 new Quaternion(), fatherOfTrolls);
-            troll.GetComponent<TrollController>().initializeTroll(trollConfiguration, true);
+            StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
         }
@@ -34,7 +35,7 @@ public class TrollManager : MonoBehaviour {
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnLeftSide[spawnNumber].position,
                 new Quaternion(), fatherOfTrolls);
-            troll.GetComponent<TrollController>().initializeTroll(trollConfiguration, true);
+            StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
         }
@@ -47,7 +48,7 @@ public class TrollManager : MonoBehaviour {
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnRightSide[Random.Range(0, spawnLocationsOnRightSide.Length)].position,
                 new Quaternion(), fatherOfTrolls);
-            troll.GetComponent<TrollController>().initializeTroll(trollConfiguration, false);
+            StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
         }
@@ -55,7 +56,7 @@ public class TrollManager : MonoBehaviour {
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnRightSide[spawnNumber].position,
                 new Quaternion(), fatherOfTrolls);
-            troll.GetComponent<TrollController>().initializeTroll(trollConfiguration, false);
+            StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
         }
@@ -88,6 +89,11 @@ public class TrollManager : MonoBehaviour {
         foreach (GameObject troll in trolls) {
             troll.GetComponent<TrollController>().sentTrollToUnspawn();
         }
+    }
+    
+    private IEnumerator initializeTroll(GameObject troll,TrollConfiguration trollConfiguration) { // wait 0.5 because start haven't played yet
+        yield return new WaitForSeconds(0.5f);
+        troll.GetComponent<TrollController>().initializeEnemyConfiguration(trollConfiguration);
     }
 
 }

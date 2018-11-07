@@ -15,11 +15,10 @@ public class FPSDisplay : MonoBehaviour {
 
         Rect rect = new Rect(w/4, h-50, 200, 10);
         style.alignment = TextAnchor.MiddleCenter;
-        style.fontSize = h * 2 / 30;
+        style.fontSize = h * 2 / 40;
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
-        float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
-        string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+        string text = string.Format("({0:0.0} Fps)", fps);
         GUI.Label(rect, text, style);
     }
 

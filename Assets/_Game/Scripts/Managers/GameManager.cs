@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour {
         hits = Physics.RaycastAll(ray, 500f);
         for (int i = 0; i < hits.Length; i++) {
             if (hits[i].transform.CompareTag("Enemy"))
-                hits[i].transform.GetComponent<TrollController>().hit();
+                hits[i].transform.GetComponent<TrollController>().takeDamage();
         }
     }
 

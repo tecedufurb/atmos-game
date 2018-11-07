@@ -5,17 +5,7 @@ using Random = UnityEngine.Random;
 
 public class TrollController : AbstractEnemy {
 
-    private Transform unspawnPoint;
-    public Collider clubCollider;
-
-    private bool isAttacking;
-    private int lastAttackType;
     private bool isOnLeftSideOfRiver;
-    private bool isChasing = true;
-
-    private float stunTime;
-    private float currentStunTime;
-    private bool isStunned;
 
     #region Events
 
@@ -37,156 +27,90 @@ public class TrollController : AbstractEnemy {
         PlantController.OnPlantIsDead -= checkIfMustChangeTarget;
     }
 
-    public void initializeTroll(TrollConfiguration trollConfiguration, bool sideOfRiver) {
-        life = trollConfiguration.getLife();
-        speed = trollConfiguration.getSpeed();
-        stunTime = trollConfiguration.getStunTime();
-        isOnLeftSideOfRiver = sideOfRiver;
+    public override void initializeEnemyConfiguration(IEnemyConfiguration trollConfiguration) {
+        print("init");
+        TrollConfiguration trollConfig = trollConfiguration as TrollConfiguration;
+        life = trollConfig.getLife();
+        speed = trollConfig.getSpeed();
+        navMeshAgent.speed = speed;
+        defaultStunTime = trollConfig.getStunTime();
+        isOnLeftSideOfRiver = trollConfig.getIsOnLeftSideOfRiver();
+
+        isWaiting = false; // set to false so that enemy can attack
+        setNextTarget(); // update current target when receive on witch side of river is
+        walkToCurrentTarget();
+
         unspawnPoint = TargetSeeker.getInstance().getEndPoint(isOnLeftSideOfRiver);
     }
 
-    void Start() {
-        gameObject.SetActive(true);
-        animator = GetComponent<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.speed = speed;
-        enableClubCollider(false);
-        setNextTarget();
-        goToTarget();
-    }
-
-    public override void goToTarget() {
+    protected override void walkToCurrentTarget() {
+        print("walk");
         if (!navMeshAgent.enabled) // check if navMesh is enabled
             return;
+        setAttackCollider(false);
         navMeshAgent.SetDestination(target.position);
-        animator.SetBool("Move", true);
-        isAttacking = false;
+        enemyAnimator.walk();
     }
 
-    public override void hit() {
-        animator.SetTrigger("Hit1");
+    public override void takeDamage() {
+        setAttackCollider(false);
+        enemyAnimator.takeHit(1);
         life--;
         if (life <= 0)
             die();
-        else if (isAttacking) {
-            isAttacking = false;
-            isStunned = true;
-            currentStunTime = 0;
+        else if (enemyAnimator.checkIfIsAttacking()) {
+            setAttackCollider(false);
+            getStunned();
         }
     }
 
-    public override void attack() {
-        if (CheckIfIsAttacking()) //if already is attacking, do nothing
-            return;
-        enableClubCollider(true);
+    protected override void attack() {
+        print("attack");
+        setAttackCollider(true);
         transform.LookAt(target.transform);
-        isAttacking = true;
-        lastAttackType = Random.Range(1, 3);
-        animator.SetTrigger("Attack" + lastAttackType);
-    }
+        enemyAnimator.attack(Random.Range(1, 3)); // 1 or 2
 
-    private bool checkIfAttackHaveEnded() {
-        if (lastAttackType == 1) { // verify if animation have ended based on last attack type
-            if (!AnimatorIsPlaying("strike")) {
-                isAttacking = false;
-                enableClubCollider(false);
-                return true;
-            }
-        }
-        else {
-            if (!AnimatorIsPlaying("powerstrike")) {
-                isAttacking = false;
-                enableClubCollider(false);
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private bool CheckIfIsAttacking() {
-        if (AnimatorIsPlaying("strike") || AnimatorIsPlaying("powerstrike"))
-            return true;
-        return false;
+        doNothing(0.5f); // when starts a attack wait half a second before can attack again
     }
 
     void Update() {
-        if (isChasing)
-            // Check if we've reached the destination
-            if (!navMeshAgent.pathPending) {
-                if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance) {
-                    if (!navMeshAgent.hasPath || navMeshAgent.velocity.sqrMagnitude == 0f) {
-                        if (!isAttacking && !isStunned)
-                            attack();
-                        else {
-                            if (checkIfAttackHaveEnded())
-                                if (isStunned)
-                                    updateIsStunned();
-                                else {
-                                    setNextTarget();
-                                    goToTarget();
-                                }
-                        }
-                    }
-                }
+        if (haveReachedDestination()) {
+            if (canAttack()) {
+                attack();
             }
-    }
-
-    private void updateIsStunned() {
-        currentStunTime += Time.deltaTime;
-        if (currentStunTime > stunTime) {
-            currentStunTime = 0;
-            isStunned = false;
         }
     }
 
     private void checkIfMustChangeTarget(GameObject plant) {
-        if (plant.name != target.name)
-            return;
+            if (target != null && plant.name != target.name)
+                return;
         setNextTarget();
-        goToTarget();
-    }
-
-    protected override void resetVariables() {
-        target = null;
-        isAttacking = false;
-        lastAttackType = 0;
-        currentStunTime = 0;
-        isStunned = false;
-    }
-
-    private void stopChasing() {
-        navMeshAgent.isStopped = true;
-        isChasing = false;
+        walkToCurrentTarget();
     }
 
     private void disableColliders() { // disable colliders to troll sink into ground
         GetComponent<BoxCollider>().enabled = false;
-        enableClubCollider(false);
-        navMeshAgent.enabled = false;
+        setAttackCollider(false);
+        navMeshAgent.enabled = false; // agent have a collider
     }
 
     public override void die() {
-        stopChasing();
+        stopEnemy();
         disableColliders();
-        animator.SetTrigger("Die" + Random.Range(1, 3));
-        //resetVariables();
+        enemyAnimator.die(Random.Range(1, 3));
         if (OnTrollIsDead != null)
             OnTrollIsDead(gameObject);
     }
 
     private void setNextTarget() {
+        print("set next target");
         if (OnGetNextTarget != null)
             target = OnGetNextTarget(isOnLeftSideOfRiver);
     }
 
     public void sentTrollToUnspawn() {
         target = unspawnPoint;
-        goToTarget();
-    }
-
-    private void enableClubCollider(Boolean value) {
-        clubCollider.enabled = value;
+        walkToCurrentTarget();
     }
 
 }

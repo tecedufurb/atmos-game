@@ -3,9 +3,9 @@
 public class ChainOfWaves {
 
     private readonly List<Wave> waves;
-    private readonly List<IEnemyConfiguration> enemiesCofiguration;
+    private readonly List<EnemyOfWaveConfiguration> enemiesCofiguration;
 
-    public ChainOfWaves(List<Wave> waves,List<IEnemyConfiguration> enemiesCofiguration) {
+    public ChainOfWaves(List<Wave> waves,List<EnemyOfWaveConfiguration> enemiesCofiguration) {
         this.waves = waves;
         this.enemiesCofiguration = enemiesCofiguration;
     }
@@ -15,7 +15,7 @@ public class ChainOfWaves {
     }
     
     public IEnemyConfiguration getEnemyConfiguration(int position) {
-        return enemiesCofiguration[position];
+        return enemiesCofiguration[position].getEnemy();
     }
 
 }
