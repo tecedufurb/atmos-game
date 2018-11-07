@@ -5953,13 +5953,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1590457163}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0.5735764, y: 0, z: 0, w: 0.8191521}
   m_LocalPosition: {x: 0.5, y: 4.9, z: -191.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 387447414}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
 --- !u!45 &1590457165
 Skybox:
   m_ObjectHideFlags: 0
@@ -5981,8 +5981,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushForce: 30
   IgnoreGuiFingers: 1
-  MinZoom: 40
-  MaxZoom: 60
+  MinZoom: 60
+  MaxZoom: 80
 --- !u!54 &1590457167
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6033,7 +6033,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.044982698, g: 0.6455792, b: 0.7647059, a: 0}
+  m_BackGroundColor: {r: 0.369, g: 0.349, b: 0.341, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -6042,7 +6042,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6912,7 +6912,7 @@ Transform:
   m_GameObject: {fileID: 1988777457}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 3.9}
-  m_LocalScale: {x: 430.87048, y: 50, z: 270.40524}
+  m_LocalScale: {x: 349.60632, y: 50, z: 249.59686}
   m_Children:
   - {fileID: 7684310}
   - {fileID: 681165794}
