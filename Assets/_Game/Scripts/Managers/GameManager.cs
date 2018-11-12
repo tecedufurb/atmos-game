@@ -25,14 +25,14 @@ public class GameManager : MonoBehaviour {
     public int timeBetweenWaves;
 
     private void OnEnable() {
-        InputManager.OnTap += processTap;
+        InputManager.OnPlantTap += plant;
         WavesManager.OnWaveEnded += waveEnded;
         TimerBetweenWaves.OnTimeIsUp += startWave;
         RiparianForestValidation.OnRiparianForestIsComplete += displayScore;
     }
 
     private void OnDisable() {
-        InputManager.OnTap -= processTap;
+        InputManager.OnPlantTap -= plant;
         WavesManager.OnWaveEnded -= waveEnded;
         TimerBetweenWaves.OnTimeIsUp -= startWave;
         RiparianForestValidation.OnRiparianForestIsComplete -= displayScore;
@@ -80,37 +80,23 @@ public class GameManager : MonoBehaviour {
         planting.enabled = state;
     }
 
-    private void processTap(Vector2 screenPosition) {
-        if (planting.enabled)
-            plant(screenPosition);
-        else
-            tapAttack(screenPosition);
-    }
-
     private void plant(Vector2 screenPosition) {
-        if (int.Parse(qntOfSeedsText.text) <= 0)
-            print("out of seeds"); // TODO show alert of out of seeds
+        if (planting.enabled) {
+            if (int.Parse(qntOfSeedsText.text) <= 0)
+                print("out of seeds"); // TODO show alert of out of seeds
 
-        int[] plantsSelected = selectedPlants.getSelectedPlants();
-        if (plantsSelected != null) {
-            planting.plant(plantsSelected, screenPosition, int.Parse(qntOfSeedsText.text));
-            qntOfSeedsText.text =
-                (int.Parse(qntOfSeedsText.text) - planting.getQntOfPlantsInstantiatedLastTap()).ToString();
-        }
-    }
-
-    private void tapAttack(Vector2 screenPosition) {
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(ray, 500f);
-        for (int i = 0; i < hits.Length; i++) {
-            if (hits[i].transform.CompareTag("Enemy"))
-                hits[i].transform.GetComponent<TrollController>().takeDamage();
+            int[] plantsSelected = selectedPlants.getSelectedPlants();
+            if (plantsSelected != null) {
+                planting.plant(plantsSelected, screenPosition, int.Parse(qntOfSeedsText.text));
+                qntOfSeedsText.text =
+                    (int.Parse(qntOfSeedsText.text) - planting.getQntOfPlantsInstantiatedLastTap()).ToString();
+            }
         }
     }
 
     private void displayScore() {
-        RiparianForestValidation.OnRiparianForestIsComplete -= displayScore; // when display score can unsubscribe, so that displayScore isn't called more than once
+        RiparianForestValidation.OnRiparianForestIsComplete -=
+            displayScore; // when display score can unsubscribe, so that displayScore isn't called more than once
         timer.pauseTimer();
         score.calculateScore(expectedMissionDurationInSeconds);
         score.showScore();
