@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrollManager : MonoBehaviour {
 
     public GameObject trollPrefab;
-    public Transform fatherOfTrolls;
+    public Transform trollsParent;
     
     public Transform[] spawnLocationsOnLeftSide;
     public Transform[] spawnLocationsOnRightSide;
@@ -26,7 +26,7 @@ public class TrollManager : MonoBehaviour {
         if (spawnNumber == int.MaxValue) { // if parameter is omitted spawn on random spawn
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnLeftSide[Random.Range(0, spawnLocationsOnLeftSide.Length)].position,
-                new Quaternion(), fatherOfTrolls);
+                new Quaternion(), trollsParent);
             StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
@@ -34,7 +34,7 @@ public class TrollManager : MonoBehaviour {
         else {
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnLeftSide[spawnNumber].position,
-                new Quaternion(), fatherOfTrolls);
+                new Quaternion(), trollsParent);
             StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
@@ -47,7 +47,7 @@ public class TrollManager : MonoBehaviour {
         if (spawnNumber == int.MaxValue) { // if parameter is omitted spawn on random spawn
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnRightSide[Random.Range(0, spawnLocationsOnRightSide.Length)].position,
-                new Quaternion(), fatherOfTrolls);
+                new Quaternion(), trollsParent);
             StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);
@@ -55,7 +55,7 @@ public class TrollManager : MonoBehaviour {
         else {
             GameObject troll = Instantiate(trollPrefab,
                 spawnLocationsOnRightSide[spawnNumber].position,
-                new Quaternion(), fatherOfTrolls);
+                new Quaternion(), trollsParent);
             StartCoroutine(initializeTroll(troll, trollConfiguration));
             troll.name = "Troll" + qntdOfTrollsCreated;
             trolls.Add(troll);

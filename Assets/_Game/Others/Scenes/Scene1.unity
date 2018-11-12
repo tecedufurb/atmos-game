@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trollPrefab: {fileID: 180812, guid: 74341381310604213a67eef805113c4f, type: 2}
-  fatherOfTrolls: {fileID: 1136547182}
+  trollsParent: {fileID: 1136547182}
   spawnLocationsOnLeftSide:
   - {fileID: 1893816825}
   - {fileID: 1165116303}
@@ -1274,6 +1274,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1707217988}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &625014076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 625014077}
+  m_Layer: 0
+  m_Name: Seeds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625014077
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 625014076}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1080141353}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625275926
 GameObject:
@@ -2644,7 +2672,7 @@ Transform:
   m_Children:
   - {fileID: 1136547182}
   m_Father: {fileID: 1080141353}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893280261
 GameObject:
@@ -3632,6 +3660,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 1093982306}
+  - {fileID: 625014077}
   - {fileID: 881517749}
   - {fileID: 1127544440}
   - {fileID: 1493855245}
@@ -3964,7 +3993,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4114675935202424, guid: af505a24fb5a54634b586182008f36b9, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4114675935202424, guid: af505a24fb5a54634b586182008f36b9, type: 2}
       propertyPath: m_LocalScale.x
@@ -4174,6 +4203,7 @@ GameObject:
   - component: {fileID: 1186832109}
   - component: {fileID: 1186832108}
   - component: {fileID: 1186832107}
+  - component: {fileID: 1186832111}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4265,6 +4295,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1186832111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186832105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab962acc941c4090b03466473b5a409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chanceToSpawnSeed: 15
+  seedPrefab: {fileID: 1928405634401928, guid: c854b2fbbc64a4fe29a9134c243628a2, type: 2}
+  seedsParent: {fileID: 625014077}
 --- !u!1 &1187837687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5601,7 +5645,7 @@ Transform:
   - {fileID: 1707217988}
   - {fileID: 1989961043}
   m_Father: {fileID: 1080141353}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1525581131
 GameObject:
@@ -6146,7 +6190,7 @@ Transform:
   - {fileID: 1266277412}
   - {fileID: 1381147611}
   m_Father: {fileID: 1080141353}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1661910168
 GameObject:

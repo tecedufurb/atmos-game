@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour {
 
     private void plant(Vector2 screenPosition) {
         if (int.Parse(qntOfSeedsText.text) <= 0)
-            print("out of seeds"); //show alert of out of seeds
+            print("out of seeds"); // TODO show alert of out of seeds
 
         int[] plantsSelected = selectedPlants.getSelectedPlants();
         if (plantsSelected != null) {

@@ -19,8 +19,8 @@ public class EnemyOfWaveConfiguration {
     }
 
     public IEnemyConfiguration getEnemy() {
-        float r = Random.Range(0, 101);
-        if (r <= percentageBetweenLeftAndRight*100) // chose a random side of river, according to the percentage
+        if (Random.Range(0, 101) <= percentageBetweenLeftAndRight * 100
+        ) // chose a random side of river, according to the percentage
             return leftSideEnemy;
         else {
             return rightSideEnemy;

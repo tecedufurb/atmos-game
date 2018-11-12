@@ -12,6 +12,7 @@ TagManager:
   - EnemyAttack
   - RiparianForestAreaLeftSide
   - RiparianForestAreaRightSide
+  - Seed
   layers:
   - Default
   - TransparentFX
