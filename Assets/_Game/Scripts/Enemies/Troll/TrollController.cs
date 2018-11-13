@@ -3,6 +3,7 @@
 public class TrollController : AbstractEnemy {
 
     private bool isOnLeftSideOfRiver;
+    public bool canSpanSeed = true; // by default can spawn seed
 
     #region Events
 
@@ -89,7 +90,10 @@ public class TrollController : AbstractEnemy {
     }
     
     public override void vanish() {
+        canSpanSeed = false;
         Destroy(gameObject);
+        if (OnTrollIsDead != null)
+            OnTrollIsDead(gameObject);
     }
 
     public override void die() {

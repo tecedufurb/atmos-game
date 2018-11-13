@@ -28,7 +28,10 @@ public class EnemyRecycler : MonoBehaviour {
 
     private IEnumerator waitTimeToVanishEnemy(Transform enemy, int seconds) {
         yield return new WaitForSeconds(seconds);
-        StartCoroutine(vanishEnemy(enemy));
+        if (enemy == null)
+            yield return null;
+        else
+            StartCoroutine(vanishEnemy(enemy));
     }
 
     private IEnumerator vanishEnemy(Transform enemy) {
