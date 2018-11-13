@@ -22,7 +22,6 @@ public abstract class AbstractEnemy : MonoBehaviour { // TODO add require NavMes
     private Coroutine stunnedCoroutine;
 
     void Start() {
-        print("start");
         gameObject.SetActive(true);
         enemyAnimator = GetComponent<EnemyAnimator>();
         navMeshAgent = GetComponent<NavMeshAgent>();

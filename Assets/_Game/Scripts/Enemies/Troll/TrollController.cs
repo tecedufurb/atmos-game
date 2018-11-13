@@ -28,7 +28,6 @@ public class TrollController : AbstractEnemy {
     }
 
     public override void initializeEnemyConfiguration(IEnemyConfiguration trollConfiguration) {
-        print("init");
         TrollConfiguration trollConfig = trollConfiguration as TrollConfiguration;
         life = trollConfig.getLife();
         speed = trollConfig.getSpeed();
@@ -44,7 +43,6 @@ public class TrollController : AbstractEnemy {
     }
 
     protected override void walkToCurrentTarget() {
-        print("walk");
         if (!navMeshAgent.enabled) // check if navMesh is enabled
             return;
         setAttackCollider(false);
@@ -65,7 +63,6 @@ public class TrollController : AbstractEnemy {
     }
 
     protected override void attack() {
-        print("attack");
         setAttackCollider(true);
         transform.LookAt(target.transform);
         enemyAnimator.attack(Random.Range(1, 3)); // 1 or 2
@@ -103,7 +100,6 @@ public class TrollController : AbstractEnemy {
     }
 
     private void setNextTarget() {
-        print("set next target");
         if (OnGetNextTarget != null)
             target = OnGetNextTarget(isOnLeftSideOfRiver);
     }
