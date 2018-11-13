@@ -4306,7 +4306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab962acc941c4090b03466473b5a409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceToSpawnSeed: 15
+  chanceToSpawnSeed: 57
   seedPrefab: {fileID: 1928405634401928, guid: c854b2fbbc64a4fe29a9134c243628a2, type: 2}
   seedsParent: {fileID: 625014077}
 --- !u!1 &1187837687

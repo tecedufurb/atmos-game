@@ -25,7 +25,8 @@ public class SeedsSpawner : MonoBehaviour {
     }
 
     private void spawnSeed(Vector3 position) {
-        Instantiate(seedPrefab, position, seedPrefab.transform.rotation, seedsParent);
+        seedPrefab.transform.Rotate(Vector3.right * Random.Range(0, 360));
+        Instantiate(seedPrefab, new Vector3(position.x, seedPrefab.transform.position.y, position.z), seedPrefab.transform.rotation, seedsParent);
     }
 
 }
