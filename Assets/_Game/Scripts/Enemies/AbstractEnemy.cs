@@ -37,6 +37,8 @@ public abstract class AbstractEnemy : MonoBehaviour { // TODO add require NavMes
 
     public abstract void die();
 
+    public abstract void vanish();
+
     protected abstract void walkToCurrentTarget();
 
     protected abstract void attack();

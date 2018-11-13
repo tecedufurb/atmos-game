@@ -1,7 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.AI;
-using Random = UnityEngine.Random;
+﻿using UnityEngine;
 
 public class TrollController : AbstractEnemy {
 
@@ -89,6 +86,10 @@ public class TrollController : AbstractEnemy {
         GetComponent<BoxCollider>().enabled = false;
         setAttackCollider(false);
         navMeshAgent.enabled = false; // agent have a collider
+    }
+    
+    public override void vanish() {
+        Destroy(gameObject);
     }
 
     public override void die() {
