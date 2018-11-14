@@ -10,6 +10,14 @@ public class SeedController : MonoBehaviour {
     private float aux = 0.06f;
     private float intervalBetweenBlinks = 1f;
 
+    #region Events
+
+    public delegate void SeedCollected();
+
+    public static event SeedCollected OnSeedCollected;
+
+    #endregion
+
     void Start() {
         meshRenderer = GetComponent<MeshRenderer>();
         StartCoroutine(updateSeed());
@@ -17,6 +25,8 @@ public class SeedController : MonoBehaviour {
 
     public void collectSeed() {
         destroySeed();
+        if (OnSeedCollected != null)
+            OnSeedCollected();
         // TODO play animation, increase the qtd of seeds of the player
     }
 

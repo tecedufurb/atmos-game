@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour {
         WavesManager.OnWaveEnded += waveEnded;
         TimerBetweenWaves.OnTimeIsUp += startWave;
         RiparianForestValidation.OnRiparianForestIsComplete += displayScore;
+        SeedController.OnSeedCollected += increaseQuantityOfSeeds;
     }
 
     private void OnDisable() {
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour {
         WavesManager.OnWaveEnded -= waveEnded;
         TimerBetweenWaves.OnTimeIsUp -= startWave;
         RiparianForestValidation.OnRiparianForestIsComplete -= displayScore;
+        SeedController.OnSeedCollected -= increaseQuantityOfSeeds;
     }
 
     void Start() {
@@ -110,6 +112,10 @@ public class GameManager : MonoBehaviour {
     public void resumeGame() {
         isGamePaused = false;
         Time.timeScale = 1;
+    }
+
+    private void increaseQuantityOfSeeds() {
+        qntOfSeedsText.text = (int.Parse(qntOfSeedsText.text) + 1).ToString();
     }
 
 }

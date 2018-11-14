@@ -4272,7 +4272,6 @@ MonoBehaviour:
   objectsToDeactivate:
   - {fileID: 1066688654}
   - {fileID: 270998299}
-  - {fileID: 1292229035}
   - {fileID: 2118926959}
   initialQntOfPlants: 40
   expectedMissionDurationInSeconds: 300
