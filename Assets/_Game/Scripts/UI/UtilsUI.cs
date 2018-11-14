@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UtilsUI : MonoBehaviour {
+
+    private bool isLoadingScene;
     private AsyncOperation async;
 
     public void activateCanvas(GameObject canvasOrPanel) {
@@ -18,7 +20,10 @@ public class UtilsUI : MonoBehaviour {
     }
 
     public void LoadScene(string sceneName) {
-        StartCoroutine(LoadingScreen(sceneName));
+        if (!isLoadingScene) {
+            isLoadingScene = true;
+            StartCoroutine(LoadingScreen(sceneName));
+        }
     }
 
     private IEnumerator LoadingScreen(string sceneName) {
@@ -26,7 +31,6 @@ public class UtilsUI : MonoBehaviour {
         async.allowSceneActivation = false;
 
         while (async.isDone == false) {
-
             if (async.progress == 0.9f) {
                 async.allowSceneActivation = true;
             }
@@ -34,4 +38,5 @@ public class UtilsUI : MonoBehaviour {
             yield return null;
         }
     }
+
 }
