@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public TutorialManager tutorialManager;
     public Planting planting;
     public PlantsSelectorController selectedPlants;
     public WavesManager waveManager;
     public Text qntOfSeedsText;
     public TimerBetweenWaves timerBetweenWaves;
     public Score score;
-    public Helper helper;
     public GameObject[] objectsToDeactivate;
 
-    public static bool isGamePaused;
+    private static bool isGamePaused;
 
     private Timer timer;
 
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour {
     private void plant(Vector2 screenPosition) {
         if (planting.enabled) {
             if (int.Parse(qntOfSeedsText.text) <= 0)
-                print("out of seeds"); // TODO show alert of out of seeds
+                tutorialManager.showMessageOutOfSeeds();
 
             int[] plantsSelected = selectedPlants.getSelectedPlants();
             if (plantsSelected != null) {

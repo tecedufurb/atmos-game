@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextModifier : MonoBehaviour { //TODO use this class
+public class TextUtils : MonoBehaviour {
 
     public void changeColorOfText(Text text, Color color) {
         text.color = color;
@@ -15,18 +15,31 @@ public class TextModifier : MonoBehaviour { //TODO use this class
         bool scaleSizeUp = true;
         while (true) {
             if (scaleSizeUp) {
-                currentSize+=3;
+                currentSize += 3;
                 text.fontSize = currentSize;
                 if (currentSize >= maxFontSize)
                     scaleSizeUp = false;
             } else {
-                currentSize-=3;
+                currentSize -= 3;
                 text.fontSize = currentSize;
                 if (currentSize <= minFontSize)
                     scaleSizeUp = true;
             }
+
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+
+    public IEnumerator moveTextDown(GameObject text, float distance, float velocity) {
+        float destination = text.transform.position.y - distance;
+
+        while (text.transform.position.y > destination) {
+            text.transform.position += Vector3.down * velocity;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        Destroy(text);
     }
 
 }
