@@ -289,11 +289,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391, y: 253}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 57, y: -37}
   m_SizeDelta: {x: 800, y: 500}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &226449737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,11 +552,11 @@ RectTransform:
   m_Father: {fileID: 1368290574}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -196, y: -274}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 271.0005, y: -809}
   m_SizeDelta: {x: 250, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &312774674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,11 +764,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 197, y: -111}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 53, y: -647}
   m_SizeDelta: {x: 800, y: 100}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &568073535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,11 +1423,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 625, y: 130}
-  m_SizeDelta: {x: 200, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1297.9993, y: -329.00052}
+  m_SizeDelta: {x: 300, y: 200}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &989330099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,11 +1543,11 @@ RectTransform:
   m_Father: {fileID: 1368290574}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -576, y: 344}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 600, y: -197}
   m_SizeDelta: {x: 150, y: 90}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &997026213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1692,11 +1692,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285, y: 365}
-  m_SizeDelta: {x: 200, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 947.9998, y: -71.000305}
+  m_SizeDelta: {x: 300, y: 200}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1062779965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1812,11 +1812,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: -45}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -553}
   m_SizeDelta: {x: 800, y: 100}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1093560178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,11 +1959,11 @@ RectTransform:
   m_Father: {fileID: 1368290574}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266, y: -274}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 691, y: -809}
   m_SizeDelta: {x: 250, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1332990343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2428,11 +2428,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: -378}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 47, y: -774}
   m_SizeDelta: {x: 1000, y: 350}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1509513874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,11 +2502,11 @@ RectTransform:
   m_Father: {fileID: 1368290574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107, y: 4}
-  m_SizeDelta: {x: 1500, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 154, y: -386}
+  m_SizeDelta: {x: 1300, y: 300}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1588825427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2581,7 +2581,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266, y: -274}
+  m_AnchoredPosition: {x: 200, y: -283}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1607842955
@@ -3098,7 +3098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -196, y: -274}
+  m_AnchoredPosition: {x: -261.9997, y: -283.00012}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723346229
@@ -3231,7 +3231,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 275, y: -201}
+  m_AnchoredPosition: {x: -57, y: -263}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723415999
@@ -3714,11 +3714,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285.00006, y: 130}
-  m_SizeDelta: {x: 200, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 951, y: -332}
+  m_SizeDelta: {x: 300, y: 200}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1838324176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4141,8 +4141,8 @@ MonoBehaviour:
   plantsModels:
   - name: Chau-chau
     scientificName: Allophylus edulis
-    description: "Conhecida como Chau-chau, \xE9 uma \xE1rvore de porte pequeno com
-      crescimento bastante r\xE1pido. Ocorre em toda a Mata Atl\xE2ntica."
+    description: "\xC9 uma \xE1rvore de porte pequeno com crescimento bastante r\xE1pido,
+      alcan\xE7ando at\xE9 10 metros de altura. Ocorre em toda a Mata Atl\xE2ntica. "
     images:
     - {fileID: 21300000, guid: 995f5a9d843f148c5882609df035b290, type: 3}
     - {fileID: 21300000, guid: 1f24b92516bed47d3af078a981744f65, type: 3}
@@ -4150,8 +4150,8 @@ MonoBehaviour:
     - {fileID: 21300000, guid: efac5df554350481997f0bad229cb81f, type: 3}
   - name: Angelim Rosa
     scientificName: Andira fraxinifolia
-    description: "Conhecido como Angelim Rosa, \xE9 uma esp\xE9cie nativa do Brasil,
-      encontrado nos biomas da Mata atl\xE2ntica e Cerrado, por\xE9m possui relatos
+    description: "\xC9 uma esp\xE9cie que pode alcan\xE7a de 4 a 6 metros de altura.
+      \xC9 encontrada nos biomas da Mata atl\xE2ntica e Cerrado, por\xE9m possui relatos
       que ocorre na Caatinga tamb\xE9m. \xC9 uma \xE1rvore pouco conhecida e de crescimento
       lento."
     images:
@@ -4162,8 +4162,7 @@ MonoBehaviour:
   - name: Tucaneira
     scientificName: Citharexylum myrianthum
     description: "A Tucaneira \xE9 uma \xE1rvore que atinge mais de 5 metros de altura.
-      Cresce rapidamente em \xE1reas degradadas. Ocorre na Mata Atl\xE2ntica e nos
-      Pampas."
+      Ocorre na Mata Atl\xE2ntica e nos Pampas. Cresce rapidamente em \xE1reas degradadas."
     images:
     - {fileID: 21300000, guid: 133fa5eef17cf41c39828ce9cb8c428a, type: 3}
     - {fileID: 21300000, guid: 765efa2497cb44e239fc1e0cf28e7ea1, type: 3}
@@ -4171,26 +4170,28 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e84552b2d8467491689b4870384f25ee, type: 3}
   - name: Cedro-canjerana
     scientificName: Cabralea canjerana
-    description: "Conhecida como cedro-canjerana \xE9 uma esp\xE9cie que pode ser
-      arbustiva ou apresentar-se na forma de \xE1rvore, podendo atingir, nesse caso,
-      a altura de 30 m. A sua madeira \xE9 vermelha, rosada ou amarela."
+    description: "\xC9 uma esp\xE9cie que pode ser arbustiva ou apresentar-se na forma
+      de \xE1rvore, podendo atingir a altura de 30 metros. Ocorre na regi\xE3o Sul,
+      Sudeste e centro-oeste. A sua madeira \xE9 vermelha, rosada ou amarela."
     images:
-    - {fileID: 21300000, guid: 283f99059137f4de69288e7ebc729f52, type: 3}
-    - {fileID: 21300000, guid: 96124ed7cba4c48d9b2cd62bd6e6d0c3, type: 3}
-    - {fileID: 21300000, guid: 2a4e39f179522442daf1b4de593b6ba9, type: 3}
+    - {fileID: 21300000, guid: 7f88308d8587e47bdbeb6347cadf942e, type: 3}
+    - {fileID: 21300000, guid: f50fd53addb5d42aba0ef3fe3173dd2a, type: 3}
+    - {fileID: 21300000, guid: a2454a59c965d41b9a326fc4e6bde239, type: 3}
+    - {fileID: 21300000, guid: 762a2385429e0467badd04d461465fda, type: 3}
   - name: "Timba\xFAva"
     scientificName: Enterolobium contortisiliquum
-    description: "Conhecida como Timba\xFAva \xE9 uma \xE1rvore de crescimento muito
-      r\xE1pido. Desenvolve-se em \xE1reas com sol. Ocorre na Mata Atl\xE2ntica, Cerrado,
-      Caatinga, Pampa e Pantanal. "
+    description: "\xC9 uma \xE1rvore de grande porte, pode alcan\xE7ar de 20 a 35
+      metros de altura. Ocorre na Mata Atl\xE2ntica, Cerrado, Caatinga, Pampa e Pantanal.
+      Seu crescimento \xE9 muito r\xE1pido e desenvolve-se em \xE1reas com sol. "
     images:
     - {fileID: 21300000, guid: 9613e18840e764c029f978cc90d95e24, type: 3}
     - {fileID: 21300000, guid: ecba382aaace44acca3dd717da38b8e1, type: 3}
     - {fileID: 21300000, guid: 9c94adbff98124699abc6b2d8c1ce88c, type: 3}
+    - {fileID: 21300000, guid: 9c94adbff98124699abc6b2d8c1ce88c, type: 3}
   - name: Corticeira
     scientificName: Erythina falcata
-    description: "A Corticeira \xE9 \xE1rvore com crescimento lento. Ocorre na Mata
-      Atl\xE2ntica e no Cerrado. Atinge mais de 5 metros de altura."
+    description: "A Corticeira \xE9 \xE1rvore com crescimento lento, podendo atingir
+      mais de 5 metros de altura. Ocorre na Mata Atl\xE2ntica e no Cerrado."
     images:
     - {fileID: 21300000, guid: 902706d7945554220a5675b9a76d8a1c, type: 3}
     - {fileID: 21300000, guid: b607c71f49ea44e09b752168b0d855b1, type: 3}
@@ -4204,31 +4205,36 @@ MonoBehaviour:
     - {fileID: 21300000, guid: e15d650977c384a9f8f3a787fa29565a, type: 3}
     - {fileID: 21300000, guid: 75c52020a375542949596e8bba74f6e7, type: 3}
     - {fileID: 21300000, guid: dfe2078a79f6e4617b73faf50d90cfed, type: 3}
-  - name: ' Palmito Jussara'
+    - {fileID: 21300000, guid: 4c75b9cdac31f46eb90dc639b4b0012d, type: 3}
+  - name: Palmito Jussara
     scientificName: Euterpe edulis
-    description: "Conhecido como Palmito Jussara. \xC9 uma palmeira de porte m\xE9dio
-      que atinge mais de 5 metros. Ocorre na Mata Atl\xE2ntica e no Cerrado. Esp\xE9cie
-      amea\xE7ada de extin\xE7\xE3o devido \xE0 comercializa\xE7\xE3o do palmito."
+    description: "\xC9 uma palmeira de porte pequeno que atinge mais de 5 metros.
+      Ocorre na Mata Atl\xE2ntica e no Cerrado. Esp\xE9cie amea\xE7ada de extin\xE7\xE3o
+      devido \xE0 comercializa\xE7\xE3o do palmito."
     images:
     - {fileID: 21300000, guid: 43fb6d4225ebd4f2db5098dd48ffc89c, type: 3}
     - {fileID: 21300000, guid: 6dc16e279749d4df5b38239720636933, type: 3}
     - {fileID: 21300000, guid: 79bb06089ef2543a8814534d4376aa25, type: 3}
-  - name: Inga edulis
-    scientificName: "Ing\xE1-cip\xF3"
-    description: "Ing\xE1-cip\xF3 \xE9 uma esp\xE9cie de ing\xE1 origin\xE1ria da
-      Amaz\xF4nia. Sua \xE1rvore pode alcan\xE7ar 15m de altura. "
+    - {fileID: 21300000, guid: fb4411d9e057b4376b9f12952ef52271, type: 3}
+  - name: "Ing\xE1-cip\xF3"
+    scientificName: Inga edulis
+    description: "Ing\xE1-cip\xF3 \xE9 uma \xE1rvore que pode alcan\xE7ar 15m de altura.
+      Esp\xE9cie origin\xE1ria da Amaz\xF4nia."
     images:
-    - {fileID: 21300000, guid: e0f1b51c680814d7c8194604b531e413, type: 3}
-    - {fileID: 21300000, guid: faa090630688b4accb9a9baa50b29c0b, type: 3}
-    - {fileID: 21300000, guid: 811b86259a76e412c9b5373e249ecce4, type: 3}
+    - {fileID: 21300000, guid: d8e90a749536d415cb2678298402fc56, type: 3}
+    - {fileID: 21300000, guid: 87f23f60d6a92488c90ae6c412ba7450, type: 3}
+    - {fileID: 21300000, guid: 4bd7e0fff0d60492e937125343af9a66, type: 3}
+    - {fileID: 21300000, guid: 89075fc195f2a4799ba789cce39c9c3c, type: 3}
   - name: Tapirira
     scientificName: Tapirira guianensis
-    description: "A Tapirira \xE9 uma \xE1rvore de grande porte. Desenvolve-se em
-      \xE1reas sombreadas. Ocorre na Mata Atl\xE2ntica, Cerrado, Pantanal e Amaz\xF4nia."
+    description: "A Tapirira \xE9 uma \xE1rvore que pode alcan\xE7ar at\xE9 20 metros
+      de altura. Ocorre na Mata Atl\xE2ntica, Cerrado, Pantanal e Amaz\xF4nia. Desenvolve-se
+      em \xE1reas sombreadas."
     images:
-    - {fileID: 21300000, guid: c3d07e85864794b9d9a169e66d67ba2c, type: 3}
-    - {fileID: 21300000, guid: c9c2089b03e164350ac4085a75db463b, type: 3}
-    - {fileID: 21300000, guid: e987626acc0064eeca8a7512466c8b46, type: 3}
+    - {fileID: 21300000, guid: c755fc85476ce40cd8c533c35bc146a2, type: 3}
+    - {fileID: 21300000, guid: 798a8395cae534b97b19bfbb87c1fbda, type: 3}
+    - {fileID: 21300000, guid: bccc6f0435e184606a57d7d3783a2f95, type: 3}
+    - {fileID: 21300000, guid: ab6539f4d287a45fca601a46f2da71b1, type: 3}
 --- !u!1 &1967519208
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,11 +4331,11 @@ RectTransform:
   m_Father: {fileID: 1960508880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 622, y: 365}
-  m_SizeDelta: {x: 200, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1294.9995, y: -68.000244}
+  m_SizeDelta: {x: 300, y: 200}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &2116838200
 MonoBehaviour:
   m_ObjectHideFlags: 0

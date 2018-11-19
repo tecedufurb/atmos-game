@@ -28,7 +28,7 @@ public class PlantsShowcaseController : MonoBehaviour {
     }
 
     public void nextPlant() {
-        if (currentPlant >= plantsModels.Length) // is is on last plant, go back to first
+        if (currentPlant >= plantsModels.Length-1) // is is on last plant, go back to first
             currentPlant = 0;
         else
             currentPlant++;
@@ -37,7 +37,7 @@ public class PlantsShowcaseController : MonoBehaviour {
 
     public void previousPlant() {
         if (currentPlant == 0) // is is on first plant, go to last
-            currentPlant = plantsModels.Length;
+            currentPlant = plantsModels.Length-1;
         else
             currentPlant--;
         updatePlantSelected();
