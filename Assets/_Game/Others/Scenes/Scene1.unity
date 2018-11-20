@@ -4499,7 +4499,7 @@ MonoBehaviour:
   - {fileID: 1066688654}
   - {fileID: 270998299}
   - {fileID: 2118926959}
-  initialQntOfPlants: 10
+  initialQntOfPlants: 60
   expectedMissionDurationInSeconds: 300
   seedsReplenishedAfterWave: 20
   timeBetweenWaves: 500
@@ -4624,10 +4624,10 @@ RectTransform:
   m_Father: {fileID: 838114683}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -168.9, y: -205.5}
-  m_SizeDelta: {x: -1508, y: -839.1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -135, y: -184}
+  m_SizeDelta: {x: 412, y: 240.90002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1203125303
 MonoBehaviour:
@@ -6890,16 +6890,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fatherOfPlants: {fileID: 1093982306}
   plants:
+  - {fileID: 1037774101210316, guid: 43d4a3460626a44169da2e240cf1faff, type: 2}
   - {fileID: 1505512815516580, guid: 46a197cb731ac4927aafbeba1e1dc21a, type: 2}
   - {fileID: 1182698940182368, guid: 0f441f2e5b31243178846c284d410c84, type: 2}
   - {fileID: 1769523439122992, guid: c8ab6637fbdd04f78b56014cc8b9609d, type: 2}
-  - {fileID: 1116288241299382, guid: 3252670f861cb45dd8304310620c1ec5, type: 2}
-  - {fileID: 1364641375903020, guid: c4124df176bea46c1ba6cddadbf88e36, type: 2}
-  - {fileID: 1505512815516580, guid: 46a197cb731ac4927aafbeba1e1dc21a, type: 2}
+  - {fileID: 1480343485284018, guid: 60331d73f234144e6bb7f2bf11f9f315, type: 2}
+  - {fileID: 1287569743490202, guid: d568702752ba941e1ac0bc03cd1fe6e1, type: 2}
+  - {fileID: 1037774101210316, guid: 43d4a3460626a44169da2e240cf1faff, type: 2}
   - {fileID: 1505512815516580, guid: 46a197cb731ac4927aafbeba1e1dc21a, type: 2}
   - {fileID: 1182698940182368, guid: 0f441f2e5b31243178846c284d410c84, type: 2}
   - {fileID: 1769523439122992, guid: c8ab6637fbdd04f78b56014cc8b9609d, type: 2}
-  - {fileID: 1116288241299382, guid: 3252670f861cb45dd8304310620c1ec5, type: 2}
 --- !u!114 &1680741007
 MonoBehaviour:
   m_ObjectHideFlags: 0

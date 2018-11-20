@@ -251,8 +251,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Aqui voce ver\xE1 algumas esp\xE9cies de arvores que seram utilizadas para
-    a prote\xE7\xE3o do rio"
+  m_Text: "Aqui voc\xEA ver\xE1 algumas esp\xE9cies de \xE1rvores que ser\xE3o utilizadas
+    para a prote\xE7\xE3o do rio"
 --- !u!222 &47315386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1094,7 +1094,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Muito bem, e diversidade ecol\xF3gica voca sabe o que \xE9?"
+  m_Text: "Muito bem, e diversidade ecol\xF3gica voc\xEA sabe o que \xE9?"
 --- !u!222 &704028798
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1460,7 +1460,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Voce esta pronto para come\xE7ar!"
+  m_Text: "Voce est\xE1 pronto para come\xE7ar!"
 --- !u!222 &957211776
 CanvasRenderer:
   m_ObjectHideFlags: 0
