@@ -7,6 +7,9 @@ public class PlantsManager : MonoBehaviour {
     private readonly List<GameObject> plantsRightSideRiparianForest = new List<GameObject>();
     private readonly List<GameObject> plantsOutsideOfRiparianForest = new List<GameObject>();
 
+    public GameObject[] startingPlantsInRiparianForestLeftSide;
+    public GameObject[] startingPlantsInRiparianForestRightSide;
+
     #region Events
 
     public delegate void PlantAddedToRiparianForest(GameObject plant); // called when a plant is added of riparian area
@@ -27,6 +30,17 @@ public class PlantsManager : MonoBehaviour {
     private void OnDisable() {
         Planting.OnPlantsAddedOnLastTap -= addPlants;
         PlantController.OnPlantIsDead -= removePlant;
+    }
+
+    private void Start() {
+        // add riparian forest initial plants to lists
+        for (int i = 0; i < startingPlantsInRiparianForestLeftSide.Length; i++) {
+            addPlant(startingPlantsInRiparianForestLeftSide[i]);
+        }
+        
+        for (int i = 0; i < startingPlantsInRiparianForestRightSide.Length; i++) {
+            addPlant(startingPlantsInRiparianForestRightSide[i]);
+        }
     }
 
     private void addPlants(GameObject[] plants) {
