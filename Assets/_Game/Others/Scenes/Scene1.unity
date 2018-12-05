@@ -4670,7 +4670,7 @@ MonoBehaviour:
   initialQntOfPlants: 60
   expectedMissionDurationInSeconds: 300
   seedsReplenishedAfterWave: 20
-  timeBetweenWaves: 500
+  timeBetweenWaves: 40
 --- !u!95 &1186832110
 Animator:
   serializedVersion: 3
