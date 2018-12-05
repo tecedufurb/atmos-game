@@ -4225,7 +4225,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: efac5df554350481997f0bad229cb81f, type: 3}
   - name: Angelim Rosa
     scientificName: Andira fraxinifolia
-    description: "\xC9 uma esp\xE9cie que pode alcan\xE7a de 4 a 6 metros de altura.
+    description: "\xC9 uma esp\xE9cie que pode alcan\xE7ar de 4 a 6 metros de altura.
       \xC9 encontrada nos biomas da Mata atl\xE2ntica e Cerrado, por\xE9m possui relatos
       que ocorre na Caatinga tamb\xE9m. \xC9 uma \xE1rvore pouco conhecida e de crescimento
       lento."
@@ -4247,7 +4247,7 @@ MonoBehaviour:
     scientificName: Cabralea canjerana
     description: "\xC9 uma esp\xE9cie que pode ser arbustiva ou apresentar-se na forma
       de \xE1rvore, podendo atingir a altura de 30 metros. Ocorre na regi\xE3o Sul,
-      Sudeste e centro-oeste. A sua madeira \xE9 vermelha, rosada ou amarela."
+      Sudeste e Centro-Oeste. A sua madeira \xE9 vermelha, rosada ou amarela."
     images:
     - {fileID: 21300000, guid: 7f88308d8587e47bdbeb6347cadf942e, type: 3}
     - {fileID: 21300000, guid: f50fd53addb5d42aba0ef3fe3173dd2a, type: 3}
@@ -4255,7 +4255,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 762a2385429e0467badd04d461465fda, type: 3}
   - name: "Timba\xFAva"
     scientificName: Enterolobium contortisiliquum
-    description: "\xC9 uma \xE1rvore de grande porte, pode alcan\xE7ar de 20 a 35
+    description: "\xC9 uma \xE1rvore de grande porte. Pode alcan\xE7ar de 20 a 35
       metros de altura. Ocorre na Mata Atl\xE2ntica, Cerrado, Caatinga, Pampa e Pantanal.
       Seu crescimento \xE9 muito r\xE1pido e desenvolve-se em \xE1reas com sol. "
     images:
