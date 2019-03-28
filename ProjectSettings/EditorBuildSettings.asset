@@ -12,8 +12,5 @@ EditorBuildSettings:
     path: Assets/_Game/Others/Scenes/PlantsShowcase.unity
     guid: 76b57df6ad3754f7f8a9a03236710810
   - enabled: 1
-    path: Assets/_Game/Others/Scenes/Mission1.unity
-    guid: a859c43144a07441fad6312ecee08a3c
-  - enabled: 1
     path: Assets/_Game/Others/Scenes/Scene1.unity
     guid: 7d296438c04d94d82bf7a0544ad67f46
